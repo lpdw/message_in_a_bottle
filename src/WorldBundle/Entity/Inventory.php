@@ -21,6 +21,12 @@ class Inventory
      */
     private $id;
 
+    /**
+     * Many Player have One Inventory.
+     * @ORM\ManyToOne(targetEntity="Player", inversedBy="inventory")
+     * @ORM\JoinColumn(name="player_id", referencedColumnName="id")
+     */
+    private $player;
 
     /**
      * Get id

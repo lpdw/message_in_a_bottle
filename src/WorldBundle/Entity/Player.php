@@ -28,6 +28,29 @@ class Player
      */
     private $status;
 
+    /**
+     * Many Players have One WorldGame.
+     * @ORM\ManyToOne(targetEntity="WorldGame", inversedBy="players")
+     * @ORM\JoinColumn(name="worldgame_id", referencedColumnName="id")
+     */
+    private $worldgame;
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="Inventory", mappedBy="player")
+     */
+    private $inventory;
+
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="Equipment", mappedBy="players")
+     */
+    private $equipment;
+
+    public function __construct() {
+      $this->inventory = new ArrayCollection();
+      $this->equipment = new ArrayCollection();
+    }
 
     /**
      * Get id
