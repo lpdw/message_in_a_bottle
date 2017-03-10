@@ -33,7 +33,7 @@ class WorldGame
 
     /**
      * One WorldGame has Many Islands.
-     * @OneToMany(targetEntity="Island", mappedBy="worldgame")
+     * @ORM\OneToMany(targetEntity="Island", mappedBy="worldgame")
      */
     private $islands;
 

@@ -32,4 +32,3 @@ class Hut
         return $this->id;
     }
 }
-

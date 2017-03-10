@@ -44,11 +44,28 @@ class Island
 
     /**
      * Many Islands have One WorldGame.
-     * @ManyToOne(targetEntity="WorldGame", inversedBy="islands")
-     * @JoinColumn(name="worldgame_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="WorldGame", inversedBy="islands")
+     * @ORM\JoinColumn(name="worldgame_id", referencedColumnName="id")
      */
     private $worldgame;
 
+
+    /**
+     * One Island has Many Monsters.
+     * @ORM\OneToMany(targetEntity="Monster", mappedBy="island")
+     */
+    private $monsters;
+
+    /**
+     * One Island has One Forest.
+     * @ORM\OneToOne(targetEntity="Forest", mappedBy="island")
+     */
+    private $forest;
+
+
+    public function __construct() {
+        $this->monsters = new ArrayCollection();
+    }
 
     /**
      * Get id

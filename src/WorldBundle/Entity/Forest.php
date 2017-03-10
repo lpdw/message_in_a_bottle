@@ -21,6 +21,12 @@ class Forest
      */
     private $id;
 
+    /**
+     * One Forest has One Island.
+     * @ORM\OneToOne(targetEntity="Island", inversedBy="forest")
+     * @ORM\JoinColumn(name="island_id", referencedColumnName="id")
+     */
+    private $island;
 
     /**
      * Get id
@@ -32,4 +38,3 @@ class Forest
         return $this->id;
     }
 }
-

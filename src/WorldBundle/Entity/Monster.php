@@ -35,6 +35,13 @@ class Monster
      */
     private $level;
 
+    /**
+     * Many Monsters have One Island.
+     * @ORM\ManyToOne(targetEntity="Island", inversedBy="monsters")
+     * @ORM\JoinColumn(name="island_id", referencedColumnName="id")
+     */
+    private $island;
+
 
     /**
      * Get id
@@ -94,4 +101,3 @@ class Monster
         return $this->level;
     }
 }
-
