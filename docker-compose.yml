@@ -1,0 +1,10 @@
+web:
+    image: vincentchalamon/symfony
+    volumes:
+        - .:/var/www
+    links:
+        - mysql
+mysql:
+    image: mysql
+    environment:
+        MYSQL_ROOT_PASSWORD: "root"

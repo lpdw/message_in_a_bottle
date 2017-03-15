@@ -57,6 +57,23 @@ class Island
 
 
     /**
+     * One Island has Many Monsters.
+     * @ORM\OneToMany(targetEntity="Monster", mappedBy="island")
+     */
+    private $monsters;
+
+    /**
+     * One Island has One Forest.
+     * @ORM\OneToOne(targetEntity="Forest", mappedBy="island")
+     */
+    private $forest;
+
+
+    public function __construct() {
+        $this->monsters = new ArrayCollection();
+    }
+
+    /**
      * Get id
      *
      * @return int

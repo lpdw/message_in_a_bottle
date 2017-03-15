@@ -37,8 +37,15 @@ class WorldGame
      */
     private $islands;
 
+    /**
+     *
+     * @ORM\OneToMany(targetEntity="Player", mappedBy="worldgame")
+     */
+    private $players;
+
     public function __construct() {
       $this->islands = new ArrayCollection();
+      $this->players = new ArrayCollection();
     }
 
 
