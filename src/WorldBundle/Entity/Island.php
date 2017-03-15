@@ -44,10 +44,16 @@ class Island
 
     /**
      * Many Islands have One WorldGame.
-     * @ManyToOne(targetEntity="WorldGame", inversedBy="islands")
-     * @JoinColumn(name="worldgame_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="WorldGame", inversedBy="islands")
+     * @ORM\JoinColumn(name="worldgame_id", referencedColumnName="id")
      */
     private $worldgame;
+
+    /**
+     * One Island has One Hut.
+     * @ORM\OneToOne(targetEntity="Hut", mappedBy="island")
+     */
+    private $hut;
 
 
     /**

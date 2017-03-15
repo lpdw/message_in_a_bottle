@@ -21,6 +21,13 @@ class Hut
      */
     private $id;
 
+    /**
+     * One Hut has One Island.
+     * @ORM\OneToOne(targetEntity="Island", inversedBy="hut")
+     * @ORM\JoinColumn(name="island_id", referencedColumnName="id")
+     */
+    private $island;
+
 
     /**
      * Get id
@@ -32,4 +39,3 @@ class Hut
         return $this->id;
     }
 }
-
