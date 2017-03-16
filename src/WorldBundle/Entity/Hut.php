@@ -3,6 +3,7 @@
 namespace WorldBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Hut
@@ -28,6 +29,24 @@ class Hut
      */
     private $island;
 
+
+
+    /**
+     * One Hut has Many Items.
+     * @ORM\OneToMany(targetEntity="Item", mappedBy="hut")
+     */
+    private $logs;
+
+    /**
+     * One Hut has Many Logs.
+     * @ORM\OneToMany(targetEntity="Log", mappedBy="hut")
+     */
+    private $chest;
+
+    public function __construct() {
+        $this->logs = new ArrayCollection();
+        $this->chest = new ArrayCollection();
+    }
 
     /**
      * Get id

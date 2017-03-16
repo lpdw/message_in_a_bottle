@@ -21,6 +21,7 @@ class Player
      */
     private $id;
 
+
     /**
      * @var string
      *
@@ -36,6 +37,12 @@ class Player
     private $worldgame;
 
     /**
+     * Many Players have One Island.
+     * @ORM\OneToMany(targetEntity="Island", mappedBy="players")
+     */
+    private $localisation;
+
+    /**
      *
      * @ORM\OneToMany(targetEntity="Inventory", mappedBy="player")
      */
@@ -46,6 +53,8 @@ class Player
      * @ORM\OneToMany(targetEntity="Equipment", mappedBy="players")
      */
     private $equipment;
+
+
 
     public function __construct() {
       $this->inventory = new ArrayCollection();
@@ -86,4 +95,3 @@ class Player
         return $this->status;
     }
 }
-

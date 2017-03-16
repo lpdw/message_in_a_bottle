@@ -42,6 +42,13 @@ class Log
      */
     private $date;
 
+    /**
+     * Many Logs have One Hut.
+     * @ORM\ManyToOne(targetEntity="Hut", inversedBy="logs")
+     * @ORM\JoinColumn(name="hut_id", referencedColumnName="id")
+     */
+    private $hut;
+
 
     /**
      * Get id
@@ -125,4 +132,3 @@ class Log
         return $this->date;
     }
 }
-

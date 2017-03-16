@@ -3,6 +3,7 @@
 namespace WorldBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Beach
@@ -21,6 +22,16 @@ class Beach
      */
     private $id;
 
+    /**
+     * One Beach has Many Items.
+     * @ORM\OneToMany(targetEntity="Item", mappedBy="beach")
+     */
+    private $drops;
+
+
+    public function __construct() {
+        $this->drops = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -32,4 +43,3 @@ class Beach
         return $this->id;
     }
 }
-

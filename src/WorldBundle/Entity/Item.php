@@ -7,10 +7,14 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Item
  *
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="discr", type="string")
+ * @ORM\DiscriminatorMap({"item" = "Item", "usable" = "Usable"})
+ *
  * @ORM\Table(name="item")
  * @ORM\Entity(repositoryClass="WorldBundle\Repository\ItemRepository")
  */
-class Item
+abstract class Item
 {
     /**
      * @var int
@@ -19,28 +23,28 @@ class Item
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=64, unique=true)
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
      *
      * @ORM\Column(name="description", type="string", length=255)
      */
-    private $description;
+    protected $description;
 
     /**
      * @var string
      *
      * @ORM\Column(name="image", type="string", length=255)
      */
-    private $image;
+    protected $image;
 
 
     /**
@@ -125,4 +129,3 @@ class Item
         return $this->image;
     }
 }
-

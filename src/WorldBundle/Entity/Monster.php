@@ -3,6 +3,7 @@
 namespace WorldBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Monster
@@ -42,6 +43,15 @@ class Monster
      */
     private $island;
 
+    /**
+     * One Monster has Many Items.
+     * @ORM\OneToMany(targetEntity="Item", mappedBy="monster")
+     */
+    private $loot;
+
+    public function __construct() {
+        $this->loot = new ArrayCollection();
+    }
 
     /**
      * Get id

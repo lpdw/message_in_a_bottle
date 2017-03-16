@@ -68,9 +68,17 @@ class Island
      */
     private $forest;
 
+    /**
+     * One Island have Many Players.
+     * @ORM\OneToMany(targetEntity="Player", mappedBy="island")
+     * @ORM\JoinTable(name="island_users")
+     */
+    private $players;
+
 
     public function __construct() {
         $this->monsters = new ArrayCollection();
+        $this->players = new ArrayCollection();
     }
 
     /**
