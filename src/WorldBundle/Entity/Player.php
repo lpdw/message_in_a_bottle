@@ -3,6 +3,7 @@
 namespace WorldBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Player
@@ -44,7 +45,7 @@ class Player
 
     /**
      *
-     * @ORM\OneToMany(targetEntity="Inventory", mappedBy="player")
+     * @ORM\OneToOne(targetEntity="Inventory", mappedBy="player")
      */
     private $inventory;
 
@@ -57,7 +58,7 @@ class Player
 
 
     public function __construct() {
-      $this->inventory = new ArrayCollection();
+      $this->inventory = new Inventory();
       $this->equipment = new ArrayCollection();
     }
 
@@ -93,5 +94,65 @@ class Player
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Pick a objects
+     *
+     * @return string
+     */
+    public function PickObject($objects)
+    {
+        if(gettype($objects) == "string"){
+
+            if($this->limitInventory()){
+                return "L'\object {$objects['item']->name} n'a pas pu être ajouté car la limite de l'inventaire à été atteint";
+            }
+            else{
+                $this->inventory->addItem($objects);
+                return "L\'object à bien été ajouté";
+            }
+        }
+        else{
+            $msg = "";
+            foreach ($objects as $object => $value) {
+                if($this->limitInventory($value['quantity'])){
+                    // dump($this->inventory);
+                    return "L'\object {$value['item']->getName()} n'a pas pu être ajouté car la limite de l'inventaire à été atteint";
+                }
+                else{
+                    $this->inventory->addItem($value);
+                }
+            }
+            // dump($this->inventory);
+            // die();
+            return "Les objects ont bien été ajouté";
+        }
+    }
+
+    /**
+    * Test limit of Inventory
+    *
+    * @return boolean
+    */
+    public function limitInventory($quantity)
+    {  
+        // echo("Count de l'inventaire : ");
+        // dump($this->inventory);
+        if(($this->inventory->getQuantity() + $quantity) >= 50){
+            return true;
+        }
+        else{return false;}
+    }
+
+
+    /**
+    * Test random
+    *
+    * @return boolean
+    */
+    public function randomisTrue($pourcent)
+    {
+        return (rand(1,100) <= $pourcent) ? true: false;
     }
 }

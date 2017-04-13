@@ -3,18 +3,17 @@
 namespace WorldBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
+
 
 /**
  * Item
  *
- * @ORM\InheritanceType("JOINED")
- * @ORM\DiscriminatorColumn(name="discr", type="string")
- * @ORM\DiscriminatorMap({"item" = "Item", "usable" = "Usable"})
- *
  * @ORM\Table(name="item")
  * @ORM\Entity(repositoryClass="WorldBundle\Repository\ItemRepository")
  */
-abstract class Item
+class Item
 {
     /**
      * @var int
@@ -40,11 +39,29 @@ abstract class Item
     protected $description;
 
     /**
-     * @var string
+     * @ORM\Column(type="string")
      *
-     * @ORM\Column(name="image", type="string", length=255)
+     * @Assert\NotBlank(message="Please, upload the product brochure as a png file.")
+     * @Assert\Image(
+     *     minWidth = 100,
+     *     maxWidth = 400,
+     *     minHeight = 100,
+     *     maxHeight = 400
+     * )
      */
     protected $image;
+
+    /**
+     * Many Inventory have One Item.
+     * @ORM\ManyToMany(targetEntity="Inventory", mappedBy="items")
+     */
+    private $inventory;
+
+
+
+    public function __construct() {
+      $this->inventory = new ArrayCollection();
+    }
 
 
     /**
@@ -128,4 +145,5 @@ abstract class Item
     {
         return $this->image;
     }
+
 }

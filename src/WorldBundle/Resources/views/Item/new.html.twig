@@ -1,0 +1,25 @@
+{% extends 'form.html.twig' %}
+
+{% block body %}
+<div class="row">
+{{ form_start(form, {'method': 'POST','attr':{'class':'col s12'}}) }}
+	<h2 class="style">Création d'un Item</h1>
+	<div class="row">
+		<div class="input-field col s6">
+			{{ form_label(form.name) }}
+			{{ form_widget(form.name) }}
+		</div>
+		<div class="input-field col s6">
+			{{ form_label(form.image) }}
+			{{ form_widget(form.image) }}
+		</div>
+	</div>
+	<div class="row">
+		 <div class="col s8 ">
+			{{ form_row(form.description) }}
+		</div>
+	</div>		
+	{{form_widget(form.submit, {'label':'Creer','attr':{'class':'btn waves-effect waves-light'}})}}
+{{ form_end(form) }}
+</div>
+{% endblock %}
