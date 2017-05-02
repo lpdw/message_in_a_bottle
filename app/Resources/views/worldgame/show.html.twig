@@ -11,9 +11,30 @@
             </tr>
             <tr>
                 <th>Grid</th>
-                <td>{% dump(worldGame.grid) %}</td>
+                <td>{% if worldGame.grid %}{{ dump(worldGame.grid) }}{% endif %}</td>
             </tr>
         </tbody>
+    </table>
+
+    Worldmap :<br>
+    <table>
+        <tbody>
+            {% for islands in worldGame.grid %}
+                <tr>
+                    {% for island in islands %}
+                        <td>
+                            {% if island is null %}
+                                ~
+                            {% elseif island == 'coast' %}
+                                ^
+                            {% else %}
+                                O
+                            {% endif %}
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+    </tbody>
     </table>
 
     <ul>

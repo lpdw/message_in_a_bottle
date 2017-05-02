@@ -15,7 +15,7 @@
         {% for worldGame in worldGames %}
             <tr>
                 <td><a href="{{ path('worldgame_show', { 'id': worldGame.id }) }}">{{ worldGame.id }}</a></td>
-                <td>{% if worldGame.grid %}{{ worldGame.grid|join(', ') }}{% endif %}</td>
+                <td>{% if worldGame.grid %}{{ dump(worldGame.grid) }}{% endif %}</td>
                 <td>
                     <ul>
                         <li>

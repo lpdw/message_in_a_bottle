@@ -163,4 +163,144 @@ class Island
     {
         return $this->type;
     }
+
+    /**
+     * Set worldgame
+     *
+     * @param \WorldBundle\Entity\WorldGame $worldgame
+     *
+     * @return Island
+     */
+    public function setWorldgame(\WorldBundle\Entity\WorldGame $worldgame = null)
+    {
+        $this->worldgame = $worldgame;
+
+        return $this;
+    }
+
+    /**
+     * Get worldgame
+     *
+     * @return \WorldBundle\Entity\WorldGame
+     */
+    public function getWorldgame()
+    {
+        return $this->worldgame;
+    }
+
+    /**
+     * Set hut
+     *
+     * @param \WorldBundle\Entity\Hut $hut
+     *
+     * @return Island
+     */
+    public function setHut(\WorldBundle\Entity\Hut $hut = null)
+    {
+        $this->hut = $hut;
+
+        return $this;
+    }
+
+    /**
+     * Get hut
+     *
+     * @return \WorldBundle\Entity\Hut
+     */
+    public function getHut()
+    {
+        return $this->hut;
+    }
+
+    /**
+     * Add monster
+     *
+     * @param \WorldBundle\Entity\Monster $monster
+     *
+     * @return Island
+     */
+    public function addMonster(\WorldBundle\Entity\Monster $monster)
+    {
+        $this->monsters[] = $monster;
+
+        return $this;
+    }
+
+    /**
+     * Remove monster
+     *
+     * @param \WorldBundle\Entity\Monster $monster
+     */
+    public function removeMonster(\WorldBundle\Entity\Monster $monster)
+    {
+        $this->monsters->removeElement($monster);
+    }
+
+    /**
+     * Get monsters
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMonsters()
+    {
+        return $this->monsters;
+    }
+
+    /**
+     * Set forest
+     *
+     * @param \WorldBundle\Entity\Forest $forest
+     *
+     * @return Island
+     */
+    public function setForest(\WorldBundle\Entity\Forest $forest = null)
+    {
+        $this->forest = $forest;
+
+        return $this;
+    }
+
+    /**
+     * Get forest
+     *
+     * @return \WorldBundle\Entity\Forest
+     */
+    public function getForest()
+    {
+        return $this->forest;
+    }
+
+    /**
+     * Add player
+     *
+     * @param \WorldBundle\Entity\Player $player
+     *
+     * @return Island
+     */
+    public function addPlayer(\WorldBundle\Entity\Player $player)
+    {
+        $this->players[] = $player;
+
+        return $this;
+    }
+
+    /**
+     * Remove player
+     *
+     * @param \WorldBundle\Entity\Player $player
+     */
+    public function removePlayer(\WorldBundle\Entity\Player $player)
+    {
+        $this->players->removeElement($player);
+    }
+
+    /**
+     * Get players
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPlayers()
+    {
+        return $this->players;
+    }
 }
