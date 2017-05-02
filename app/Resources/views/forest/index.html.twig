@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Forests list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for forest in forests %}
+            <tr>
+                <td><a href="{{ path('forest_show', { 'id': forest.id }) }}">{{ forest.id }}</a></td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('forest_show', { 'id': forest.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('forest_edit', { 'id': forest.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('forest_new') }}">Create a new forest</a>
+        </li>
+    </ul>
+{% endblock %}
