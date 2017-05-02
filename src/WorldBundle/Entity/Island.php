@@ -53,9 +53,16 @@ class Island
     /**
      * One Island has One Hut.
      * @ORM\OneToOne(targetEntity="Hut", mappedBy="island")
+     * @ORM\JoinColumn(name="hut_id", referencedColumnName="id")
      */
     private $hut;
 
+    /**
+     * One Island has One Beach.
+     * @ORM\OneToOne(targetEntity="Beach", mappedBy="island")
+     * @ORM\JoinColumn(name="beach_id", referencedColumnName="id")
+     */
+    private $beach;
 
     /**
      * One Island has Many Monsters.
@@ -66,6 +73,7 @@ class Island
     /**
      * One Island has One Forest.
      * @ORM\OneToOne(targetEntity="Forest", mappedBy="island")
+     * @ORM\JoinColumn(name="forest_id", referencedColumnName="id")
      */
     private $forest;
 
@@ -302,5 +310,29 @@ class Island
     public function getPlayers()
     {
         return $this->players;
+    }
+
+    /**
+     * Set beach
+     *
+     * @param \WorldBundle\Entity\Beach $beach
+     *
+     * @return Island
+     */
+    public function setBeach(\WorldBundle\Entity\Beach $beach = null)
+    {
+        $this->beach = $beach;
+
+        return $this;
+    }
+
+    /**
+     * Get beach
+     *
+     * @return \WorldBundle\Entity\Beach
+     */
+    public function getBeach()
+    {
+        return $this->beach;
     }
 }

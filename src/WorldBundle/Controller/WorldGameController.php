@@ -4,6 +4,9 @@ namespace WorldBundle\Controller;
 
 use WorldBundle\Entity\WorldGame;
 use WorldBundle\Entity\Island;
+use WorldBundle\Entity\Forest;
+use WorldBundle\Entity\Beach;
+use WorldBundle\Entity\Hut;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -78,7 +81,7 @@ class WorldGameController extends Controller
                 $hut = new Hut();
                 $hut->setIsland($island);
                 $island->setHut($hut);
-                
+
 
                 $islandIsPlaced = false;
 
