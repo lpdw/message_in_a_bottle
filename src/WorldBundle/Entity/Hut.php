@@ -35,13 +35,13 @@ class Hut
      * One Hut has Many Items.
      * @ORM\OneToMany(targetEntity="Item", mappedBy="hut")
      */
-    private $logs;
+     private $chest;
 
     /**
      * One Hut has Many Logs.
      * @ORM\OneToMany(targetEntity="Log", mappedBy="hut")
      */
-    private $chest;
+    private $logs;
 
     public function __construct() {
         $this->logs = new ArrayCollection();

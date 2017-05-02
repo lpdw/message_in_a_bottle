@@ -42,4 +42,38 @@ class Beach
     {
         return $this->id;
     }
+
+    /**
+     * Add drop
+     *
+     * @param \WorldBundle\Entity\Item $drop
+     *
+     * @return Beach
+     */
+    public function addDrop(\WorldBundle\Entity\Item $drop)
+    {
+        $this->drops[] = $drop;
+
+        return $this;
+    }
+
+    /**
+     * Remove drop
+     *
+     * @param \WorldBundle\Entity\Item $drop
+     */
+    public function removeDrop(\WorldBundle\Entity\Item $drop)
+    {
+        $this->drops->removeElement($drop);
+    }
+
+    /**
+     * Get drops
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDrops()
+    {
+        return $this->drops;
+    }
 }

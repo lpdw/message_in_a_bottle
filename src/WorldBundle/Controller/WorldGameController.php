@@ -46,96 +46,109 @@ class WorldGameController extends Controller
         $form = $this->createForm('WorldBundle\Form\WorldGameType', $worldGame);
         $form->handleRequest($request);
 
-        // Generating the world
-        $nbPlayers = 5;
-        $nbIslands = $nbPlayers*3;
 
-        // Creating an empty grid
-        $gridGame = array();
-        for ($i=0; $i < $nbIslands ; $i++) {
-            $gridGame[$i] = array_fill(0, $nbIslands, null);
-        }
+        if ($form->isSubmitted() && $form->isValid()) {
 
+            // Generating the world
+            $nbPlayers = 5;
+            $nbIslands = $nbPlayers*3;
 
-        // Generating the islands
-        $j = 0;
-        while ($j <= $nbIslands-1) {
-            // Placing the islands on the grid
-            $island = new Island();
-
-            $islandIsPlaced = false;
-
-            while(!$islandIsPlaced) {
-                // choosing a random position on the grid
-                $randomX = random_int(0, $nbIslands-1);
-                $randomY = random_int(0, $nbIslands-1);
-
-                // verifiyng that the position is empty
-                $currentPosition = $gridGame[$randomX][$randomY];
-
-                if (!$currentPosition) {
-                    $gridGame[$randomX][$randomY] = $island; // TODO : identify the island
-
-                    // TODO : fill near positions
-                    if ($randomX+1 <= $nbIslands) {
-                        $gridGame[$randomX+1][$randomY] = "coast";
-
-                        if($randomY+1 <= $nbIslands) {
-                            $gridGame[$randomX+1][$randomY+1] = "coast";
-                        }
-
-                        if ($randomY-1 >= 0) {
-                            $gridGame[$randomX+1][$randomY-1] = "coast";
-
-                        }
-                    }
-
-                    if ($randomX-1 >= 0) {
-                        $gridGame[$randomX-1][$randomY] = "coast";
-
-                        if ($randomY+1 <= $nbIslands) {
-                            $gridGame[$randomX-1][$randomY+1] = "coast";
-                        }
-
-                        if($randomY-1 >= 0) {
-                            $gridGame[$randomX-1][$randomY-1] = "coast";
-                        }
-                    }
-
-                    if ($randomY+1 <= $nbIslands) {
-                        $gridGame[$randomX][$randomY+1] = "coast";
-                    }
-
-                    if ($randomY-1 >= 0) {
-                        $gridGame[$randomX][$randomY-1] = "coast";
-                    }
-
-
-
-                    // TODO : set type
-                    $island->setWorldgame($worldGame);
-                    $island->setType("playertype");
-                    // set the island coordinates
-                    $island->setLocalisationX($randomX);
-                    $island->setLocalisationY($randomY);
-
-                    $islandIsPlaced = true;
-                }
-
+            // Creating an empty grid
+            $gridGame = array();
+            for ($i=0; $i < $nbIslands ; $i++) {
+                $gridGame[$i] = array_fill(0, $nbIslands, null);
             }
 
 
-            // updating the grid
-            $worldGame->setGrid($gridGame);
+            // Generating the islands
+            $j = 0;
+            while ($j <= $nbIslands-1) {
+                // Placing the islands on the grid
+                $island = new Island();
 
 
-            $em->persist($island);
+                $forest = new Forest();
+                $forest->setIsland($island);
+                $island->setForest($forest);
 
-            $j++;
-        }
+                $beach = new Beach();
+                $beach->setIsland($island);
+                $island->setBeach($beach);
+
+                $hut = new Hut();
+                $hut->setIsland($island);
+                $island->setHut($hut);
+                
+
+                $islandIsPlaced = false;
+
+                while(!$islandIsPlaced) {
+                    // choosing a random position on the grid
+                    $randomX = random_int(0, $nbIslands-1);
+                    $randomY = random_int(0, $nbIslands-1);
+
+                    // verifiyng that the position is empty
+                    $currentPosition = $gridGame[$randomX][$randomY];
+
+                    if (!$currentPosition) {
+                        $gridGame[$randomX][$randomY] = $island; // TODO : identify the island
+
+                        // TODO : fill near positions
+                        if ($randomX+1 <= $nbIslands) {
+                            $gridGame[$randomX+1][$randomY] = "coast";
+
+                            if($randomY+1 <= $nbIslands) {
+                                $gridGame[$randomX+1][$randomY+1] = "coast";
+                            }
+
+                            if ($randomY-1 >= 0) {
+                                $gridGame[$randomX+1][$randomY-1] = "coast";
+
+                            }
+                        }
+
+                        if ($randomX-1 >= 0) {
+                            $gridGame[$randomX-1][$randomY] = "coast";
+
+                            if ($randomY+1 <= $nbIslands) {
+                                $gridGame[$randomX-1][$randomY+1] = "coast";
+                            }
+
+                            if($randomY-1 >= 0) {
+                                $gridGame[$randomX-1][$randomY-1] = "coast";
+                            }
+                        }
+
+                        if ($randomY+1 <= $nbIslands) {
+                            $gridGame[$randomX][$randomY+1] = "coast";
+                        }
+
+                        if ($randomY-1 >= 0) {
+                            $gridGame[$randomX][$randomY-1] = "coast";
+                        }
 
 
-        if ($form->isSubmitted() && $form->isValid()) {
+
+                        // TODO : set type
+                        $island->setWorldgame($worldGame);
+                        $island->setType("playertype");
+                        // set the island coordinates
+                        $island->setLocalisationX($randomX);
+                        $island->setLocalisationY($randomY);
+
+                        $islandIsPlaced = true;
+                    }
+
+                }
+
+                // updating the grid
+                $worldGame->setGrid($gridGame);
+
+                $em->persist($island);
+
+                $j++;
+            }
+
             $em->persist($worldGame);
             $em->flush();
 

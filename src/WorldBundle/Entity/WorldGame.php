@@ -33,7 +33,7 @@ class WorldGame
 
     /**
      * One WorldGame has Many Islands.
-     * @ORM\OneToMany(targetEntity="Island", mappedBy="worldgame")
+     * @ORM\OneToMany(targetEntity="Island", mappedBy="worldgame", cascade={"remove"})
      */
     private $islands;
 
