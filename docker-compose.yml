@@ -4,6 +4,8 @@ web:
         - .:/var/www
     links:
         - mysql
+    ports:
+      - 8180:80
 mysql:
     image: mysql
     environment:
