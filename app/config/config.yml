@@ -8,6 +8,7 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    images_directory: '%kernel.root_dir%/../web/uploads/images'
 
 framework:
     #esi: ~
@@ -69,3 +70,10 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+
+ivory_ck_editor:
+    default_config: messageinabottle
+    configs:
+        messageinabottle:
+            removePlugins: "elementspath"
+            toolbar:  [ ['Bold', 'Italic', 'Underline'], ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'], ['FontSize', 'TextColor'], ['NumberedList', 'BulletedList', '-', 'Link', 'Unlink']]
