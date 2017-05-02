@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Worldgames list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Grid</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for worldGame in worldGames %}
+            <tr>
+                <td><a href="{{ path('worldgame_show', { 'id': worldGame.id }) }}">{{ worldGame.id }}</a></td>
+                <td>{% if worldGame.grid %}{{ worldGame.grid|join(', ') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('worldgame_show', { 'id': worldGame.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('worldgame_edit', { 'id': worldGame.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('worldgame_new') }}">Create a new worldGame</a>
+        </li>
+    </ul>
+{% endblock %}
