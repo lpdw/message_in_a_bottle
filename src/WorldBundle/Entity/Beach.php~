@@ -83,28 +83,4 @@ class Beach
     {
         return $this->drops;
     }
-
-    /**
-     * Set island
-     *
-     * @param \WorldBundle\Entity\Island $island
-     *
-     * @return Beach
-     */
-    public function setIsland(\WorldBundle\Entity\Island $island = null)
-    {
-        $this->island = $island;
-
-        return $this;
-    }
-
-    /**
-     * Get island
-     *
-     * @return \WorldBundle\Entity\Island
-     */
-    public function getIsland()
-    {
-        return $this->island;
-    }
 }

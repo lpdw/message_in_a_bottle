@@ -57,4 +57,96 @@ class Hut
     {
         return $this->id;
     }
+
+    /**
+     * Set island
+     *
+     * @param \WorldBundle\Entity\Island $island
+     *
+     * @return Hut
+     */
+    public function setIsland(\WorldBundle\Entity\Island $island = null)
+    {
+        $this->island = $island;
+
+        return $this;
+    }
+
+    /**
+     * Get island
+     *
+     * @return \WorldBundle\Entity\Island
+     */
+    public function getIsland()
+    {
+        return $this->island;
+    }
+
+    /**
+     * Add chest
+     *
+     * @param \WorldBundle\Entity\Item $chest
+     *
+     * @return Hut
+     */
+    public function addChest(\WorldBundle\Entity\Item $chest)
+    {
+        $this->chest[] = $chest;
+
+        return $this;
+    }
+
+    /**
+     * Remove chest
+     *
+     * @param \WorldBundle\Entity\Item $chest
+     */
+    public function removeChest(\WorldBundle\Entity\Item $chest)
+    {
+        $this->chest->removeElement($chest);
+    }
+
+    /**
+     * Get chest
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getChest()
+    {
+        return $this->chest;
+    }
+
+    /**
+     * Add log
+     *
+     * @param \WorldBundle\Entity\Log $log
+     *
+     * @return Hut
+     */
+    public function addLog(\WorldBundle\Entity\Log $log)
+    {
+        $this->logs[] = $log;
+
+        return $this;
+    }
+
+    /**
+     * Remove log
+     *
+     * @param \WorldBundle\Entity\Log $log
+     */
+    public function removeLog(\WorldBundle\Entity\Log $log)
+    {
+        $this->logs->removeElement($log);
+    }
+
+    /**
+     * Get logs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLogs()
+    {
+        return $this->logs;
+    }
 }
