@@ -369,17 +369,70 @@ template {
 [hidden] {
   display: none; }
 
+@font-face {
+  font-family: 'journal';
+  src: url("../fonts/journal.ttf") format("truetype"); }
 body {
-  width: 100%;
-  margin: 1%; }
+  font-family: 'journal', Arial, sans-serif;
+  font-size: 2.5em;
+  width: 94vw;
+  margin: 1%;
+  padding: 1%;
+  min-height: 93vh;
+  border: solid 7px #000000;
+  border-radius: 5px; }
+  body a {
+    text-decoration: none;
+    color: initial; }
+  body p {
+    margin: 0; }
+  body ul {
+    list-style: none;
+    margin: 0;
+    padding: 0; }
 
 nav {
-  background-color: grey;
   display: flex;
-  min-height: 12vh; }
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid 5px #000; }
+  nav .titlebox {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    nav .titlebox :first-child {
+      margin-bottom: -18px;
+      margin-top: -18px;
+      font-size: 2em; }
+  nav .navmenu {
+    transform: translate(0px, 1em);
+    background-color: #FFF;
+    display: flex;
+    flex-direction: row; }
+    nav .navmenu li {
+      border: solid 3px #000;
+      border-radius: 2px;
+      border: solid 3px #000;
+      border-radius: 4px;
+      padding: 12px;
+      max-height: 1.3em;
+      margin: -1px;
+      align-self: flex-end; }
 
 .fatborder {
   border: solid 7px #000000;
   border-radius: 12px; }
+
+#worldmap {
+  font-family: serial;
+  font-size: x-large; }
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 2vh;
+  width: 94vw; }
 
 /*# sourceMappingURL=global.css.map */

@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Worldgame</h1>
+    <h1>Worldgame {{ worldGame.id }}</h1>
 
-    <table>
+    <!-- <table>
         <tbody>
             <tr>
                 <th>Id</th>
@@ -14,10 +14,10 @@
                 <td>{% if worldGame.grid %}{{ dump(worldGame.grid) }}{% endif %}</td>
             </tr>
         </tbody>
-    </table>
+    </table> -->
 
-    Worldmap :<br>
-    <table>
+    World Map :<br>
+    <table id="worldmap">
         <tbody>
             {% for islands in worldGame.grid %}
                 <tr>
