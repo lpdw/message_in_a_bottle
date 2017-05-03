@@ -23,6 +23,12 @@ class Player
      */
     private $id;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=32)
+     */
+    private $name;
 
     /**
      * @var string
@@ -32,15 +38,8 @@ class Player
     private $status;
 
     /**
-     * Many Players have One WorldGame.
-     * @ORM\ManyToOne(targetEntity="WorldGame", inversedBy="players")
-     * @ORM\JoinColumn(name="worldgame_id", referencedColumnName="id")
-     */
-    private $worldgame;
-
-    /**
      *
-     * @ORM\OneToOne(targetEntity="Inventory", mappedBy="player")
+     * @ORM\OneToOne(targetEntity="Inventory", mappedBy="player",cascade={"persist"})
      */
     private $inventory;
 
@@ -52,7 +51,7 @@ class Player
 
     /**
      * Many Player have One Island.
-     * @ORM\ManyToOne(targetEntity="Island", inversedBy="players")
+     * @ORM\ManyToOne(targetEntity="Island", inversedBy="players", cascade={"persist"})
      * @ORM\JoinColumn(name="island_id", referencedColumnName="id")
      */
     private $island;
@@ -60,6 +59,7 @@ class Player
 
     public function __construct() {
       $this->inventory = new Inventory();
+      $this->inventory->setQuantity(0);
       $this->equipment = new ArrayCollection();
     }
 
@@ -71,6 +71,30 @@ class Player
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Player
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 
     /**
@@ -96,6 +120,32 @@ class Player
     {
         return $this->status;
     }
+
+
+    /**
+     * Set island
+     *
+     * @param Island $island
+     *
+     * @return Player
+     */
+    public function setIsland($island)
+    {
+        $this->island = $island;
+
+        return $this;
+    }
+
+    /**
+     * Get island
+     *
+     * @return Island
+     */
+    public function getIsland()
+    {
+        return $this->island;
+    }
+
 
     /**
      * Pick a objects
@@ -201,6 +251,7 @@ class Player
             5 => "Une tempête approche",
             6 => "Les vagues sont hautes",
         );
+        $this->detectIles(2);
         // TODO faire la condition si on voit le bateau du capitaine
         if(true == false){
             dump("Le bateau du capitaine est la ");
@@ -211,6 +262,22 @@ class Player
         }
         else{
             dump($messages[rand(0,6)]);
+        }
+    }
+
+
+    /**
+    * Detect îles 
+    * @return array
+    */
+    public function detectIles($distance){
+        for ($i=$this->island->getLocalisationX()-$distance; $i <= $this->island->getLocalisationX()+$distance; $i++) { 
+            for ($a=$this->island->getLocalisationY()-$distance; $a <= $this->island->getLocalisationY()+$distance ; $a++) {
+                if($i == $this->island->getLocalisationX() && $a == $this->island->getLocalisationY()){continue;}
+                if(gettype($this->worldgame->getGrid()[$i][$a]) == 'object'){
+                    dump($this->worldgame->getGrid()[$i][$a]);
+                }
+            }
         }
     }
 }
