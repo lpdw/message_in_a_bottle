@@ -21,11 +21,31 @@
                 <ul class="navmenu">
                     {% if app.user is null %}
                     <li>
-                        Connexion
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                            <a href="{{ path('fos_user_security_logout') }}">
+                                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                            </a>
+                        {% else %}
+                            <a href="{{ path('fos_user_security_login') }}">{{ 'Connexion'|trans({}, 'FOSUserBundle') }}</a>
+                        {% endif %}
                     </li>
                     <li>
                         Inscription
                     </li>
+<<<<<<< HEAD
+=======
+                    {% endif %}
+
+                    {% for type, messages in app.session.flashBag.all %}
+                        {% for message in messages %}
+                            <div class="{{ type }}">
+                                {{ message|trans({}, 'FOSUserBundle') }}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+
+>>>>>>> 2228d01cbb4dcb14f5493101eb87984d31412799
                 </ul>
 
                 <div class="">
@@ -34,7 +54,9 @@
             </nav>
         </header>
 
-        {% block body %}{% endblock %}
+        {% block body %}
+            {% block fos_user_content %}{% endblock %}
+        {% endblock %}
 
         <footer>Epic Footer</footer>
 
