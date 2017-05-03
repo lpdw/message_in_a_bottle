@@ -37,15 +37,9 @@ class WorldGame
      */
     private $islands;
 
-    /**
-     *
-     * @ORM\OneToMany(targetEntity="Player", mappedBy="worldgame")
-     */
-    private $players;
 
     public function __construct() {
       $this->islands = new ArrayCollection();
-      $this->players = new ArrayCollection();
     }
 
 
@@ -115,39 +109,5 @@ class WorldGame
     public function getIslands()
     {
         return $this->islands;
-    }
-
-    /**
-     * Add player
-     *
-     * @param \WorldBundle\Entity\Player $player
-     *
-     * @return WorldGame
-     */
-    public function addPlayer(\WorldBundle\Entity\Player $player)
-    {
-        $this->players[] = $player;
-
-        return $this;
-    }
-
-    /**
-     * Remove player
-     *
-     * @param \WorldBundle\Entity\Player $player
-     */
-    public function removePlayer(\WorldBundle\Entity\Player $player)
-    {
-        $this->players->removeElement($player);
-    }
-
-    /**
-     * Get players
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getPlayers()
-    {
-        return $this->players;
     }
 }

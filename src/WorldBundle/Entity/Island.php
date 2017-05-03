@@ -79,7 +79,7 @@ class Island
 
     /**
      * One Island have Many Players.
-     * @ORM\OneToMany(targetEntity="Player", mappedBy="island")
+     * @ORM\OneToMany(targetEntity="Player", mappedBy="island", cascade={"persist"})
      */
     private $players;
 
@@ -287,7 +287,7 @@ class Island
     public function addPlayer(\WorldBundle\Entity\Player $player)
     {
         $this->players[] = $player;
-
+        $player->setIsland($this);
         return $this;
     }
 
