@@ -2,11 +2,16 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <title>{% block title %}Message In A Bottle{% endblock %}</title>
+        <link rel="stylesheet" href="{{asset('css/global.css')}}"/>
+        <link rel="icon" type="image/x-icon" href="{{ asset('icons/favicon.ico') }}" />
     </head>
     <body>
+        <header>
+            <nav class="fatborder">
+                Hello nav !
+            </nav>
+        </header>
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>

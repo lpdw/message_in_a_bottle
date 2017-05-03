@@ -25,7 +25,7 @@ class Island
     /**
      * @var string
      *
-     * @ORM\Column(name="localisationX", type="string", length=1)
+     * @ORM\Column(name="localisationX", type="integer")
      */
     private $localisationX;
 
@@ -52,13 +52,15 @@ class Island
 
     /**
      * One Island has One Hut.
-     * @ORM\OneToOne(targetEntity="Hut", mappedBy="island")
+     * @ORM\OneToOne(targetEntity="Hut", mappedBy="island", cascade={"persist"})
+     * @ORM\JoinColumn(name="hut_id", referencedColumnName="id")
      */
     private $hut;
 
     /**
      * One Island has One Beach.
-     * @ORM\OneToOne(targetEntity="Beach", mappedBy="island")
+     * @ORM\OneToOne(targetEntity="Beach", mappedBy="island", cascade={"persist"})
+     * @ORM\JoinColumn(name="beach_id", referencedColumnName="id")
      */
     private $beach;
 
@@ -70,7 +72,8 @@ class Island
 
     /**
      * One Island has One Forest.
-     * @ORM\OneToOne(targetEntity="Forest", mappedBy="island")
+     * @ORM\OneToOne(targetEntity="Forest", mappedBy="island", cascade={"persist"})
+     * @ORM\JoinColumn(name="forest_id", referencedColumnName="id")
      */
     private $forest;
 
@@ -307,5 +310,29 @@ class Island
     public function getPlayers()
     {
         return $this->players;
+    }
+
+    /**
+     * Set beach
+     *
+     * @param \WorldBundle\Entity\Beach $beach
+     *
+     * @return Island
+     */
+    public function setBeach(\WorldBundle\Entity\Beach $beach = null)
+    {
+        $this->beach = $beach;
+
+        return $this;
+    }
+
+    /**
+     * Get beach
+     *
+     * @return \WorldBundle\Entity\Beach
+     */
+    public function getBeach()
+    {
+        return $this->beach;
     }
 }

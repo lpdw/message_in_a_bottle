@@ -25,7 +25,7 @@ class Island
     /**
      * @var string
      *
-     * @ORM\Column(name="localisationX", type="string", length=1)
+     * @ORM\Column(name="localisationX", type="integer")
      */
     private $localisationX;
 

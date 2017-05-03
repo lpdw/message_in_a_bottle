@@ -97,32 +97,32 @@ class WorldGameController extends Controller
                         $gridGame[$randomX][$randomY] = $island; // TODO : identify the island
 
                         // TODO : fill near positions
-                        if ($randomX+1 <= $nbIslands) {
+                        if ($randomX+1 < $nbIslands) {
                             $gridGame[$randomX+1][$randomY] = "coast";
 
-                            if($randomY+1 <= $nbIslands) {
+                            if($randomY+1 < $nbIslands) {
                                 $gridGame[$randomX+1][$randomY+1] = "coast";
                             }
 
-                            if ($randomY-1 >= 0) {
+                            if ($randomY-1 > 0) {
                                 $gridGame[$randomX+1][$randomY-1] = "coast";
 
                             }
                         }
 
-                        if ($randomX-1 >= 0) {
+                        if ($randomX-1 > 0) {
                             $gridGame[$randomX-1][$randomY] = "coast";
 
-                            if ($randomY+1 <= $nbIslands) {
+                            if ($randomY+1 < $nbIslands) {
                                 $gridGame[$randomX-1][$randomY+1] = "coast";
                             }
 
-                            if($randomY-1 >= 0) {
+                            if($randomY-1 > 0) {
                                 $gridGame[$randomX-1][$randomY-1] = "coast";
                             }
                         }
 
-                        if ($randomY+1 <= $nbIslands) {
+                        if ($randomY+1 < $nbIslands) {
                             $gridGame[$randomX][$randomY+1] = "coast";
                         }
 
