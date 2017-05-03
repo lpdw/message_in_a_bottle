@@ -80,7 +80,6 @@ class Island
     /**
      * One Island have Many Players.
      * @ORM\OneToMany(targetEntity="Player", mappedBy="island")
-     * @ORM\JoinTable(name="island_users")
      */
     private $players;
 

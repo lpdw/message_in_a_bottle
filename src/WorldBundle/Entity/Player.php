@@ -4,6 +4,7 @@ namespace WorldBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use WorldBundle\Entity\Bottle;
 
 /**
  * Player
@@ -38,12 +39,6 @@ class Player
     private $worldgame;
 
     /**
-     * Many Players have One Island.
-     * @ORM\OneToMany(targetEntity="Island", mappedBy="players")
-     */
-    private $localisation;
-
-    /**
      *
      * @ORM\OneToOne(targetEntity="Inventory", mappedBy="player")
      */
@@ -55,6 +50,12 @@ class Player
      */
     private $equipment;
 
+    /**
+     * Many Player have One Island.
+     * @ORM\ManyToOne(targetEntity="Island", inversedBy="players")
+     * @ORM\JoinColumn(name="island_id", referencedColumnName="id")
+     */
+    private $island;
 
 
     public function __construct() {
@@ -106,27 +107,24 @@ class Player
         if(gettype($objects) == "string"){
 
             if($this->limitInventory()){
-                return "L'\object {$objects['item']->name} n'a pas pu être ajouté car la limite de l'inventaire à été atteint";
+                return array('value' => "L'\object {$objects['item']->name} n'a pas pu être ajouté car la limite de l'inventaire à été atteint", 'valid' => false);
             }
             else{
                 $this->inventory->addItem($objects);
-                return "L\'object à bien été ajouté";
+                return array('value' => "L\'object à bien été ajouté", 'valid' => true);
             }
         }
         else{
             $msg = "";
             foreach ($objects as $object => $value) {
                 if($this->limitInventory($value['quantity'])){
-                    // dump($this->inventory);
-                    return "L'\object {$value['item']->getName()} n'a pas pu être ajouté car la limite de l'inventaire à été atteint";
+                    return array('value' => "L'\object {$value['item']->getName()} n'a pas pu être ajouté car la limite de l'inventaire à été atteint", 'valid' => false);
                 }
                 else{
                     $this->inventory->addItem($value);
                 }
             }
-            // dump($this->inventory);
-            // die();
-            return "Les objects ont bien été ajouté";
+            return array('value' => "Les objects ont bien été ajouté", 'valid' => true);
         }
     }
 
@@ -136,9 +134,7 @@ class Player
     * @return boolean
     */
     public function limitInventory($quantity)
-    {  
-        // echo("Count de l'inventaire : ");
-        // dump($this->inventory);
+    {
         if(($this->inventory->getQuantity() + $quantity) >= 50){
             return true;
         }
@@ -154,5 +150,67 @@ class Player
     public function randomisTrue($pourcent)
     {
         return (rand(1,100) <= $pourcent) ? true: false;
+    }
+
+    /**
+    * Launch Bottle in the sea
+    *
+    * @return boolean
+    */
+    public function launchBottle($cardinal,$message)
+    {
+        $bottle = new Bottle();
+        $bottle->message = $message;
+
+        //TODO définir ce qu'il y a dans la direction choisi et la durée de visibilité a définir 
+    }
+
+    /**
+    * Swimming in the return true if success
+    *
+    * @return boolean
+    */
+    public function swimming($cardinal)
+    {
+        //TODO détecter si il y a une île dans cette direction et calcul sa proba selon la distance
+    }
+
+    /**
+    * Navigate in the return true if success
+    *
+    * @return boolean
+    */
+    public function navigate($cardinal)
+    {
+        //TODO détecter si il y a une île dans cette direction et calcul sa proba selon la distance
+    }
+
+    /**
+    *   Watch sea and return message
+    *
+    * @return string
+    */
+    public function watchSea($position)
+    {
+        $messages = array(
+            0 => "La mer est tranquille",
+            1 => "Vous voyez des oiseaux voler",
+            2 => "Vous voyez des poissons dans l'eau",
+            3 => "Le ciel se couvre",
+            4 => "Le vent souffle fort",
+            5 => "Une tempête approche",
+            6 => "Les vagues sont hautes",
+        );
+        // TODO faire la condition si on voit le bateau du capitaine
+        if(true == false){
+            dump("Le bateau du capitaine est la ");
+        }
+        // TODO faire la condition si on voit un bateau ou une île proche
+        else if(true !== true){
+            dump("Il y a un bateau dans cette direction ");
+        }
+        else{
+            dump($messages[rand(0,6)]);
+        }
     }
 }
