@@ -18,6 +18,19 @@
         {% endblock %}
     </div>
 
+    <div>
+        <script>
+        jQuery(document).ready(function(){
+            $.ajax({
+            dataType: "json",
+            url: "../../web/json/JDVELH.json",
+            success: 'bravo'
+            });
+            console.log(data);
+        });
+        </script>
+    </div>
+
     <ul>
         <li>
             <a href="{{ path('forest_index') }}">Back to the list</a>
