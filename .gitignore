@@ -15,4 +15,4 @@
 /vendor/
 /web/bundles/
 composer.lock
-/css
+/css/global.css.map

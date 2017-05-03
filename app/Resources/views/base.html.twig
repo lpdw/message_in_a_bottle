@@ -2,17 +2,44 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Message In A Bottle{% endblock %}</title>
+        <title>{% block title %}MIAB: Message In A Bottle{% endblock %}</title>
         <link rel="stylesheet" href="{{asset('css/global.css')}}"/>
         <link rel="icon" type="image/x-icon" href="{{ asset('icons/favicon.ico') }}" />
     </head>
     <body>
         <header>
-            <nav class="fatborder">
-                Hello nav !
+            <nav>
+                <a href="/" class="titlebox">
+                    <p>
+                        MIAB
+                    </p>
+                    <p>
+                        Message In A Bottle
+                    </p>
+                </a>
+
+                <ul class="navmenu">
+                    {% if app.user is null %}
+                    <li>
+                        Connexion
+                    </li>
+                    <li>
+                        Inscription
+                    </li>
+                    {% endif %}
+
+                </ul>
+
+                <div class="">
+                    Awesome Nav Right-part
+                </div>
             </nav>
         </header>
+
         {% block body %}{% endblock %}
+
+        <footer>Epic Footer</footer>
+
         {% block javascripts %}{% endblock %}
     </body>
 </html>
