@@ -44,12 +44,13 @@ class PlayerController extends Controller
      */
     public function newItemAction(Request $request)
     {
+
         $item = new Item();
         $form = $this->createForm(ItemType::class, $item);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
+
             $file = $item->getImage();
 
             // Generate a unique name for the file before saving it

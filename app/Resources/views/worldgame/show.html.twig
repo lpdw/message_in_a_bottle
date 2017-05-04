@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
+{% block content%}
     <h1>Worldgame {{ worldGame.id }}</h1>
 
     <!-- <table>
@@ -28,7 +28,11 @@
                             {% elseif island == 'coast' %}
                                 ^
                             {% else %}
-                                O
+                                {% if island.id is null %}
+                                    ?
+                                {% else %}
+                                    <b><a href="{{ path('island_show', { 'id': island.id }) }}">{{island.id}}</a></b>
+                                {% endif %}
                             {% endif %}
                         </td>
                     {% endfor %}

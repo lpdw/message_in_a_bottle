@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block content%}
+    <h1>Islands list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Localisationx</th>
+                <th>Localisationy</th>
+                <th>Type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for island in islands %}
+            <tr>
+                <td><a href="{{ path('island_show', { 'id': island.id }) }}">{{ island.id }}</a></td>
+                <td>{{ island.localisationX }}</td>
+                <td>{{ island.localisationY }}</td>
+                <td>{{ island.type }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('island_show', { 'id': island.id }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}

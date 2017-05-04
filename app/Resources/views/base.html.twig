@@ -5,59 +5,76 @@
         <title>{% block title %}MIAB: Message In A Bottle{% endblock %}</title>
         <link rel="stylesheet" href="{{asset('css/global.css')}}"/>
         <link rel="icon" type="image/x-icon" href="{{ asset('icons/favicon.ico') }}" />
-        <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
     </head>
-    <body>
-        <header>
-            <nav>
-                <a href="/" class="titlebox">
-                    <p>
-                        MIAB
-                    </p>
-                    <p>
-                        Message In A Bottle
-                    </p>
-                </a>
 
-                <ul class="navmenu">
-                    {% if app.user is null %}
-                    <li>
-                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                            {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-                            <a href="{{ path('fos_user_security_logout') }}">
-                                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                            </a>
-                        {% else %}
-                            <a href="{{ path('fos_user_security_login') }}">{{ 'Connexion'|trans({}, 'FOSUserBundle') }}</a>
-                        {% endif %}
-                    </li>
-                    <li>
-                        Inscription
-                    </li>
-                    {% endif %}
+<body>
 
-                    {% for type, messages in app.session.flashBag.all %}
-                        {% for message in messages %}
-                            <div class="{{ type }}">
-                                {{ message|trans({}, 'FOSUserBundle') }}
-                            </div>
-                        {% endfor %}
-                    {% endfor %}
 
+{% block header %}
+<header>
+
+          <a href="#" id="logo"><img src="{{ asset('img/miab-logo.png') }}" alt="Message In The Bottle - Logo"></a>
+
+
+          <nav>
+
+                <a href="#" id="menu-icon"></a>
+
+                <ul>
+                          {% if app.user is null %}
+                                <li>
+                                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                        {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                                        <a href="{{ path('fos_user_security_logout') }}">
+                                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                                        </a>
+                                    {% else %}
+                                        <a href="{{ path('fos_user_security_login') }}">{{ 'Connexion'|trans({}, 'FOSUserBundle') }}</a>
+                                    {% endif %}
+                                </li>
+                                <li>
+                                    Inscription
+                                </li>
+                          {% endif %}
+
+                          {% for type, messages in app.session.flashBag.all %}
+                              {% for message in messages %}
+                                  <div class="{{ type }}">
+                                      {{ message|trans({}, 'FOSUserBundle') }}
+                                  </div>
+                              {% endfor %}
+                          {% endfor %}
                 </ul>
+          </nav>
 
-                <div class="">
-                    Awesome Nav Right-part
-                </div>
-            </nav>
-        </header>
 
-        {% block body %}
-            {% block fos_user_content %}{% endblock %}
-        {% endblock %}
+</header>
+{% endblock %}
 
-        <footer>Epic Footer</footer>
-        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
-        <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+
+{% block content %}
+  {% block fos_user_content %}
+  {% endblock %}
+{% endblock %}
+
+
+
+
+{% block footer %}
+        <footer>
+          <p>Epic Footer</p>
+        </footer>
+{% endblock %}
+
+
+{% block javascripts %}
+{% endblock %}
+
+
+        <!-- <footer>Epic Footer</footer> -->
+
+        <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
+
     </body>
+
 </html>
