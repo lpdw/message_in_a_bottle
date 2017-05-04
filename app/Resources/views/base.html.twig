@@ -6,7 +6,8 @@
         <link rel="stylesheet" href="{{asset('css/global.css')}}"/>
         <link rel="icon" type="image/x-icon" href="{{ asset('icons/favicon.ico') }}" />
     </head>
-    <body>
+
+<body>
 
 
 {% block header %}
@@ -51,11 +52,13 @@
 {% endblock %}
 
 
-
-{% block body %}
-        {% block fos_user_content %}
-        {% endblock %}
+{% block content %}
+{% block fos_user_content %}
 {% endblock %}
+{% endblock %}
+
+
+
 
 {% block footer %}
         <footer>
@@ -67,15 +70,11 @@
 {% block javascripts %}
 {% endblock %}
 
-        <section>
-            {% block body %}
-                {% block fos_user_content %}{% endblock %}
-            {% endblock %}
-        </section>
 
         <!-- <footer>Epic Footer</footer> -->
 
         <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
 
     </body>
+
 </html>
