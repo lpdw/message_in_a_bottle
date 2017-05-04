@@ -9,7 +9,8 @@ use WorldBundle\Entity\Beach;
 use WorldBundle\Entity\Hut;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Worldgame controller.
@@ -143,7 +144,7 @@ class WorldGameController extends Controller
 
                         // TODO : set type
                         $island->setWorldgame($worldGame);
-                        $island->setType("playertype");
+                        $island->setType("player");
                         // set the island coordinates
                         $island->setLocalisationX($randomX);
                         $island->setLocalisationY($randomY);

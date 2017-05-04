@@ -49,7 +49,7 @@ class Inventory
 
 
     public function __construct() {
-      $this->items = new ArrayCollection();
+        $this->items = new ArrayCollection();
     }
 
     /**

@@ -13,42 +13,35 @@
 
 {% block header %}
 <header>
-
-          <a href="#" id="logo"><img src="{{ asset('img/miab-logo.png') }}" alt="Message In The Bottle - Logo"></a>
-
-
-          <nav>
-
-                <a href="#" id="menu-icon"></a>
-
-                <ul>
-                          {% if app.user is null %}
-                                <li>
-                                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                        {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-                                        <a href="{{ path('fos_user_security_logout') }}">
-                                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                                        </a>
-                                    {% else %}
-                                        <a href="{{ path('fos_user_security_login') }}">{{ 'Connexion'|trans({}, 'FOSUserBundle') }}</a>
-                                    {% endif %}
-                                </li>
-                                <li>
-                                    Inscription
-                                </li>
+      <a href="#" id="logo"><img src="{{ asset('img/miab-logo.png') }}" alt="Message In The Bottle - Logo"></a>
+      <nav>
+          <a href="#" id="menu-icon"></a>
+          <ul>
+                {% if app.user is null %}
+                      <li>
+                          {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                              {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                              <a href="{{ path('fos_user_security_logout') }}">
+                                  {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                              </a>
+                          {% else %}
+                              <a href="{{ path('fos_user_security_login') }}">{{ 'Connexion'|trans({}, 'FOSUserBundle') }}</a>
                           {% endif %}
+                      </li>
+                      <li>
+                          Inscription
+                      </li>
+                {% endif %}
 
-                          {% for type, messages in app.session.flashBag.all %}
-                              {% for message in messages %}
-                                  <div class="{{ type }}">
-                                      {{ message|trans({}, 'FOSUserBundle') }}
-                                  </div>
-                              {% endfor %}
-                          {% endfor %}
-                </ul>
-          </nav>
-
-
+                {% for type, messages in app.session.flashBag.all %}
+                    {% for message in messages %}
+                        <div class="{{ type }}">
+                            {{ message|trans({}, 'FOSUserBundle') }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+          </ul>
+      </nav>
 </header>
 {% endblock %}
 
