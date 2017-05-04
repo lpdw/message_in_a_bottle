@@ -52,15 +52,15 @@ class Item
     protected $image;
 
     /**
-     * Many Inventory have One Item.
+     * Many  have One Item.
      * @ORM\ManyToMany(targetEntity="Inventory", mappedBy="items")
      */
-    private $inventory;
+    private $inventories;
 
 
 
     public function __construct() {
-      $this->inventory = new ArrayCollection();
+      $this->inventories = new ArrayCollection();
     }
 
 
@@ -146,4 +146,38 @@ class Item
         return $this->image;
     }
 
+
+    /**
+     * Add inventory
+     *
+     * @param \WorldBundle\Entity\Inventory $inventory
+     *
+     * @return Item
+     */
+    public function addInventory(\WorldBundle\Entity\Inventory $inventory)
+    {
+        $this->inventories[] = $inventory;
+
+        return $this;
+    }
+
+    /**
+     * Remove inventory
+     *
+     * @param \WorldBundle\Entity\Inventory $inventory
+     */
+    public function removeInventory(\WorldBundle\Entity\Inventory $inventory)
+    {
+        $this->inventories->removeElement($inventory);
+    }
+
+    /**
+     * Get inventories
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getInventories()
+    {
+        return $this->inventories;
+    }
 }

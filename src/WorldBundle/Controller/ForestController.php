@@ -72,6 +72,18 @@ class ForestController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+        /**
+     * return json file.
+     *
+     * @Route("/json/{name}")
+     * @Method("GET")
+     */
+    public function jsonAction($name)
+    {
+        echo "Name :".$name;
+        die();
+        return 'toto';
+    }
 
     /**
      * Displays a form to edit an existing forest entity.
@@ -89,7 +101,7 @@ class ForestController extends Controller
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('forest_edit', array('id' => $forest->getId()));
-        }
+        } 
 
         return $this->render('forest/edit.html.twig', array(
             'forest' => $forest,

@@ -13,11 +13,15 @@ DirectoryIndex app.php
 
 # Disabling MultiViews prevents unwanted negotiation, e.g. "/app" should not resolve
 # to the front controller "/app.php" but be rewritten to "/app.php/app".
+Header add Access-Control-Allow-Origin "*"
+Header add Access-Control-Allow-Headers "origin, x-requested-with, content-type"
+Header add Access-Control-Allow-Methods "PUT, GET, POST, DELETE, OPTIONS"
 <IfModule mod_negotiation.c>
     Options -MultiViews
 </IfModule>
 
 <IfModule mod_rewrite.c>
+
     RewriteEngine On
 
     # Determine the RewriteBase automatically and set it as environment variable.

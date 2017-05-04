@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
+{% block content%}
     <h1>Forest</h1>
 
     <table>
@@ -11,7 +11,9 @@
             </tr>
         </tbody>
     </table>
+    <div class="jsonClass" style="background-color:lightgreen">
 
+    </div>
     <ul>
         <li>
             <a href="{{ path('forest_index') }}">Back to the list</a>

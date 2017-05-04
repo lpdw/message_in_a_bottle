@@ -70,3 +70,14 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: WorldBundle\Entity\User
+    from_email:
+        address: "noreply@yourcompany.com"
+        sender_name: "No Reply"
+    registration:
+        form:
+            type: WorldBundle\Form\RegistrationType

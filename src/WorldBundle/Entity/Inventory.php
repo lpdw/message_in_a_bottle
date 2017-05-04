@@ -38,8 +38,11 @@ class Inventory
 
     /**
      *
-     * @ORM\ManyToMany(targetEntity="Item", mappedBy="inventory")
-     * @ORM\JoinTable(name="inventory_item")
+     * @ORM\ManyToMany(targetEntity="Item", inversedBy="inventory")
+     * @ORM\JoinTable(name="inventories_items",
+     *      joinColumns={@ORM\JoinColumn(name="inventory_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="item_id", referencedColumnName="id")}
+    *       )
      */
     private $items;
 
@@ -107,5 +110,48 @@ class Inventory
         $this->addQuantity($item['quantity']);
         $this->items->add($item['item']);
     }
-}
 
+    /**
+     * Set player
+     *
+     * @param \WorldBundle\Entity\Player $player
+     *
+     * @return Inventory
+     */
+    public function setPlayer(\WorldBundle\Entity\Player $player = null)
+    {
+        $this->player = $player;
+
+        return $this;
+    }
+
+    /**
+     * Get player
+     *
+     * @return \WorldBundle\Entity\Player
+     */
+    public function getPlayer()
+    {
+        return $this->player;
+    }
+
+    /**
+     * Remove item
+     *
+     * @param \WorldBundle\Entity\Item $item
+     */
+    public function removeItem(\WorldBundle\Entity\Item $item)
+    {
+        $this->items->removeElement($item);
+    }
+
+    /**
+     * Get items
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getItems()
+    {
+        return $this->items;
+    }
+}
