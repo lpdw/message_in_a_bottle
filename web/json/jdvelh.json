@@ -1,0 +1,404 @@
+{"forest":[
+
+{
+"id"            : "0",
+"name"          : "Start the game",
+"description"   : "Vous vous retrouvez en face d'une forêt verdoyante et gigantesque..",
+"item"          : "null"
+},
+
+{
+"id"            : "1",
+"name"          : "Contourner la forêt par la plage",
+"description"   : "Un peu peureux, tu préfères commencer safe en contournant cette grosse masse feuillue pour commencer...",
+"item"          : "null",
+"style"         : "choice"
+},
+
+{
+"id"            : "1-1",
+"name"          : "Continuer à marcher le long de la forêt",
+"description"   : "Tu continues à marcher le long de cette forêt, les pieds dans le sable.. Confiant, tu enlèves même tes chaussures de marche, et laisse le sable chaud te caresser le gros orteil.. ",
+"item"          : "null"
+},
+
+{
+"id"            : "1-2",
+"name"          : "Commencer à creuser le sable tel un chiwawa",
+"description"   : "Ton sang de pirate ne fait qu'un tour ! A la vue du sable, tu te jettes dessus, et commence à creuser, à la recherche d'un trésor...",
+"item"          : "null",
+"style"         : "random"
+},
+
+{
+"id"            : "1-2-1",
+"name"          : "Quelque chose...",
+"description"   : "TONK ! Quelque chose de dur apparaît sous tes mains...",
+"item"          : "null",
+"style"         : "choice"
+},
+
+{
+"id"            : "1-2-1-1",
+"name"          : "Continuer à creuser",
+"description"   : "Téméraire, tu continues à creuser autour de cette trouvaille solide et rèche. ",
+"item"          : "null",
+"style"         : "random"
+},
+
+{
+"id"            : "1-2-1-1-1",
+"name"          : "Coquillage",
+"description"   : "WOUAH ! Tu découvres un Coquillage si gros qu'on dirait une noix de coco..",
+"item"          : "null",
+"style"         : "choice"
+},
+
+{
+"id"            : "1-2-1-1-1-1",
+"name"          : "Garder le Coquillage",
+"description"   : "Tu prends le Coquillage sous ton bras, et repars à l'aventure. Qui sait, il pourra peut-être te servir.",
+"item"          : "random-common-coquillage"
+},
+
+{
+"id"            : "1-2-1-1-1-2",
+"name"          : "Faire le Thug et tenter de l'ouvrir à mains nues.",
+"description"   : "TONK ! Quelque chose de dur apparaît sous tes mains...",
+"item"          : "null",
+"style"         : "random"
+},
+
+{
+"id"            : "1-2-1-1-1-2-1",
+"name"          : "OUILLE",
+"description"   : "Atcha... Tu te niques les mains, et reste avec ce gros truc encombrant sur les bras. Décidément, il ne te livrera pas ses secrets maintenant..",
+"item"          : "low-life-medium"
+},
+
+{
+"id"            : "1-2-1-1-1-2-2",
+"name"          : "BINGO !",
+"description"   : "Après plusieurs minutes d'effort, le coquillage cède et s'ouvre. Tes efforts ont payés ! En son coeur, tu récupères un objet rare.Bravo ! 🙂",
+"item"          : "random-rare"
+},
+
+
+{
+"id"            : "1-2-1-1-1-3",
+"name"          : "Le laisser là, et repartir.",
+"description"   : "Pragmatique, tu réalises qu'un coquillage ne te servira ni à faire la vaisselle, ni à survivre sur cette île. Tu le laisses là, et repars pour de nouvelles aventures.",
+"item"          : "null",
+"solution"      : "1-1"
+},
+
+
+{
+"id"            : "1-2-1-1-2",
+"name"          : "Item Random",
+"description"   : "Bonne pioche ! Tu découvres un objet commun. Bravo !",
+"item"          : "random-common-item",
+"solution"      : "1-1"
+},
+
+{
+"id"            : "1-2-2",
+"name"          : "Pas de chance, tu ne trouves rien"
+},
+
+
+{
+"id"            : "1-2-1-2",
+"name"          : "S'arrêter, méditer un instant, et si c'était un crabe ? Abandonner la creusette. ",
+"description"   : "Logique et prudent, tu n'as pas envie de tomber sur une mauvaise surprise. Tu arrêtes la creusette, et reprend ta route le long de la forêt. ",
+"item"          : "null",
+"solution"      : "1-1"
+},
+
+
+{
+"id"            : "1-2-2",
+"name"          : "Rien",
+"description"   : "HA-HA ! Tu tombes nez à nez avec un gros caillou tout moche.. Et ne récupères que des égratinure aux doigts. Tu reprends ta route le long de la forêt.",
+"item"          : "low-life-medium",
+"solution"      : "1-1"
+},
+
+
+{
+"id"            : "1-3",
+"name"          : "Faire demi-tour",
+"description"   : "La plage, décidément, ce n'est pas pour toi. Le sable te gratte et le Soleil cogne fort. Tu préfères retourner sur tes pas.",
+"item"          : "null",
+"solution"      : "0"
+},
+
+
+
+{
+"id"            : "0",
+"name"          : "Start the game",
+"description"   : "Vous vous retrouvez en face d'une forêt verdoyante et gigantesque..",
+"item"          : "null",
+"style"         : "choice"
+},
+
+{
+"id"            : "1",
+"name"          : "Contourner la forêt par la plage",
+"description"   : "Un peu peureux, tu préfères commencer safe en contournant cette grosse masse feuillue pour commencer...",
+"item"          : "null",
+"style"         : "choice"
+},
+
+{
+"id"            : "1-1",
+"name"          : "Continuer à marcher le long de la forêt",
+"description"   : "Tu continues à marcher le long de cette forêt, les pieds dans le sable.. Confiant, tu enlèves même tes chaussures de marche, et laisse le sable chaud te caresser le gros orteil.. ",
+"item"          : "null",
+"style"         : "choice"
+},
+
+
+{
+"id"            : "1-2",
+"name"          : "Commencer à creuser le sable tel un chiwawa",
+"description"   : "Ton sang de pirate ne fait qu'un tour ! A la vue du sable, tu te jettes dessus, et commence à creuser, à la recherche d'un trésor...",
+"item"          : "null",
+"style"         : "random"
+},
+
+{
+"id"            : "1-2-1",
+"name"          : "Quelque chose...",
+"description"   : "TONK ! Quelque chose de dur apparaît sous tes mains...",
+"item"          : "null",
+"style"         : "choice"
+},
+
+{
+"id"            : "1-2-1-1",
+"name"          : "Continuer à creuser",
+"description"   : "Téméraire, tu continues à creuser autour de cette trouvaille solide et rèche. ",
+"item"          : "null",
+"style"         : "random"
+},
+
+{
+"id"            : "1-2-1-1-1",
+"name"          : "Coquillage",
+"description"   : "WOUAH ! Tu découvres un Coquillage si gros qu'on dirait une noix de coco..",
+"item"          : "null",
+"style"         : "choice"
+},
+
+{
+"id"            : "1-2-1-1-1-1",
+"name"          : "Garder le Coquillage",
+"description"   : "Tu prends le Coquillage sous ton bras, et repars à l'aventure. Qui sait, il pourra peut-être te servir.",
+"item"          : "random-common-coquillage"
+},
+
+{
+"id"            : "1-2-1-1-1-2",
+"name"          : "Faire le Thug et tenter de l'ouvrir à mains nues.",
+"description"   : "TONK ! Quelque chose de dur apparaît sous tes mains...",
+"item"          : "null",
+"style"         : "random"
+},
+
+{
+"id"            : "1-2-1-1-1-2-1",
+"name"          : "OUILLE",
+"description"   : "Atcha... Tu te niques les mains, et reste avec ce gros truc encombrant sur les bras. Décidément, il ne te livrera pas ses secrets maintenant..",
+"item"          : "low-life-medium"
+},
+
+{
+"id"            : "1-2-1-1-1-2-2",
+"name"          : "BINGO !",
+"description"   : "Après plusieurs minutes d'effort, le coquillage cède et s'ouvre. Tes efforts ont payés ! En son coeur, tu récupères un objet rare.Bravo ! 🙂",
+"item"          : "random-rare"
+},
+
+{
+"id"            : "1-2-1-1-1-3",
+"name"          : "Le laisser là, et repartir.",
+"description"   : "Pragmatique, tu réalises qu'un coquillage ne te servira ni à faire la vaisselle, ni à survivre sur cette île. Tu le laisses là, et repars pour de nouvelles aventures.",
+"item"          : "null",
+"solution"      : "1-1"
+},
+
+{
+"id"            : "1-2-1-1-2",
+"name"          : "Item Random",
+"description"   : "Bonne pioche ! Tu découvres un objet commun. Bravo !",
+"item"          : "random-common-item",
+"solution"      : "1-1"
+},
+
+{
+"id"            : "1-2-2",
+"name"          : "Pas de chance, tu ne trouves rien"
+},
+
+{
+"id"            : "1-2-1-2",
+"name"          : "S'arrêter, méditer un instant, et si c'était un crabe ? Abandonner la creusette. ",
+"description"   : "Logique et prudent, tu n'as pas envie de tomber sur une mauvaise surprise. Tu arrêtes la creusette, et reprend ta route le long de la forêt. ",
+"item"          : "null",
+"solution"      : "1-1"
+},
+
+{
+"id"            : "1-2-2",
+"name"          : "Rien",
+"description"   : "HA-HA ! Tu tombes nez à nez avec un gros caillou tout moche.. Et ne récupères que des égratinure aux doigts. Tu reprends ta route le long de la forêt.",
+"item"          : "low-life-medium",
+"solution"      : "1-1"
+},
+
+
+{
+"id"            : "1-3",
+"name"          : "Faire demi-tour",
+"description"   : "La plage, décidément, ce n'est pas pour toi. Le sable te gratte et le Soleil cogne fort. Tu préfères retourner sur tes pas.",
+"item"          : "null",
+"solution"      : "0"
+},
+
+{
+"id"            : "0",
+"name"          : "Start the game",
+"description"   : "Vous vous retrouvez en face d'une forêt verdoyante et gigantesque..",
+"item"          : "null",
+"style"         : "choice"
+},
+
+{
+"id"            : "1",
+"name"          : "Contourner la forêt par la plage",
+"description"   : "Un peu peureux, tu préfères commencer safe en contournant cette grosse masse feuillue pour commencer...",
+"item"          : "null",
+"style"         : "choice"
+},
+
+
+{
+"id"            : "1-1",
+"name"          : "Continuer à marcher le long de la forêt",
+"description"   : "Tu continues à marcher le long de cette forêt, les pieds dans le sable.. Confiant, tu enlèves même tes chaussures de marche, et laisse le sable chaud te caresser le gros orteil.. ",
+"item"          : "null",
+"style"         : "choice"
+},
+
+{
+"id"            : "1-2",
+"name"          : "Commencer à creuser le sable tel un chiwawa",
+"description"   : "Ton sang de pirate ne fait qu'un tour ! A la vue du sable, tu te jettes dessus, et commence à creuser, à la recherche d'un trésor...",
+"item"          : "null",
+"style"         : "random"
+},
+
+{
+"id"            : "1-2-1",
+"name"          : "Quelque chose...",
+"description"   : "TONK ! Quelque chose de dur apparaît sous tes mains...",
+"item"          : "null",
+"style"         : "choice"
+},
+
+{
+"id"            : "1-2-1-1",
+"name"          : "Continuer à creuser",
+"description"   : "Téméraire, tu continues à creuser autour de cette trouvaille solide et rèche. ",
+"item"          : "null",
+"style"         : "random"
+},
+
+{
+"id"            : "1-2-1-1-1",
+"name"          : "Coquillage",
+"description"   : "WOUAH ! Tu découvres un Coquillage si gros qu'on dirait une noix de coco..",
+"item"          : "null",
+"style"         : "choice"
+},
+
+{
+"id"            : "1-2-1-1-1-1",
+"name"          : "Garder le Coquillage",
+"description"   : "Tu prends le Coquillage sous ton bras, et repars à l'aventure. Qui sait, il pourra peut-être te servir.",
+"item"          : "random-common-coquillage"
+},
+
+{
+"id"            : "1-2-1-1-1-2",
+"name"          : "Faire le Thug et tenter de l'ouvrir à mains nues.",
+"description"   : "TONK ! Quelque chose de dur apparaît sous tes mains...",
+"item"          : "null",
+"style"         : "random"
+},
+
+{
+"id"            : "1-2-1-1-1-2-1",
+"name"          : "OUILLE",
+"description"   : "Atcha... Tu te niques les mains, et reste avec ce gros truc encombrant sur les bras. Décidément, il ne te livrera pas ses secrets maintenant..",
+"item"          : "low-life-medium"
+},
+
+{
+"id"            : "1-2-1-1-1-2-2",
+"name"          : "BINGO !",
+"description"   : "Après plusieurs minutes d'effort, le coquillage cède et s'ouvre. Tes efforts ont payés ! En son coeur, tu récupères un objet rare.Bravo ! 🙂",
+"item"          : "random-rare"
+},
+
+
+{
+"id"            : "1-2-1-1-1-3",
+"name"          : "Le laisser là, et repartir.",
+"description"   : "Pragmatique, tu réalises qu'un coquillage ne te servira ni à faire la vaisselle, ni à survivre sur cette île. Tu le laisses là, et repars pour de nouvelles aventures.",
+"item"          : "null",
+"solution"      : "1-1"
+},
+
+
+{
+"id"            : "1-2-1-1-2",
+"name"          : "Item Random",
+"description"   : "Bonne pioche ! Tu découvres un objet commun. Bravo !",
+"item"          : "random-common-item",
+"solution"      : "1-1"
+},
+
+{
+"id"            : "1-2-2",
+"name"          : "Pas de chance, tu ne trouves rien"
+},
+
+{
+"id"            : "1-2-1-2",
+"name"          : "S'arrêter, méditer un instant, et si c'était un crabe ? Abandonner la creusette. ",
+"description"   : "Logique et prudent, tu n'as pas envie de tomber sur une mauvaise surprise. Tu arrêtes la creusette, et reprend ta route le long de la forêt. ",
+"item"          : "null",
+"solution"      : "1-1"
+},
+
+
+{
+"id"            : "1-2-2",
+"name"          : "Rien",
+"description"   : "HA-HA ! Tu tombes nez à nez avec un gros caillou tout moche.. Et ne récupères que des égratinure aux doigts. Tu reprends ta route le long de la forêt.",
+"item"          : "low-life-medium",
+"solution"      : "1-1"
+},
+
+
+{
+"id"            : "1-3",
+"name"          : "Faire demi-tour",
+"description"   : "La plage, décidément, ce n'est pas pour toi. Le sable te gratte et le Soleil cogne fort. Tu préfères retourner sur tes pas.",
+"item"          : "null",
+"solution"      : "0"
+}
+]}

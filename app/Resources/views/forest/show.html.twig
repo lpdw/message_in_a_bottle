@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
+{% block content%}
     <h1>Forest</h1>
 
     <table>
@@ -11,26 +11,9 @@
             </tr>
         </tbody>
     </table>
-    <div style="height:500;width:100%;background-color:lightgrey;">
-        {% block script %}
+    <div class="jsonClass" style="background-color:lightgreen">
 
-
-        {% endblock %}
     </div>
-
-    <div>
-        <script>
-        jQuery(document).ready(function(){
-            $.ajax({
-            dataType: "json",
-            url: "../../web/json/JDVELH.json",
-            success: 'bravo'
-            });
-            console.log(data);
-        });
-        </script>
-    </div>
-
     <ul>
         <li>
             <a href="{{ path('forest_index') }}">Back to the list</a>

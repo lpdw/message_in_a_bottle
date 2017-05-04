@@ -6,59 +6,68 @@
         <link rel="stylesheet" href="{{asset('css/global.css')}}"/>
         <link rel="icon" type="image/x-icon" href="{{ asset('icons/favicon.ico') }}" />
     </head>
-    <body>
-        <header>
-            <nav>
-                <a href="/" class="titlebox">
-                    <p>
-                        MIAB
-                    </p>
-                    <p>
-                        Message In A Bottle
-                    </p>
-                </a>
 
-                <ul class="navmenu">
-                    {% if app.user is null %}
-                    <li>
-                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                            {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-                            <a href="{{ path('fos_user_security_logout') }}">
-                                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                            </a>
-                        {% else %}
-                            <a href="{{ path('fos_user_security_login') }}">{{ 'Connexion'|trans({}, 'FOSUserBundle') }}</a>
-                        {% endif %}
-                    </li>
-                    <li>
-                        Inscription
-                    </li>
-                    {% endif %}
+<body>
 
-                    {% for type, messages in app.session.flashBag.all %}
-                        {% for message in messages %}
-                            <div class="{{ type }}">
-                                {{ message|trans({}, 'FOSUserBundle') }}
-                            </div>
-                        {% endfor %}
+
+{% block header %}
+<header>
+      <a href="#" id="logo"><img src="{{ asset('img/miab-logo.png') }}" alt="Message In The Bottle - Logo"></a>
+      <nav>
+          <a href="#" id="menu-icon"></a>
+          <ul>
+                {% if app.user is null %}
+                      <li>
+                          {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                              {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                              <a href="{{ path('fos_user_security_logout') }}">
+                                  {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                              </a>
+                          {% else %}
+                              <a href="{{ path('fos_user_security_login') }}">{{ 'Connexion'|trans({}, 'FOSUserBundle') }}</a>
+                          {% endif %}
+                      </li>
+                      <li>
+                          Inscription
+                      </li>
+                {% endif %}
+
+                {% for type, messages in app.session.flashBag.all %}
+                    {% for message in messages %}
+                        <div class="{{ type }}">
+                            {{ message|trans({}, 'FOSUserBundle') }}
+                        </div>
                     {% endfor %}
+                {% endfor %}
+          </ul>
+      </nav>
+</header>
+{% endblock %}
 
-                </ul>
 
-                <div class="">
-                    Awesome Nav Right-part
-                </div>
-            </nav>
-        </header>
+{% block content %}
+  {% block fos_user_content %}
+  {% endblock %}
+{% endblock %}
 
-        <section>
-            {% block body %}
-                {% block fos_user_content %}{% endblock %}
-            {% endblock %}
-        </section>
+
+
+
+{% block footer %}
+        <footer>
+          <p>Epic Footer</p>
+        </footer>
+{% endblock %}
+
+
+{% block javascripts %}
+{% endblock %}
+
 
         <!-- <footer>Epic Footer</footer> -->
 
         <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
+
     </body>
+
 </html>
