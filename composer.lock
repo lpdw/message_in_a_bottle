@@ -4,9 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-
-    "content-hash": "424f0e049f46868ef543f42b3a25c460",
-
+    "content-hash": "3ce95723031cedebc7b32558ee2c3846",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -837,7 +835,6 @@
             "time": "2016-12-18T15:42:34+00:00"
         },
         {
-<<<<<<< HEAD
             "name": "friendsofsymfony/jsrouting-bundle",
             "version": "1.6.0",
             "source": {
@@ -896,8 +893,6 @@
             "time": "2015-10-28T15:08:39+00:00"
         },
         {
-=======
->>>>>>> 55c0eebde9337c87d9ffb61af1a2d9e2a939d0a5
             "name": "friendsofsymfony/user-bundle",
             "version": "v2.0.0",
             "source": {

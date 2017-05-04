@@ -14,6 +14,31 @@
     <div class="jsonClass" style="background-color:lightgreen">
 
     </div>
+        <script>
+            $( document ).ready(function() {
+                $.getJSON( "/json/jdvelh.json", function( data ) {
+                  
+                  console.log( data.forest);
+
+                  ///// 1ere action : on affiche le debut du script 
+                  $( ".jsonClass" ).append("<p>"+data.forest[0].description+"</p>");
+                  $( ".jsonClass" ).append("<button class='button'>"+data.forest[0].action+"</button>");
+
+                    
+                  
+                  var n = 0;
+                  $(".button").click(function(avance){
+                    
+                    n ++;
+                    var id = data.forest[n].id;
+                    console.log(id);
+                    $(".jsonClass").empty();
+                    $( ".jsonClass" ).append("<p>"+data.forest[n].id+"</p>");
+                    $( ".jsonClass" ).append("<button class='button'>"+data.forest[0].action+"</button>");
+                  });
+                });
+            });
+        </script>
     <ul>
         <li>
             <a href="{{ path('forest_index') }}">Back to the list</a>
