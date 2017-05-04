@@ -59,8 +59,11 @@ class Player
 
     public function __construct() {
       $this->inventory = new Inventory();
-      $this->inventory->setQuantity(0);
+      $this->inventory->setPlayer($this);
       $this->equipment = new ArrayCollection();
+
+      $this->inventory->setQuantity(0);
+
     }
 
     /**
@@ -149,7 +152,7 @@ class Player
 
     /**
      * Pick a objects
-     *
+     * @param Example :  $objects[] = array("item" => $bottle,"quantity"=>1);
      * @return string
      */
     public function PickObject($objects)
@@ -212,7 +215,7 @@ class Player
         $bottle = new Bottle();
         $bottle->message = $message;
 
-        //TODO définir ce qu'il y a dans la direction choisi et la durée de visibilité a définir 
+        //TODO définir ce qu'il y a dans la direction choisi et la durée de visibilité a définir
     }
 
     /**
@@ -267,11 +270,11 @@ class Player
 
 
     /**
-    * Detect îles 
+    * Detect îles
     * @return array
     */
     public function detectIles($distance){
-        for ($i=$this->island->getLocalisationX()-$distance; $i <= $this->island->getLocalisationX()+$distance; $i++) { 
+        for ($i=$this->island->getLocalisationX()-$distance; $i <= $this->island->getLocalisationX()+$distance; $i++) {
             for ($a=$this->island->getLocalisationY()-$distance; $a <= $this->island->getLocalisationY()+$distance ; $a++) {
                 if($i == $this->island->getLocalisationX() && $a == $this->island->getLocalisationY()){continue;}
                 if(gettype($this->worldgame->getGrid()[$i][$a]) == 'object'){
@@ -279,5 +282,63 @@ class Player
                 }
             }
         }
+    }
+
+    /**
+     * Set inventory
+     *
+     * @param \WorldBundle\Entity\Inventory $inventory
+     *
+     * @return Player
+     */
+    public function setInventory(\WorldBundle\Entity\Inventory $inventory = null)
+    {
+        $this->inventory = $inventory;
+
+        return $this;
+    }
+
+    /**
+     * Get inventory
+     *
+     * @return \WorldBundle\Entity\Inventory
+     */
+    public function getInventory()
+    {
+        return $this->inventory;
+    }
+
+    /**
+     * Add equipment
+     *
+     * @param \WorldBundle\Entity\Equipment $equipment
+     *
+     * @return Player
+     */
+    public function addEquipment(\WorldBundle\Entity\Equipment $equipment)
+    {
+        $this->equipment[] = $equipment;
+
+        return $this;
+    }
+
+    /**
+     * Remove equipment
+     *
+     * @param \WorldBundle\Entity\Equipment $equipment
+     */
+    public function removeEquipment(\WorldBundle\Entity\Equipment $equipment)
+    {
+        $this->equipment->removeElement($equipment);
+    }
+
+    /**
+     * Get equipment
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEquipment()
+    {
+        return $this->equipment;
     }
 }

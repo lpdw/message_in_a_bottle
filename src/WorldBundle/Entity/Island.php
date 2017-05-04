@@ -89,6 +89,7 @@ class Island
      */
     private $deserted = true;
 
+
     public function __construct() {
         $this->monsters = new ArrayCollection();
         $this->players = new ArrayCollection();
@@ -342,5 +343,29 @@ class Island
     public function getBeach()
     {
         return $this->beach;
+    }
+
+    /**
+     * Set deserted
+     *
+     * @param boolean $deserted
+     *
+     * @return Island
+     */
+    public function setDeserted($deserted)
+    {
+        $this->deserted = $deserted;
+
+        return $this;
+    }
+
+    /**
+     * Get deserted
+     *
+     * @return boolean
+     */
+    public function getDeserted()
+    {
+        return $this->deserted;
     }
 }

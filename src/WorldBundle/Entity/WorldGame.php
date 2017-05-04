@@ -111,5 +111,5 @@ class WorldGame
         return $this->islands;
     }
 
-    
+
 }
