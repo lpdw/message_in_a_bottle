@@ -46,11 +46,20 @@ class WorldGameController extends Controller
         $worldGame = new Worldgame();
         $em = $this->getDoctrine()->getManager();
 
+
         $form = $this->createForm('WorldBundle\Form\WorldGameType', $worldGame);
         $form->handleRequest($request);
 
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            // getting the last id island
+            if (!$allIslands = ($em->getRepository('WorldBundle:Island')->findBy(array(), array('id' => 'desc')))) {
+                $currentIslandId=1;
+            }
+            else {
+                $currentIslandId = $allIslands[0]->getId();
+            }
 
             // Generating the world
             $nbPlayers = 5;
@@ -68,7 +77,7 @@ class WorldGameController extends Controller
             while ($j <= $nbIslands-1) {
                 // Placing the islands on the grid
                 $island = new Island();
-
+                $island->setId($currentIslandId);
 
                 $forest = new Forest();
                 $forest->setIsland($island);
@@ -149,6 +158,7 @@ class WorldGameController extends Controller
 
                 $em->persist($island);
 
+                $currentIslandId++;
                 $j++;
             }
 
