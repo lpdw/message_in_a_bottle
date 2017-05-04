@@ -5,9 +5,9 @@
         <title>{% block title %}MIAB: Message In A Bottle{% endblock %}</title>
         <link rel="stylesheet" href="{{asset('css/global.css')}}"/>
         <link rel="icon" type="image/x-icon" href="{{ asset('icons/favicon.ico') }}" />
-        <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
     </head>
     <body>
+
 
 {% block header %}
 <header>
@@ -51,6 +51,7 @@
 {% endblock %}
 
 
+
 {% block body %}
         {% block fos_user_content %}
         {% endblock %}
@@ -65,5 +66,16 @@
 
 {% block javascripts %}
 {% endblock %}
+
+        <section>
+            {% block body %}
+                {% block fos_user_content %}{% endblock %}
+            {% endblock %}
+        </section>
+
+        <!-- <footer>Epic Footer</footer> -->
+
+        <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
+
     </body>
 </html>

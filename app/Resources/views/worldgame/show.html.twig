@@ -28,7 +28,11 @@
                             {% elseif island == 'coast' %}
                                 ^
                             {% else %}
-                                O
+                                {% if island.id is null %}
+                                    ?
+                                {% else %}
+                                    <b><a href="{{ path('island_show', { 'id': island.id }) }}">{{island.id}}</a></b>
+                                {% endif %}
                             {% endif %}
                         </td>
                     {% endfor %}
