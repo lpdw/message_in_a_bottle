@@ -49,12 +49,14 @@
             </nav>
         </header>
 
-        {% block body %}
-            {% block fos_user_content %}{% endblock %}
-        {% endblock %}
+        <section>
+            {% block body %}
+                {% block fos_user_content %}{% endblock %}
+            {% endblock %}
+        </section>
 
-        <footer>Epic Footer</footer>
+        <!-- <footer>Epic Footer</footer> -->
 
-        {% block javascripts %}{% endblock %}
+        <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
     </body>
 </html>

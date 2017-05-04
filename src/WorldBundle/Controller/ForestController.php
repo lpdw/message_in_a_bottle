@@ -89,7 +89,7 @@ class ForestController extends Controller
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('forest_edit', array('id' => $forest->getId()));
-        }
+        } 
 
         return $this->render('forest/edit.html.twig', array(
             'forest' => $forest,
