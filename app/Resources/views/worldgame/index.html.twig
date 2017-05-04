@@ -1,9 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Worldgames list</h1>
+    <h1>Rejoindre un monde</h1>
 
-    <table>
+    <ul>
+        {% for worldGame in worldGames %}
+            <li>
+                <a onclick="return joinWorldConfirmation();" href="{{ path('joinworldgame', { 'id': worldGame.id }) }}">Monde {{ worldGame.id }} </a> (X joueurs)
+
+            </li>
+        {% endfor %}
+    </ul>
+
+    <!-- <table>
         <thead>
             <tr>
                 <th>Id</th>
@@ -29,11 +38,20 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table>
+    </table> -->
 
     <ul>
         <li>
             <a href="{{ path('worldgame_new') }}">Create a new worldGame</a>
         </li>
     </ul>
+
+<script>
+    function joinWorldConfirmation() {
+        var choice = confirm("Voulez-vous rejoindre ce monde ?");
+        if (!choice) return false;
+    }
+
+</script>
+
 {% endblock %}

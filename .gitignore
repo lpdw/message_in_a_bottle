@@ -16,3 +16,4 @@
 /web/bundles/
 composer.lock
 /css/global.css.map
+/.sass-cache

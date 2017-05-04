@@ -83,6 +83,11 @@ class Island
      */
     private $players;
 
+    /**
+     * Indicates if a player already poped on the island
+     * @ORM\Column(name="deserted", type="boolean")
+     */
+    private $deserted = true;
 
     public function __construct() {
         $this->monsters = new ArrayCollection();
