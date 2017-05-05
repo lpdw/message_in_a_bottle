@@ -192,7 +192,7 @@ class Player
     *
     * @return boolean
     */
-    public function limitInventory($quantity)
+    public function limitInventory($quantity=1)
     {
         if(($this->inventory->getQuantity() + $quantity) >= 50){
             return true;
@@ -221,10 +221,17 @@ class Player
         $bottle = new Bottle();
         $bottle->setMessage($message);
 
-        $island = $this->findIsland($cardinal)['data'];
+        $island = $this->findIsland($cardinal);
 
-        //TODO définir ce qu'il y a dans la direction choisi et la durée de visibilité a définir
-        return (!$island) ? false: true;
+        if($island['data']){
+            // dump($island['data']);
+            $island['data']->getBeach()->addDrop($bottle);
+            dump($island['data']->getBeach()->getDrops());
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     /**
