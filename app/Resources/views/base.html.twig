@@ -8,65 +8,101 @@
         <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
     </head>
 
-<body>
+    <body>
 
+    {% block header %}
+        <header>
 
-{% block header %}
-<header>
-      <a href="#" id="logo"><img src="{{ asset('img/miab-logo.png') }}" alt="Message In The Bottle - Logo"></a>
-      <nav>
-          <a href="#" id="menu-icon"></a>
-          <ul>
-                {% if app.user is null %}
-                      <li>
-                          {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                              {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-                              <a href="{{ path('fos_user_security_logout') }}">
-                                  {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                              </a>
-                          {% else %}
+          <a href="/"><img src="{{ asset('img/miab-logo.png') }}"  class="miab-logo" alt="Message In The Bottle - Logo"></a>
+
+          <nav>
+              <a href="#" id="menu-icon"></a>
+              <ul class="nav-menu">
+                    {% if app.user is null %}
+                          <li>
                               <a href="{{ path('fos_user_security_login') }}">{{ 'Connexion'|trans({}, 'FOSUserBundle') }}</a>
-                          {% endif %}
-                      </li>
-                      <li>
-                          Inscription
-                      </li>
-                {% endif %}
+                          </li>
+                          <li>
+                              <a href="/register">Inscription</a>
+                          </li>
 
-                {% for type, messages in app.session.flashBag.all %}
-                    {% for message in messages %}
-                        <div class="{{ type }}">
-                            {{ message|trans({}, 'FOSUserBundle') }}
-                        </div>
+                    {% elseif is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        {% if app.user.isPlaying %}
+
+                            {% set currentuser = (app.user.players|last) %}
+                            <li>
+                                <a href="{{ path('hut_show', {'id': currentuser.island.hut.id})}}">
+                                    Hutte
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('forest_show', {'id': currentuser.island.forest.id})}}">
+                                    Forêt
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('beach_show', {'id': currentuser.island.beach.id})}}">
+                                    Plage
+                                </a>
+                            </li>
+
+                        {% else %}
+                            <li>
+                                <a href="{{ path('worldgame_index')}}">
+                                    Rejoindre un monde
+                                </a>
+                            </li>
+
+                        {% endif %}
+
+                    {% endif %}
+
+                    {% for type, messages in app.session.flashBag.all %}
+                        {% for message in messages %}
+                            <div class="{{ type }}">
+                                {{ message|trans({}, 'FOSUserBundle') }}
+                            </div>
+                        {% endfor %}
                     {% endfor %}
-                {% endfor %}
-          </ul>
-      </nav>
-</header>
-{% endblock %}
+              </ul>
+          </nav>
+
+          {% if app.user %}
+            <ul class="header-rightpart">
+                <li>
+                    <a href="{{ path('fos_user_security_logout') }}">
+                        <img class="disconnection_icon" src="{{asset('icons/disconnection.png')}}" alt="Icone de déconnexion">
+                    </a>
+                </li>
+            </ul>
+            {% else %}
+                <div class="header-rightpart-blankspace">
+
+                </div>
+            {% endif %}
+    </header>
+    {% endblock %}
 
 
-{% block content %}
-  {% block fos_user_content %}
-  {% endblock %}
-{% endblock %}
+    {% block content %}
+      {% block fos_user_content %}
+      {% endblock %}
+    {% endblock %}
 
 
 
 
-{% block footer %}
+    {% block footer %}
         <footer>
           <p>Epic Footer</p>
         </footer>
-{% endblock %}
+    {% endblock %}
 
 
-{% block javascripts %}
-{% endblock %}
+    {% block javascripts %}
+    {% endblock %}
 
-
-
-        
+    <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
 
 
     </body>

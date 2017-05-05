@@ -210,38 +210,4 @@ class User extends BaseUser
     {
         return $this->isPlaying;
     }
-
-    /**
-     * Add player
-     *
-     * @param \WorldBundle\Entity\Player $player
-     *
-     * @return User
-     */
-    public function addPlayer(\WorldBundle\Entity\Player $player)
-    {
-        $this->players[] = $player;
-
-        return $this;
-    }
-
-    /**
-     * Remove player
-     *
-     * @param \WorldBundle\Entity\Player $player
-     */
-    public function removePlayer(\WorldBundle\Entity\Player $player)
-    {
-        $this->players->removeElement($player);
-    }
-
-    /**
-     * Get players
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getPlayers()
-    {
-        return $this->players;
-    }
 }

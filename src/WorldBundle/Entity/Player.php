@@ -56,6 +56,12 @@ class Player
      */
     private $island;
 
+    /**
+     * Many Player have One User.
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="players")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+     private $user;
 
     public function __construct() {
       $this->inventory = new Inventory();
@@ -186,7 +192,7 @@ class Player
     *
     * @return boolean
     */
-    public function limitInventory($quantity)
+    public function limitInventory($quantity=1)
     {
         if(($this->inventory->getQuantity() + $quantity) >= 50){
             return true;
@@ -215,10 +221,17 @@ class Player
         $bottle = new Bottle();
         $bottle->setMessage($message);
 
-        $island = $this->findIsland($cardinal)['data'];
+        $island = $this->findIsland($cardinal);
 
-        //TODO définir ce qu'il y a dans la direction choisi et la durée de visibilité a définir
-        return (!$island) ? false: true;
+        if($island['data']){
+            // dump($island['data']);
+            $island['data']->getBeach()->addDrop($bottle);
+            dump($island['data']->getBeach()->getDrops());
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     /**
@@ -440,5 +453,29 @@ class Player
     public function getEquipment()
     {
         return $this->equipment;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \WorldBundle\Entity\User $user
+     *
+     * @return Player
+     */
+    public function setUser(\WorldBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \WorldBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

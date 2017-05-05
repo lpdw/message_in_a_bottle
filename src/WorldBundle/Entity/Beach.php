@@ -23,8 +23,11 @@ class Beach
     private $id;
 
     /**
-     * One Beach has Many Items.
-     * @ORM\OneToMany(targetEntity="Item", mappedBy="beach")
+     * Many Beach has Many Items.
+     * @ORM\ManyToMany(targetEntity="Item")
+     * @ORM\JoinTable(name="beachs_items",
+     *  joinColumns={@ORM\JoinColumn(name="beach_id", referencedColumnName="id")},
+     *   inverseJoinColumns={@ORM\JoinColumn(name="item_id", referencedColumnName="id", unique=true)})
      */
     private $drops;
 

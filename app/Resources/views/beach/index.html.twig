@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Beaches list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for beach in beaches %}
+            <tr>
+                <td><a href="{{ path('beach_show', { 'id': beach.id }) }}">{{ beach.id }}</a></td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('beach_show', { 'id': beach.id }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}

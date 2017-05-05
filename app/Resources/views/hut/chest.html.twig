@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block content%}
+    {% set inventory = app.user.players|last.inventory.items %}
+    {% set chest = app.user.players|last.island.hut.chest %}
+
+    <article class="inventory_panel">
+        <h1>Inventaire</h1>
+        {% if (inventory|length == 0) %}
+            Inventaire vide.
+
+        {% else %}
+            <ul>
+                {% for item in inventory %}
+                    <li>
+                        {{item.name}} : {{ item.description }} <input type="button" name="drop" value="Jeter">
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+    </ul>
+
+    </article>
+
+
+    <article class="chest_panel">
+        <h1>Coffre</h1>
+        <ul>
+
+        </ul>
+    </article>
+
+
+{% endblock %}

@@ -19,23 +19,15 @@ class GameplayController extends Controller
     * @Method("GET")
     */
     public function joinWorldAction(WorldGame $worldGame) {
+        $em = $this->getDoctrine()->getManager();
 
         // creating a new player linked to the user
-        $em = $this->getDoctrine()->getManager();
         $player = new Player();
+        $currentUser = $this->get('security.token_storage')->getToken()->getUser();
+        $currentUser->setIsPlaying(true);
+        $player->setName($currentUser->getUsername());
         $player->setStatus("ok");
-        // TODO : give the player a real name
-        if (!$allPlayers =
-            ($em->getRepository('WorldBundle:Player')
-                ->findBy(array(),array('id' => 'desc'))))
-        {
-            $player->setName("Player n°0");
-        }
-        else {
-            $currentPlayerId = $allPlayers[0]->getId();
-            $player->setName("Player n°".$currentPlayerId);
-        }
-        // TODO : link player to user
+        $player->setUser($currentUser);
 
         // placing the player on an sialdn
         // first we get all the deserted player type islands belonging to the current world
@@ -62,14 +54,19 @@ class GameplayController extends Controller
         $em->persist($player);
         $em->flush();
 
+        $currentUser->addPlayer($player);
+
         $player->PickObject($bottleObject);
         $em->persist($player);
         $em->flush();
 
+        
         return $this->render('island/show.html.twig', array(
             'island' => $playerIsland,
         ));
 
     }
+
+
 
 }
