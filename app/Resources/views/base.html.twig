@@ -11,25 +11,39 @@
 
 
 {% block header %}
+
+
 <header>
-      <a href="#" id="logo"><img src="{{ asset('img/miab-logo.png') }}" alt="Message In The Bottle - Logo"></a>
+
+      <a href="/"><img src="{{ asset('img/miab-logo.png') }}"  class="miab-logo" alt="Message In The Bottle - Logo"></a>
       <nav>
           <a href="#" id="menu-icon"></a>
-          <ul>
+          <ul class="nav-menu">
                 {% if app.user is null %}
                       <li>
-                          {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                              {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-                              <a href="{{ path('fos_user_security_logout') }}">
-                                  {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                              </a>
-                          {% else %}
-                              <a href="{{ path('fos_user_security_login') }}">{{ 'Connexion'|trans({}, 'FOSUserBundle') }}</a>
-                          {% endif %}
+                          <a href="{{ path('fos_user_security_login') }}">{{ 'Connexion'|trans({}, 'FOSUserBundle') }}</a>
                       </li>
                       <li>
-                          Inscription
+                          <a href="/register">Inscription</a>
                       </li>
+
+                {% elseif is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <li>
+                        <a href="#">
+                            Hutte
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Forêt
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Plage
+                        </a>
+                    </li>
+
                 {% endif %}
 
                 {% for type, messages in app.session.flashBag.all %}
@@ -41,6 +55,20 @@
                 {% endfor %}
           </ul>
       </nav>
+
+      {% if app.user %}
+        <ul class="header-rightpart">
+            <li>
+                <a href="{{ path('fos_user_security_logout') }}">
+                    <img class="disconnection_icon" src="{{asset('icons/disconnection.png')}}" alt="Icone de déconnexion">
+                </a>
+            </li>
+        </ul>
+        {% else %}
+            <div class="header-rightpart-blankspace">
+
+            </div>
+        {% endif %}
 </header>
 {% endblock %}
 
@@ -63,10 +91,8 @@
 {% block javascripts %}
 {% endblock %}
 
+<script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
 
-        <!-- <footer>Epic Footer</footer> -->
-
-        <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
 
     </body>
 
