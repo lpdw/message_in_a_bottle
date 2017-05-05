@@ -5,8 +5,7 @@
 
 //  body style
 body {
-    font-family: 'journal', Arial, sans-serif;
-    font-size: 2.5em;
+    font-family: Helvetica Neue, Helvetica, Arial;
 
     width: 94vw;
     margin: 1%;
@@ -33,47 +32,87 @@ body {
     }
 }
 
-
-nav {
-    display:flex;
+header {
+    display: flex;
     justify-content: space-between;
-    align-items: center;
-    border-bottom: solid 5px #000;
+    border-bottom: 2px solid #00c8e4;
+    .miab-logo {
+        width: 18vw;
+        min-width: 196px;
+    }
 
-    .titlebox {
-        display: flex;
-        flex-direction: column;
+    nav {
+        display:flex;
+        justify-content: space-between;
         align-items: center;
 
-        // MIAB title
-        :first-child {
-            margin-bottom: -18px;
-            margin-top: -18px;
-            font-size: 2em;
+        .titlebox {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            // MIAB title
+            :first-child {
+                margin-bottom: -18px;
+                margin-top: -18px;
+                font-size: 2em;
+            }
+
+            // Message in a bottle title
+            :nth-child(2) {
+            }
+
+            :nth-child(3) {
+            }
         }
 
-        // Message in a bottle title
-        :nth-child(2) {
+        .nav-menu {
+            background-color: #FFF;
+            display: flex;
+            flex-direction: row;
+            padding:15px;
+            transform: translate(0px, 3.35em);
+
+            li {
+                border: 2px solid #00c8e4;
+                padding: 28px;
+                margin: -1px;
+            }
+        }
+
+        // .navmenu {
+        //     li {
+        //         border: solid 3px #000;
+        //         border-radius: 2px;
+        //         border: solid 3px #000;
+        //         border-radius: 4px;
+        //         max-height: 1.3em;
+        //         margin: -1px;
+        //         align-self: flex-end;
+        //     }
+        // }
+
+    }
+
+    .header-rightpart {
+        display:flex;
+        align-items: center;
+        margin-left: 6vw;
+
+
+        .disconnection_icon {
+            width:4vw;
+            min-width:30px;
         }
     }
 
-    .navmenu {
-        transform: translate(0px, 1.35em);
-        background-color: #FFF;
-        display: flex;
-        flex-direction: row;
-        li {
-            border: solid 3px #000;
-            border-radius: 2px;
-            border: solid 3px #000;
-            border-radius: 4px;
-            padding: 12px;
-            max-height: 1.3em;
-            margin: -1px;
-            align-self: flex-end;
-        }
+    .header-rightpart-blankspace {
+        min-width:19vw;
+
     }
 }
+
+
 
 .fatborder {
     border:solid 7px #000000;
