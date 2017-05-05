@@ -45,7 +45,7 @@ class Island
 
     /**
      * Many Islands have One WorldGame.
-     * @ORM\ManyToOne(targetEntity="WorldGame", inversedBy="islands",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="WorldGame", inversedBy="islands")
      * @ORM\JoinColumn(name="worldgame_id", referencedColumnName="id")
      */
     private $worldgame;
@@ -343,29 +343,5 @@ class Island
     public function getBeach()
     {
         return $this->beach;
-    }
-
-    /**
-     * Set deserted
-     *
-     * @param boolean $deserted
-     *
-     * @return Island
-     */
-    public function setDeserted($deserted)
-    {
-        $this->deserted = $deserted;
-
-        return $this;
-    }
-
-    /**
-     * Get deserted
-     *
-     * @return boolean
-     */
-    public function getDeserted()
-    {
-        return $this->deserted;
     }
 }

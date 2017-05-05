@@ -192,7 +192,7 @@ class Player
     *
     * @return boolean
     */
-    public function limitInventory($quantity=1)
+    public function limitInventory($quantity)
     {
         if(($this->inventory->getQuantity() + $quantity) >= 50){
             return true;
@@ -446,29 +446,5 @@ class Player
     public function getEquipment()
     {
         return $this->equipment;
-    }
-
-    /**
-     * Set user
-     *
-     * @param \WorldBundle\Entity\User $user
-     *
-     * @return Player
-     */
-    public function setUser(\WorldBundle\Entity\User $user = null)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \WorldBundle\Entity\User
-     */
-    public function getUser()
-    {
-        return $this->user;
     }
 }
