@@ -37,9 +37,24 @@ class User extends BaseUser
      */
     protected $lastname;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="isPlaying", type="boolean")
+     */
+     protected $isPlaying;
+
+     /**
+     * One User has Many Players.
+     * @ORM\OneToMany(targetEntity="Player", mappedBy="user")
+     */
+    private $players;
+
     public function __construct()
     {
         parent::__construct();
+        $this->isPlaying = false;
+        $this->players = new ArrayCollection();
     }
 
     /**
@@ -170,5 +185,63 @@ class User extends BaseUser
     public function getPassword()
     {
         return $this->password;
+    }
+
+    /**
+     * Set isPlaying
+     *
+     * @param boolean $isPlaying
+     *
+     * @return User
+     */
+    public function setIsPlaying($isPlaying)
+    {
+        $this->isPlaying = $isPlaying;
+
+        return $this;
+    }
+
+    /**
+     * Get isPlaying
+     *
+     * @return boolean
+     */
+    public function getIsPlaying()
+    {
+        return $this->isPlaying;
+    }
+
+    /**
+     * Add player
+     *
+     * @param \WorldBundle\Entity\Player $player
+     *
+     * @return User
+     */
+    public function addPlayer(\WorldBundle\Entity\Player $player)
+    {
+        $this->players[] = $player;
+
+        return $this;
+    }
+
+    /**
+     * Remove player
+     *
+     * @param \WorldBundle\Entity\Player $player
+     */
+    public function removePlayer(\WorldBundle\Entity\Player $player)
+    {
+        $this->players->removeElement($player);
+    }
+
+    /**
+     * Get players
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPlayers()
+    {
+        return $this->players;
     }
 }

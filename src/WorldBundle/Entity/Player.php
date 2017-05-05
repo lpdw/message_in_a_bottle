@@ -56,6 +56,12 @@ class Player
      */
     private $island;
 
+    /**
+     * Many Player have One User.
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="players")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+     private $user;
 
     public function __construct() {
       $this->inventory = new Inventory();
@@ -440,5 +446,29 @@ class Player
     public function getEquipment()
     {
         return $this->equipment;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \WorldBundle\Entity\User $user
+     *
+     * @return Player
+     */
+    public function setUser(\WorldBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \WorldBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

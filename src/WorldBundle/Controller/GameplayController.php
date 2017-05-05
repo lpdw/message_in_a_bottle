@@ -23,19 +23,12 @@ class GameplayController extends Controller
         // creating a new player linked to the user
         $em = $this->getDoctrine()->getManager();
         $player = new Player();
+        $currentUser = $this->get('security.token_storage')->getToken()->getUser();
+        $currentUser->setIsPlaying(true);
+        $currentUsername = $currentUser->getUsername();
+        $player->setName($currentUsername);
         $player->setStatus("ok");
-        // TODO : give the player a real name
-        if (!$allPlayers =
-            ($em->getRepository('WorldBundle:Player')
-                ->findBy(array(),array('id' => 'desc'))))
-        {
-            $player->setName("Player n°0");
-        }
-        else {
-            $currentPlayerId = $allPlayers[0]->getId();
-            $player->setName("Player n°".$currentPlayerId);
-        }
-        // TODO : link player to user
+
 
         // placing the player on an sialdn
         // first we get all the deserted player type islands belonging to the current world
