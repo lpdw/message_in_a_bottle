@@ -183,7 +183,7 @@ class Player
     *
     * @return boolean
     */
-    public function limitInventory($quantity)
+    public function limitInventory($quantity=1)
     {
         if(($this->inventory->getQuantity() + $quantity) >= 50){
             return true;

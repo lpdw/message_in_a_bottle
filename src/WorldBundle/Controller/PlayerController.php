@@ -30,7 +30,7 @@ class PlayerController extends Controller
         // $player = new Player();
         // $player->setName("Kangoo");
         // $player->setStatus("Alive");
-        $em = $this->getDoctrine()->getManager();
+        // $em = $this->getDoctrine()->getManager();
         // $em->persist($player);
         // $em->flush($player);
 
@@ -83,6 +83,23 @@ class PlayerController extends Controller
             dump($retour['value']);
         }
         else{dump($retour['value']);}
+    }
+
+    /**
+     * @Route("/moveInIsland", name="moveInIsland")
+     */
+    public function moveInIslandAction($type = 'swimming',$direction = "NORD EST")
+    {
+        $Player = $this->getDoctrine()->getRepository('WorldBundle:Player')->findOneById(2);
+        if($Player->$type($direction)){
+            // $em = $this->getDoctrine()->getManager();
+            // $em->persist($Player);
+            // $em->flush($Player);
+            dump('Arriver sur une île');            
+        }
+        else{dump('retour a la case depart');}
+        dump($Player);
+        die();
     }
     
     /**

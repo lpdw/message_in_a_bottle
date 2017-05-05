@@ -45,7 +45,7 @@ class Island
 
     /**
      * Many Islands have One WorldGame.
-     * @ORM\ManyToOne(targetEntity="WorldGame", inversedBy="islands")
+     * @ORM\ManyToOne(targetEntity="WorldGame", inversedBy="islands",cascade={"persist"})
      * @ORM\JoinColumn(name="worldgame_id", referencedColumnName="id")
      */
     private $worldgame;
