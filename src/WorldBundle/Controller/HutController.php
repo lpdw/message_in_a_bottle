@@ -30,6 +30,22 @@ class HutController extends Controller
         ));
     }
 
+    /**
+     * Displays chest content.
+     *
+     * @Route(name="chest_show")
+     * @Method("GET")
+     */
+    public function chestAction()
+    {
+        
+        return $this->render('hut/chest.html.twig', array(
+
+        ));
+    }
+
+
+
 
 
 

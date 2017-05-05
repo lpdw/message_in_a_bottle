@@ -158,6 +158,9 @@ class WorldGameController extends Controller
                 $worldGame->setGrid($gridGame);
 
                 $em->persist($island);
+                $em->persist($forest);
+                $em->persist($beach);
+                $em->persist($hut);
 
                 $currentIslandId++;
                 $j++;

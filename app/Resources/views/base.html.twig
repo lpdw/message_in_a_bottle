@@ -28,18 +28,20 @@
 
                     {% elseif is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                         {% if app.user.isPlaying %}
+
+                            {% set currentuser = (app.user.players|last) %}
                             <li>
-                                <a href="{{ path('')}}">
+                                <a href="{{ path('hut_show', {'id': currentuser.island.hut.id})}}">
                                     Hutte
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="{{ path('forest_show', {'id': currentuser.island.forest.id})}}">
                                     Forêt
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="{{ path('beach_show', {'id': currentuser.island.beach.id})}}">
                                     Plage
                                 </a>
                             </li>
