@@ -101,6 +101,25 @@ class PlayerController extends Controller
         dump($Player);
         die();
     }
+
+
+    /**
+     * @Route("/launchBottle", name="launchBottle")
+     */
+    public function launchBottleAction($direction = "NORD EST",$message = "I'M ALIVE")
+    {
+        $Player = $this->getDoctrine()->getRepository('WorldBundle:Player')->findOneById(2);
+        if($Player->launchBottle($direction,$message)){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($Player);
+            $em->flush($Player);
+            dump($Player->getIsland()->getBeach()->getDrops());
+            dump('La bouteille est arriver sur l\'ile');
+        }
+        else{dump('Elle n\'est pas arrivé');}
+        dump($Player);
+        die();
+    }
     
     /**
      * @Route("/item/new", name="new_item")
