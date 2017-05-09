@@ -163,13 +163,12 @@ class Player
      */
     public function PickObject($objects)
     {
-        if(gettype($objects) == "string"){
-
+        if(gettype($objects) == "object"){
             if($this->limitInventory()){
-                return array('value' => "L'\object {$objects['item']->name} n'a pas pu être ajouté car la limite de l'inventaire à été atteint", 'valid' => false);
+                return array('value' => "L'\object {$objects->getName()} n'a pas pu être ajouté car la limite de l'inventaire à été atteint", 'valid' => false);
             }
             else{
-                $this->inventory->addItem($objects);
+                $this->inventory->addItem(array('item' => $objects,'quantity' => 1));
                 return array('value' => "L\'object à bien été ajouté", 'valid' => true);
             }
         }

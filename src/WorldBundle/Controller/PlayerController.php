@@ -73,16 +73,27 @@ class PlayerController extends Controller
     /**
      * @Route("/addObjects", name="addObjects")
      */
-    public function addObjectsAction($objects, $player)
+    public function addObjectsAction($objects=null)
     {
-    	$retour = $player->PickObject($objects);
-        if($retour['valid']){
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($player);
-            $em->flush($player);
-            dump($retour['value']);
-        }
-        else{dump($retour['value']);}
+        $Player = $this->getDoctrine()->getRepository('WorldBundle:Player')->findOneById(2);
+        // Test Add object in inventory
+        // $item1 = $this->getDoctrine()->getRepository('WorldBundle:Item')->findOneById(1);
+        // $item2 = $this->getDoctrine()->getRepository('WorldBundle:Item')->findOneById(2);
+        // $item3 = $this->getDoctrine()->getRepository('WorldBundle:Item')->findOneById(3);
+        // $objects = array();
+        // $objects[] = array('item' => $item1, 'quantity' => 25);
+        // $objects[] = array('item' => $item2, 'quantity' => 10);
+        // $objects[] = array('item' => $item3, 'quantity' => 15);
+
+
+    	$retour = $Player->PickObject($objects);
+        // Save object
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($Player->getInventory());
+        $em->flush($Player->getInventory());
+        dump($retour['value']);
+        dump($Player->getInventory());
+        die();
     }
 
     /**

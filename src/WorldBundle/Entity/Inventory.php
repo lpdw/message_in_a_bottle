@@ -38,7 +38,7 @@ class Inventory
 
     /**
      *
-     * @ORM\ManyToMany(targetEntity="Item", inversedBy="inventory")
+     * @ORM\ManyToMany(targetEntity="Item", inversedBy="inventory", cascade={"persist"})
      * @ORM\JoinTable(name="inventories_items",
      *      joinColumns={@ORM\JoinColumn(name="inventory_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="item_id", referencedColumnName="id")}
