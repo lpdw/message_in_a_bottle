@@ -24,7 +24,7 @@ class Beach
 
     /**
      * Many Beach has Many Items.
-     * @ORM\ManyToMany(targetEntity="Item")
+     * @ORM\ManyToMany(targetEntity="Item",cascade={"persist"})
      * @ORM\JoinTable(name="beachs_items",
      *  joinColumns={@ORM\JoinColumn(name="beach_id", referencedColumnName="id")},
      *   inverseJoinColumns={@ORM\JoinColumn(name="item_id", referencedColumnName="id", unique=true)})

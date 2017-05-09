@@ -48,7 +48,7 @@ class PlayerController extends Controller
         // $objects[] = array('item' => $item3, 'quantity' => 15);
         // $this->addObjectsAction($objects, $player);
         // dump($player->randomisTrue(50));
-        dump($Player);
+        // dump($Player);
 
 
 
@@ -58,10 +58,10 @@ class PlayerController extends Controller
         // dump($Player->watchSea(15));
 
         // Test send bottle
-        // dump($Player->launchBottle("NORD","Je suis en bas "));
+        // dump($Player->launchBottle("NORD OUEST","Je suis en bas "));
 
         // Test swimming
-        dump($Player->swimming("SUD EST"));
+        // dump($Player->swimming("SUD EST"));
 
         // Test navigate
         // dump($Player->navigate("SUD"));
@@ -92,13 +92,12 @@ class PlayerController extends Controller
     {
         $Player = $this->getDoctrine()->getRepository('WorldBundle:Player')->findOneById(2);
         if($Player->$type($direction)){
-            // $em = $this->getDoctrine()->getManager();
-            // $em->persist($Player);
-            // $em->flush($Player);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($Player);
+            $em->flush($Player);
             dump('Arriver sur une île');            
         }
         else{dump('retour a la case depart');}
-        dump($Player);
         die();
     }
 
@@ -106,21 +105,32 @@ class PlayerController extends Controller
     /**
      * @Route("/launchBottle", name="launchBottle")
      */
-    public function launchBottleAction($direction = "NORD EST",$message = "I'M ALIVE")
+    public function launchBottleAction($direction = "NORD OUEST",$message = "I'M ALIVE")
     {
         $Player = $this->getDoctrine()->getRepository('WorldBundle:Player')->findOneById(2);
-        if($Player->launchBottle($direction,$message)){
+        $bottle = $Player->launchBottle($direction,$message);
+        if($bottle){
+            $beach = $Player->getIsland()->getBeach();
+            $beach->addDrop($bottle);
             $em = $this->getDoctrine()->getManager();
-            $em->persist($Player);
-            $em->flush($Player);
-            dump($Player->getIsland()->getBeach()->getDrops());
+            $em->persist($beach);
+            $em->flush($beach);
             dump('La bouteille est arriver sur l\'ile');
         }
         else{dump('Elle n\'est pas arrivé');}
-        dump($Player);
         die();
     }
     
+    /**
+     * @Route("/watchSea", name="watchSea")
+     */
+    public function watchSeaAction()
+    {
+        $Player = $this->getDoctrine()->getRepository('WorldBundle:Player')->findOneById(2);
+        dump($Player->watchSea(2));
+        die();
+    }
+
     /**
      * @Route("/item/new", name="new_item")
      */

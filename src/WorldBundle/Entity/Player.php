@@ -227,7 +227,7 @@ class Player
             // dump($island['data']);
             $island['data']->getBeach()->addDrop($bottle);
             dump($island['data']->getBeach()->getDrops());
-            return true;
+            return $bottle;
         }
         else{
             return false;
@@ -275,7 +275,7 @@ class Player
     *
     * @return string/array
     */
-    public function watchSea($position)
+    public function watchSea($distance)
     {
         $messages = array(
             0 => "La mer est tranquille",
@@ -286,14 +286,14 @@ class Player
             5 => "Une tempête approche",
             6 => "Les vagues sont hautes",
         );
-        $islands = $this->detectIslands(2);
+        $islands = $this->detectIslands($distance);
         // TODO faire la condition si on voit le bateau du capitaine
         if(!empty($islands)){
             $msg = array();
             foreach ($islands as $key => $value) {
                 $base = "une île";
                 if($value['type'] == 'captain'){$base = "l'île du capitaine";}
-                $msg[] = "Il y a $base dans la direction {$value['position']} qui se trouve à ".($value['distance']*10)." minutes";
+                $msg[] = "Il y a $base dans la direction {$value['cardinal']} qui se trouve à ".($value['distance']*10)." minutes";
             }
             return $msg;
         }

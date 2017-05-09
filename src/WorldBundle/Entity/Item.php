@@ -10,6 +10,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Item
  *
+ * @ORM\InheritanceType("JOINED") 
+ * @ORM\DiscriminatorColumn(name="discr", type="string")
+ * @ORM\DiscriminatorMap({"item"= "Item","usable" = "Usable"})
+ *
  * @ORM\Table(name="item")
  * @ORM\Entity(repositoryClass="WorldBundle\Repository\ItemRepository")
  */
@@ -34,12 +38,12 @@ class Item
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=255)
+     * @ORM\Column(name="description", type="string", length=255, nullable=true)
      */
     protected $description;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      *
      * @Assert\NotBlank(message="Please, upload the product brochure as a png file.")
      * @Assert\Image(

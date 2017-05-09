@@ -28,6 +28,9 @@ class Bottle extends Usable
      */
     private $message;
 
+    public function __construct() {
+      $this->setName("Bottle");
+    }
 
     /**
      * Get id
