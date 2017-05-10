@@ -10,9 +10,9 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Item
  *
- * @ORM\InheritanceType("JOINED") 
+ * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="discr", type="string")
- * @ORM\DiscriminatorMap({"item"= "Item","usable" = "Usable"})
+ * @ORM\DiscriminatorMap({"item"= "Item","usable" = "Usable", "bottle"="Bottle"})
  *
  * @ORM\Table(name="item")
  * @ORM\Entity(repositoryClass="WorldBundle\Repository\ItemRepository")

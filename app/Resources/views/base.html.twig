@@ -102,8 +102,14 @@
     {% block javascripts %}
     {% endblock %}
 
+    <!-- JS FRAMEWORKS -->
     <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
 
+    <!-- SF BUNDLES -->
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+
+    <!-- CUSTOM SCRIPTS -->
     <script src="{{asset('js/chest.js')}}"></script>
 
     </body>

@@ -4,7 +4,7 @@ namespace WorldBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use WorldBundle\Entity\Item;
+use WorldBundle\Entity\Item;use WorldBundle\Entity\Bottle;
 
 class LoadItemData implements FixtureInterface
 {
@@ -29,10 +29,11 @@ class LoadItemData implements FixtureInterface
         $manager->persist($item);
 
 
-        $item = new Item();
+        $item = new Bottle();
         $item->setName('bottle');
         $item->setDescription('A glassy bottle with a paper in it. Your best friend against solitude.');
         $item->setImage('no_image');
+        $item->setMessage("");
         $manager->persist($item);
 
         $manager->flush();

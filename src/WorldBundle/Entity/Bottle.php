@@ -4,6 +4,7 @@ namespace WorldBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * Bottle
  *
@@ -24,7 +25,7 @@ class Bottle extends Usable
     /**
      * @var string
      *
-     * @ORM\Column(name="message", type="text")
+     * @ORM\Column(name="message", type="text", nullable=true)
      */
     private $message;
 

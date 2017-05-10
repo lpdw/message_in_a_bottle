@@ -5,9 +5,11 @@ namespace WorldBundle\Controller;
 use WorldBundle\Entity\WorldGame;
 use WorldBundle\Entity\Player;
 use WorldBundle\Entity\Inventory;
+use WorldBundle\Entity\Item;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\HttpFoundation\Response;
 
 
 class GameplayController extends Controller
@@ -19,7 +21,7 @@ class GameplayController extends Controller
     * @Method("GET")
     */
     public function joinWorldAction(WorldGame $worldGame) {
-        $em = $this->getDoctrine()->getManager();
+         $em = $this->getDoctrine()->getManager();
 
         // creating a new player linked to the user
         $player = new Player();
@@ -66,6 +68,54 @@ class GameplayController extends Controller
         ));
 
     }
+
+
+    /**
+     * @Route("/putinchest/{id}", name="putinchest", options={"expose"=true})
+     * @Method("POST")
+     */
+     public function putInChestAction(Item $item) {
+        $em = $this->getDoctrine()->getManager();
+
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $player = $user->getPlayers()->last();
+        $hut = $player->getIsland()->getHut();
+        $inventory = $player->getInventory();
+
+        $hut->addChest($item);
+        $inventory->removeItem($item);
+
+        $em->persist($hut);
+
+        $em->flush();
+
+        return new Response(201);
+     }
+
+     /**
+      * @Route("/takefromchest/{id}", name="takefromchest", options={"expose"=true})
+      * @Method("POST")
+      */
+      public function takeFromChestAction(Item $item) {
+         $em = $this->getDoctrine()->getManager();
+
+         $user = $this->get('security.token_storage')->getToken()->getUser();
+         $player = $user->getPlayers()->last();
+         $hut = $player->getIsland()->getHut();
+         $inventory = $player->getInventory();
+
+         $arrayItem = array("item" => $item, "quantity"=>1);
+         $this->addFlash("item", $arrayItem);
+
+         $inventory->addItem($arrayItem);
+         $hut->removeChest($item);
+
+         $em->persist($hut);
+
+         $em->flush();
+
+         return new Response(201);
+      }
 
 
 
