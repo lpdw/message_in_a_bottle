@@ -9,11 +9,11 @@ $(document).ready(function() {
             url: Routing.generate("putinchest", { id: currentItem.attr('itemid')}),
 
             success: function(result, status) {
-                console.log("OK : "+result);
+                console.log("OK : "+currentItem.html());
 
                 var newButton = '<input type="button" itemid="'+currentItem.attr('itemid')+'" name="take-from-chest" class="take-from-chest-button" value="Prendre">';
 
-                $('.chest_panel ul').append('<li>'+currentItemText.html()+newButton+'</li>');
+                $('.chest_panel ul').append('<li><p>'+currentItemText.html()+'</p>'+newButton+'</li>');
             },
             error: function(result, status, error) {
                 console.log("KO : "+error);
@@ -36,7 +36,7 @@ $(document).ready(function() {
 
                 var newButton = '<input type="button" itemid="'+currentItem.attr('itemid')+'" name="put-in-chest" class="put-in-chest-button" value="Déposer">';
 
-                $('.inventory_panel ul').append('<li>'+currentItemText.html()+newButton+'</li>');
+                $('.inventory_panel ul').append('<li><p>'+currentItemText.html()+'</p>'+newButton+'</li>');
             },
             error: function(result, status, error) {
                 console.log("KO : "+error);
