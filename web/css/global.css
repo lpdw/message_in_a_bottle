@@ -393,7 +393,8 @@ body {
 header {
   display: flex;
   justify-content: space-between;
-  border-bottom: 2px solid #00c8e4; }
+  border-bottom: 2px solid #00c8e4;
+  margin-bottom: 4em; }
   header .miab-logo {
     width: 196px; }
   header nav {
@@ -427,6 +428,18 @@ header {
       min-width: 30px; }
   header .header-rightpart-blankspace {
     min-width: 19vw; }
+
+.hut_panel {
+  display: flex;
+  flex-direction: row; }
+  .hut_panel .inventory_panel, .hut_panel .chest_panel {
+    flex-direction: column;
+    width: 50%; }
+  .hut_panel .chest_panel {
+    border-left-width: thick;
+    border-left-style: double;
+    border-left-color: #060606;
+    padding-left: 2vw; }
 
 .fatborder {
   border: solid 7px #000000;

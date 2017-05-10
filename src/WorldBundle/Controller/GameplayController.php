@@ -46,7 +46,7 @@ class GameplayController extends Controller
         $playerIsland->setDeserted(false);
 
         // giving a starter bottle to player
-        $bottle = $em->getRepository('WorldBundle:Item')->findBy(array('name'=>'bottle'))[0];
+        $bottle = $em->getRepository('WorldBundle:Bottle')->findBy(array('name'=>'bottle'))[0];
         $bottleObject[] = array(
             "item" => $bottle,
             "quantity"=>1
@@ -60,7 +60,7 @@ class GameplayController extends Controller
         $em->persist($player);
         $em->flush();
 
-        
+
         return $this->render('island/show.html.twig', array(
             'island' => $playerIsland,
         ));

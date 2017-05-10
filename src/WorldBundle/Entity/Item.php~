@@ -10,6 +10,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Item
  *
+ * @ORM\InheritanceType("JOINED") 
+ * @ORM\DiscriminatorColumn(name="discr", type="string")
+ * @ORM\DiscriminatorMap({"item"= "Item","usable" = "Usable"})
+ *
  * @ORM\Table(name="item")
  * @ORM\Entity(repositoryClass="WorldBundle\Repository\ItemRepository")
  */
@@ -34,12 +38,12 @@ class Item
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=255)
+     * @ORM\Column(name="description", type="string", length=255, nullable=true)
      */
     protected $description;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      *
      * @Assert\NotBlank(message="Please, upload the product brochure as a png file.")
      * @Assert\Image(
@@ -146,4 +150,38 @@ class Item
         return $this->image;
     }
 
+
+    /**
+     * Add inventory
+     *
+     * @param \WorldBundle\Entity\Inventory $inventory
+     *
+     * @return Item
+     */
+    public function addInventory(\WorldBundle\Entity\Inventory $inventory)
+    {
+        $this->inventories[] = $inventory;
+
+        return $this;
+    }
+
+    /**
+     * Remove inventory
+     *
+     * @param \WorldBundle\Entity\Inventory $inventory
+     */
+    public function removeInventory(\WorldBundle\Entity\Inventory $inventory)
+    {
+        $this->inventories->removeElement($inventory);
+    }
+
+    /**
+     * Get inventories
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getInventories()
+    {
+        return $this->inventories;
+    }
 }

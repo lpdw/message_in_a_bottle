@@ -4,32 +4,48 @@
     {% set inventory = app.user.players|last.inventory.items %}
     {% set chest = app.user.players|last.island.hut.chest %}
 
-    <article class="inventory_panel">
-        <h1>Inventaire</h1>
-        {% if (inventory|length == 0) %}
+    <section class="hut_panel">
+        <article class="inventory_panel">
+            <h1>Inventaire</h1>
+            {% if (inventory|length == 0) %}
             Inventaire vide.
 
-        {% else %}
+            {% else %}
             <ul>
                 {% for item in inventory %}
-                    <li>
-                        {{item.name}} : {{ item.description }} <input type="button" name="drop" value="Jeter">
-                    </li>
+                <li>
+                    {{dump(item)}}
+                    <b>{{item.name}}</b> : {{ item.description }} <input type="button" itemid="{{item.id}}" itemname="{{item.name}}" name="put-in-chest" class="put-in-chest-button" value="Ranger">
+                </li>
                 {% endfor %}
             </ul>
-        {% endif %}
-
-    </ul>
-
-    </article>
-
-
-    <article class="chest_panel">
-        <h1>Coffre</h1>
-        <ul>
+            {% endif %}
 
         </ul>
+
+        </article>
+
+
+        <article class="chest_panel">
+        <h1>Coffre</h1>
+        <ul>
+            {% if (chest|length == 0) %}
+            Coffre vide.
+
+            {% else %}
+            <ul>
+                {% for item in chest %}
+                <li>
+                    {{item.name}} : {{ item.description }} <input type="button" name="drop" value="Jeter">
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </ul>
     </article>
+
+    </section>
+
 
 
 {% endblock %}

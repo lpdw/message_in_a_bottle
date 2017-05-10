@@ -25,17 +25,20 @@ class Hut
     /**
      * One Hut has One Island.
      * @ORM\OneToOne(targetEntity="Island", inversedBy="hut")
-     * @ORM\JoinColumn(name="island_id", referencedColumnName="id")
      */
     private $island;
 
 
-
     /**
-     * One Hut has Many Items.
-     * @ORM\OneToMany(targetEntity="Item", mappedBy="hut")
+     * Many Huts have Many Items.
+     * @ORM\ManyToMany(targetEntity="Item")
+     * @ORM\JoinTable(name="huts_items",
+     *      joinColumns={@ORM\JoinColumn(name="hut_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="item_id", referencedColumnName="id")}
+     *      )
      */
-     private $chest;
+    private $chest;
+
 
     /**
      * One Hut has Many Logs.
