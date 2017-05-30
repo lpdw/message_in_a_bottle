@@ -271,6 +271,7 @@ class Player
 
     /**
     *   Watch sea and return message
+    *   Prend en paramètre la distance à partir de laquelle on voit une île
     *
     * @return string/array
     */
@@ -290,9 +291,9 @@ class Player
         if(!empty($islands)){
             $msg = array();
             foreach ($islands as $key => $value) {
-                $base = "une île";
+                $base = "une ile";
                 if($value['type'] == 'captain'){$base = "l'île du capitaine";}
-                $msg[] = "Il y a $base dans la direction {$value['cardinal']} qui se trouve à ".($value['distance']*10)." minutes";
+                $msg[] = "Il y a $base dans la direction {$value['cardinal']} qui se trouve a ".($value['distance']*10)." minutes";
             }
             return $msg;
         }
