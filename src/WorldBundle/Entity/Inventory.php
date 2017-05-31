@@ -107,8 +107,8 @@ class Inventory
      * @return item
      */
     public function addItem($item){
-        $this->addQuantity($item['quantity']);
-        $this->items->add($item['item']);
+        $this->addQuantity($item['quantity']); //// BUG !!
+        $this->items->add($item['item']); //// BUG !!
     }
 
     /**

@@ -28,12 +28,17 @@ class LoadItemData implements FixtureInterface
         $item->setImage('no_image');
         $manager->persist($item);
 
-
         $item = new Bottle();
         $item->setName('bottle');
         $item->setDescription('A glassy bottle with a paper in it. Your best friend against solitude.');
         $item->setImage('no_image');
         $item->setMessage("");
+        $manager->persist($item);
+
+        $item = new Item();
+        $item->setName('sword');
+        $item->setDescription('A tiny little sharpy sword.');
+        $item->setImage('no_image');
         $manager->persist($item);
 
         $manager->flush();

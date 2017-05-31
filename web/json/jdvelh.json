@@ -30,7 +30,7 @@
 "action"          : "Commencer à creuser le sable tel un chiwawa",
 "desc"   : "Ton sang de pirate ne fait qu'un tour ! A la vue du sable, tu te jettes dessus, et commence à creuser, à la recherche d'un trésor...",
 "item"          : "null",
-"style"         : "random",
+"style"         : "sword",
 "reponse"       : ["1-2-1", "1-2-2"]
 },
 
@@ -38,7 +38,7 @@
 "id"            : "1-2-1",
 "action"          : "Quelque chose...",
 "desc"   : "TONK ! Quelque chose de dur apparaît sous tes mains...",
-"item"          : "null",
+"item"          : "sword",
 "style"         : "choice",
 "reponse"       : ["1-2-1-1"]
 },
@@ -65,7 +65,7 @@
 "id"            : "1-2-1-1-1-1",
 "action"          : "Garder le Coquillage et revenir au départ (pas fini le script)",
 "desc"   : "Tu prends le Coquillage sous ton bras, et repars à l'aventure. Qui sait, il pourra peut-être te servir.",
-"item"          : "random-common-coquillage",
+"item"          : "sword",
 "reponse"       : ["0"]
 },
 
@@ -83,7 +83,7 @@
 "id"            : "1-2-1-1-1-2-1",
 "action"          : "OUILLE",
 "desc"   : "Atcha... Tu te niques les mains, et reste avec ce gros truc encombrant sur les bras. Décidément, il ne te livrera pas ses secrets maintenant..",
-"item"          : "low-life-medium",
+"item"          : "sword",
 "reponse"      : ["0"]
 },
 
@@ -91,7 +91,7 @@
 "id"            : "1-2-1-1-1-2-2",
 "action"          : "BINGO !",
 "desc"   : "Après plusieurs minutes d'effort, le coquillage cède et s'ouvre. Tes efforts ont payés ! En son coeur, tu récupères un objet rare.Bravo ! 🙂",
-"item"          : "random-rare",
+"item"          : "sword",
 "reponse"      : ["0"]
 },
 
@@ -109,7 +109,7 @@
 "id"            : "1-2-1-1-2",
 "action"          : "Item Random",
 "desc"   : "Bonne pioche ! Tu découvres un objet commun. Bravo !",
-"item"          : "random-common-item",
+"item"          : "sword",
 "reponse"      : ["1-1"]
 },
 
@@ -128,7 +128,7 @@
 "id"            : "1-2-2",
 "action"          : "Rien",
 "desc"   : "HA-HA ! Tu tombes nez à nez avec un gros caillou tout moche.. Et ne récupères que des égratinure aux doigts. Tu reprends ta route le long de la forêt.",
-"item"          : "low-life-medium",
+"item"          : "sword",
 "reponse"      : ["1-1"]
 },
 
