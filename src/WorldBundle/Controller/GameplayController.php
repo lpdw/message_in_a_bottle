@@ -21,7 +21,7 @@ class GameplayController extends Controller
     * @Method("GET")
     */
     public function joinWorldAction(WorldGame $worldGame) {
-         $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
 
         // creating a new player linked to the user
         $player = new Player();
