@@ -23,16 +23,15 @@
                 <tr>
                     {% for island in islands %}
                         <td>
-                            {% if island is null %}
-                                <img src="{{ asset('img/Sea.png') }}" alt="">
-                            {% elseif island == 'coast' %}
-                                <img src="{{ asset('img/Sea.png') }}" alt="">
+                            {% if (island is null) or (island == 'coast') %}
+                                <img src="{{ asset('img/island-sea100.png') }}" alt="">
                             {% else %}
-                                {% if  (island.id < '5') %}
-                                    <a href="{{ path('island_show', { 'id': island.id }) }}">  <img src="{{ asset('img/Beach-2.png') }}" alt=""></a>
+                                {% if  (island.type  == "captain") %}
+                                    <a href="{{ path('island_show', { 'id': island.id }) }}">  <img src="{{ asset('img/island-capitaine100.png') }}" alt=""></a>
+                                {% elseif (island.type == "hostil") %}
+                                    <a href="{{ path('island_show', { 'id': island.id }) }}">  <img src="{{ asset('img/island-hostile100.png') }}" alt=""></a>
                                 {% else %}
-
-                                    <a href="{{ path('island_show', { 'id': island.id }) }}">  <img src="{{ asset('img/Beach.png') }}" alt=""></a>
+                                    <a href="{{ path('island_show', { 'id': island.id }) }}">  <img src="{{ asset('img/island-normal100.png') }}" alt=""></a>
                                 {% endif %}
                             {% endif %}
                         </td>

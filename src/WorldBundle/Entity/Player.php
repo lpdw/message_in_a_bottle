@@ -215,18 +215,14 @@ class Player
     *
     * @return boolean
     */
-    public function launchBottle($cardinal,$message)
+    public function launchBottle($cardinal, $bottle)
     {
-        $bottle = new Bottle();
-        $bottle->setMessage($message);
 
         $island = $this->findIsland($cardinal);
 
+
         if($island['data']){
-            // dump($island['data']);
-            $island['data']->getBeach()->addDrop($bottle);
-            dump($island['data']->getBeach()->getDrops());
-            return $bottle;
+            return $island['data'];
         }
         else{
             return false;
@@ -373,10 +369,17 @@ class Player
     * Find ile
     * @return island
     */
-    public function findIsland($cardinal){
+    public function findIsland($cardinal) {
         $island = $this->isIsland($cardinal);
-        if($island["x"] == -1 || $island["y"] == -1){return false;}
-        else{return array("data"=>$this->island->getWorldgame()->getGrid()[$island["x"]][$island["y"]],"distance"=>$island['distance']);}
+        if ($island["x"] == -1 || $island["y"] == -1) {
+            return false;
+        }
+        else {
+            return array(
+                "data"=>$this->island->getWorldgame()->getGrid()[$island["x"]][$island["y"]],
+                "distance"=>$island['distance']
+            );
+        }
     }
 
 

@@ -116,22 +116,40 @@ class PlayerController extends Controller
 
 
     /**
-     * @Route("/launchBottle", name="launchBottle")
+     * @Route("/launchBottle/{id}", name="launchBottle", options={"expose"=true})
+	 * Method("POST")
      */
-    public function launchBottleAction($direction = "NORD OUEST",$message = "I'M ALIVE")
+    public function launchBottleAction(Request $request, Bottle $bottle)
     {
-        $Player = $this->getDoctrine()->getRepository('WorldBundle:Player')->findOneById(2);
-        $bottle = $Player->launchBottle($direction,$message);
-        if($bottle){
-            $beach = $Player->getIsland()->getBeach();
-            $beach->addDrop($bottle);
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($beach);
-            $em->flush($beach);
-            dump('La bouteille est arrivée sur l\'ile');
+		// removing bottle from inventory
+		$em = $this->getDoctrine()->getManager();
+		$user = $this->get('security.token_storage')->getToken()->getUser();
+		$player = $user->getPlayers()->last();
+		$player->getInventory()->removeItem($bottle);
+		$em->persist($player);
+
+		// throwing bottle to the sea
+		$direction = $request->request->get('direction');
+
+        $island = $player->launchBottle($direction, $bottle);
+
+        if($island){
+            $island->getBeach()->addDrop($bottle);
+            $em->persist($island);
+
+			$em->flush();
+			$result = "La bouteille est bien arrivée";
         }
-        else{dump('Elle n\'est pas arrivée');}
-        die();
+
+
+		else{
+			$result = 'La bouteille n\'est pas arrivée';
+		}
+
+		$this->addFlash('island', $island);
+
+		return new Response($result);
+
     }
 
     /**

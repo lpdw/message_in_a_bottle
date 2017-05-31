@@ -15,11 +15,14 @@
                 </a>
             </li>
             <li>
+                <a href="{{ path('take_bottle', {id: app.user.players|last.island.hut.id})}}">
+                    Prendre une bouteille
+                </a>
             </li>
-            <li>
+            <li class="inactive">
                 Atelier
             </li>
-            <li>
+            <li  class="inactive">
                 Journal de bord
             </li>
         </ul>
@@ -35,7 +38,9 @@
             {% endfor %}
 
             {% if nbBottle %}
-            Vos bouteilles :
+            <h2>
+                Vos bouteilles :
+            </h2>
             <ul class="bottlelist">
                 {% for bottle in bottles %}
                 <li>

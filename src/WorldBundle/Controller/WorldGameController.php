@@ -65,7 +65,10 @@ class WorldGameController extends Controller
             // Generating the world
             $nbPlayers = 5;
             $nbIslands = $nbPlayers*3;
-
+            $typeIsland = array(
+                "hostil" => $nbPlayers,
+                "player" => $nbPlayers * 2
+            );
             // Creating an empty grid
             $gridGame = array();
             for ($i=0; $i < $nbIslands ; $i++) {
@@ -75,10 +78,10 @@ class WorldGameController extends Controller
 
             // Generating the islands
             $j = 0;
-            while ($j <= $nbIslands-1) {
+            while ($j <= $nbIslands) {
                 // Placing the islands on the grid
                 $island = new Island();
-                $island->setId($currentIslandId);
+                $island->setId($currentIslandId+1);
 
                 $forest = new Forest();
                 $forest->setIsland($island);
@@ -144,7 +147,16 @@ class WorldGameController extends Controller
 
                         // TODO : set type
                         $island->setWorldgame($worldGame);
-                        $island->setType("player");
+                        if($j != $nbIslands){
+                            $randomType = rand(1,3);
+                            $type = ($randomType > 2) ? "hostil" : "player";
+                            if($typeIsland[$type] <= 0){
+                                $type = ($type == "hostil") ? "player" : "hostil";
+                            }
+                            $island->setType($type);
+                            $typeIsland[$type]--;
+                        }
+                        else{$island->setType('captain');}
                         // set the island coordinates
                         $island->setLocalisationX($randomX);
                         $island->setLocalisationY($randomY);
@@ -184,10 +196,10 @@ class WorldGameController extends Controller
      * @Route("/{id}", name="worldgame_show")
      * @Method("GET")
      */
-    public function showAction(WorldGame $worldGame)
+    public function showAction(WorldGame $worldGame,$id)
     {
         $deleteForm = $this->createDeleteForm($worldGame);
-
+        
         return $this->render('worldgame/show.html.twig', array(
             'worldGame' => $worldGame,
             'delete_form' => $deleteForm->createView(),
