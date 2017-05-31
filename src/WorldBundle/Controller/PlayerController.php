@@ -195,21 +195,24 @@ class PlayerController extends Controller
 		 * @Route("/takeitem/{itemName}", name="takeitem", options={"expose"=true})
 		 * @Method("POST")
 		 */
-		 public function takeItemAction(Request $request, $itemName) {
+		 public function takeItemAction($itemName) {
 
 				$em = $this->getDoctrine()->getManager();
 
-				$item = $em->getRepository('WorldBundle:Item')->findByName($itemName);
+				$item = $em->getRepository('WorldBundle:Item')->findByName($itemName)[0];
+				$this->addFlash('test', $item);
+				// var_dump($item); die();
 
 				$user = $this->get('security.token_storage')->getToken()->getUser();
 				$player = $user->getPlayers()->last();
-				$inventory = $player->getInventory();
 
-				$arrayItem = array("item" => $itemName, "quantity"=>1);
-				//$arrayItemu = json_encode($arrayItem);
-				$inventory->addItem($arrayItem);
 
-				$em->persist($inventory);
+				$arrayItem = array("quantity"=>1, "item" => $item);
+				// $arrayItemu = json_encode($arrayItem);
+
+				$player->getInventory()->addItem($arrayItem);
+
+				$em->persist($player);
 
 				$em->flush();
 

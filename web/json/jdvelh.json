@@ -13,7 +13,7 @@
 "action"          : "Contourner la forêt par la plage",
 "desc"   : "Un peu peureux, tu préfères commencer safe en contournant cette grosse masse feuillue pour commencer...",
 "item"          : "null",
-"style"         : "choice",
+"style"         : "random",
 "reponse"       : ["1-1", "1-2", "1-3"]
 },
 

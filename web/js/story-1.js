@@ -20,8 +20,28 @@ $( document ).ready(function() {
             var i = $(this).attr('id');
             console.log("l'id est égal à : "+i);
 
-            // On ajoute l'item à la bd
 
+
+
+
+
+
+            var q = data.story[i].reponse;
+            console.log('les réponses sont : '+q)
+
+            $(".story").empty();
+            console.log(q.length);
+
+
+            $(".story").append("<p>"+data.story[i].desc+"</p></br>");
+
+            for(a = 0; a < q.length; a++){
+                $('.story').append("<button class='buttonForest' id="+q[a]+">"+data.story[q[a]].action+"</button>");
+            }
+
+
+
+            // On ajoute l'item à la bd
             var currentItem = data.story[i].item;
             console.log(data.story[i].item);
             if (currentItem != "null") {
@@ -38,21 +58,6 @@ $( document ).ready(function() {
               });
             }
             //
-
-
-            var q = data.story[i].reponse;
-            console.log('les réponses sont : '+q)
-
-            $(".story").empty();
-            console.log(q.length);
-
-
-            $(".story").append("<p>"+data.story[i].desc+"</p></br>");
-
-            for(a = 0; a < q.length; a++){
-                $('.story').append("<button class='buttonForest' id="+q[a]+">"+data.story[q[a]].action+"</button>");
-            }
-
         });
     });
 });
