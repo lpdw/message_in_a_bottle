@@ -15,7 +15,9 @@
                 </a>
             </li>
             <li>
-                Prendre une bouteille
+                <a href="{{ path('take_bottle', {id: app.user.players|last.island.hut.id})}}">
+                    Prendre une bouteille
+                </a>
             </li>
             <li class="inactive">
                 Atelier

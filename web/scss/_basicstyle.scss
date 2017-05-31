@@ -109,6 +109,11 @@ header {
     .inventory_panel, .chest_panel {
         flex-direction:column;
         width: 50%;
+
+        ul li {
+            display:flex;
+            margin:7px;
+        }
     }
 
     .chest_panel {

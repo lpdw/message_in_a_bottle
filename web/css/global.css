@@ -434,6 +434,9 @@ header {
   .hut_panel .inventory_panel, .hut_panel .chest_panel {
     flex-direction: column;
     width: 50%; }
+    .hut_panel .inventory_panel ul li, .hut_panel .chest_panel ul li {
+      display: flex;
+      margin: 7px; }
   .hut_panel .chest_panel {
     border-left-width: thick;
     border-left-style: double;
