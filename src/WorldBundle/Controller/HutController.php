@@ -38,16 +38,10 @@ class HutController extends Controller
      */
     public function chestAction()
     {
-        
+
         return $this->render('hut/chest.html.twig', array(
 
         ));
     }
-
-
-
-
-
-
 
 }

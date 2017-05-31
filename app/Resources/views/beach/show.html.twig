@@ -1,20 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <h1>Beach</h1>
+{% block content %}
+    <h1>La plage</h1>
+    <h2>
+        Vous vous tenez sur la plage...
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ beach.id }}</td>
-            </tr>
-        </tbody>
-    </table>
+    </h2>
 
-    <ul>
-        <li>
-            <a href="{{ path('beach_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    <div class="actionlist">
+        <ul>
+            <li>
+                <span class="beach_watchsea">
+                    <a href="#" class="watchsea">
+                        Regarder la mer...
+                    </a>
+                </span>
+            </li>
+            <li>
+                Lancer une bouteille à la mer.
+            </li>
+            <li>
+                Fouiller la plage.
+            </li>
+            <li>
+                Nager.
+            </li>
+        </ul>
+    </div>
+
 {% endblock %}

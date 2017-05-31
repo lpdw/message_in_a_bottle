@@ -84,7 +84,7 @@
 "action"          : "OUILLE",
 "desc"   : "Atcha... Tu te niques les mains, et reste avec ce gros truc encombrant sur les bras. Décidément, il ne te livrera pas ses secrets maintenant..",
 "item"          : "low-life-medium",
-"solution"      : ["0"]
+"reponse"      : ["0"]
 },
 
 "1-2-1-1-1-2-2":{
@@ -92,7 +92,7 @@
 "action"          : "BINGO !",
 "desc"   : "Après plusieurs minutes d'effort, le coquillage cède et s'ouvre. Tes efforts ont payés ! En son coeur, tu récupères un objet rare.Bravo ! 🙂",
 "item"          : "random-rare",
-"solution"      : ["0"]
+"reponse"      : ["0"]
 },
 
 
@@ -101,7 +101,7 @@
 "action"          : "Le laisser là, et repartir.",
 "desc"   : "Pragmatique, tu réalises qu'un coquillage ne te servira ni à faire la vaisselle, ni à survivre sur cette île. Tu le laisses là, et repars pour de nouvelles aventures.",
 "item"          : "null",
-"solution"      : ["1-1"]
+"reponse"      : ["1-1"]
 },
 
 
@@ -110,7 +110,7 @@
 "action"          : "Item Random",
 "desc"   : "Bonne pioche ! Tu découvres un objet commun. Bravo !",
 "item"          : "random-common-item",
-"solution"      : ["1-1"]
+"reponse"      : ["1-1"]
 },
 
 
@@ -120,7 +120,7 @@
 "action"          : "S'arrêter, méditer un instant, et si c'était un crabe ? Abandonner la creusette. ",
 "desc"   : "Logique et prudent, tu n'as pas envie de tomber sur une mauvaise surprise. Tu arrêtes la creusette, et reprend ta route le long de la forêt. ",
 "item"          : "null",
-"solution"      : ["1-1"]
+"reponse"      : ["1-1"]
 },
 
 
@@ -129,7 +129,7 @@
 "action"          : "Rien",
 "desc"   : "HA-HA ! Tu tombes nez à nez avec un gros caillou tout moche.. Et ne récupères que des égratinure aux doigts. Tu reprends ta route le long de la forêt.",
 "item"          : "low-life-medium",
-"solution"      : ["1-1"]
+"reponse"      : ["1-1"]
 },
 
 
@@ -138,7 +138,7 @@
 "action"          : "Faire demi-tour",
 "desc"   : "La plage, décidément, ce n'est pas pour toi. Le sable te gratte et le Soleil cogne fort. Tu préfères retourner sur tes pas.",
 "item"          : "null",
-"solution"      : ["0"]
+"reponse"      : ["0"]
 },
 
 "1-4":{
@@ -146,6 +146,6 @@
 "action"          : "RECOMENCER",
 "desc"   : "Vous ètes mort, mort et re-mort",
 "item"          : "null",
-"solution"      : ["0"]
+"reponse"      : ["0"]
 }
 }}

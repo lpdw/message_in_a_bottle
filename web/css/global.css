@@ -381,7 +381,6 @@ body {
   border: solid 7px #000000;
   border-radius: 5px; }
   body a {
-    text-decoration: none;
     color: initial; }
   body p {
     margin: 0; }
@@ -424,7 +423,7 @@ header {
     align-items: center;
     margin-left: 6vw; }
     header .header-rightpart .disconnection_icon {
-      width: 4vw;
+      width: 3vw;
       min-width: 30px; }
   header .header-rightpart-blankspace {
     min-width: 19vw; }
@@ -440,6 +439,28 @@ header {
     border-left-style: double;
     border-left-color: #060606;
     padding-left: 2vw; }
+
+.hut_hr {
+  margin-top: 90px;
+  margin-bottom: 90px; }
+
+.seainfo {
+  display: none;
+  font-style: italic; }
+
+.bottlelist li {
+  display: flex;
+  flex-direction: row; }
+
+.bottleicon {
+  width: 5vw; }
+
+.bottlemessage {
+  cursor: pointer; }
+
+.actionlist ul li {
+  margin-top: 19px;
+  margin-bottom: 5px; }
 
 .fatborder {
   border: solid 7px #000000;

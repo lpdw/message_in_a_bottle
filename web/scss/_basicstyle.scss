@@ -17,7 +17,7 @@ body {
 
     // removing default styles
     a {
-        text-decoration: none;
+        // text-decoration: none;
         color: initial;
     }
 
@@ -90,7 +90,7 @@ header {
 
 
         .disconnection_icon {
-            width:4vw;
+            width:3vw;
             min-width:30px;
         }
     }
@@ -119,6 +119,39 @@ header {
     }
 
 }
+
+.hut_hr {
+    margin-top:90px;
+    margin-bottom: 90px;
+}
+
+.seainfo {
+    display:none;
+    font-style: italic;
+}
+
+.bottlelist li {
+    display:flex;
+    flex-direction: row;
+}
+
+.bottleicon {
+    width:5vw;
+}
+
+.bottlemessage {
+    cursor:pointer;
+}
+
+.actionlist ul {
+
+
+    li {
+        margin-top:19px;
+        margin-bottom:5px;
+    }
+}
+
 
 .fatborder {
     border:solid 7px #000000;

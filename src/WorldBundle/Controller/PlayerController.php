@@ -5,6 +5,7 @@ namespace WorldBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use WorldBundle\Entity\Player;
 use WorldBundle\Entity\Item;
 use WorldBundle\Entity\Bottle;
@@ -106,7 +107,7 @@ class PlayerController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($Player);
             $em->flush($Player);
-            dump('Arriver sur une île');            
+            dump('Arriver sur une île');
         }
         else{dump('retour a la case depart');}
         die();
@@ -126,20 +127,23 @@ class PlayerController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($beach);
             $em->flush($beach);
-            dump('La bouteille est arriver sur l\'ile');
+            dump('La bouteille est arrivée sur l\'ile');
         }
-        else{dump('Elle n\'est pas arrivé');}
+        else{dump('Elle n\'est pas arrivée');}
         die();
     }
-    
+
     /**
-     * @Route("/watchSea", name="watchSea")
+     * @Route("/watchSea", name="watchSea", options={"expose"=true})
+	 * Method("POST")
+	 *
      */
     public function watchSeaAction()
     {
-        $Player = $this->getDoctrine()->getRepository('WorldBundle:Player')->findOneById(2);
-        dump($Player->watchSea(2));
-        die();
+		$user = $this->get('security.token_storage')->getToken()->getUser();
+        $player = $user->getPlayers()->last();
+
+        return new Response(json_encode($player->watchSea(3)));
     }
 
     /**

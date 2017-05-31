@@ -1,15 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block content%}
+{% block content %}
+{% set inventory = app.user.players|last.inventory.items %}
+{% set nbBottle = 0 %}
+{% set bottles = [] %}
 
     <h1>Votre cabane</h1>
 
-    <article class="">
+    <article class="actionlist">
         <ul>
             <li>
                 <a href="{{ path('chest_show') }}">
                     Coffre
                 </a>
+            </li>
+            <li>
             </li>
             <li>
                 Atelier
@@ -18,6 +23,41 @@
                 Journal de bord
             </li>
         </ul>
+
+        <hr class="hut_hr">
+
+        <section>
+            {% for item in inventory %}
+                {% if item.name == 'bottle' %}
+                    {% set nbBottle = nbBottle + 1 %}
+                    {% set bottles = bottles|merge([item]) %}
+                {% endif %}
+            {% endfor %}
+
+            {% if nbBottle %}
+            Vos bouteilles :
+            <ul class="bottlelist">
+                {% for bottle in bottles %}
+                <li>
+                    <a href="#">
+                        <img class="bottleicon" src="{{asset('icons/bottle.ico')}}" alt="Icone de bouteille">
+                    </a>
+                    <div class="bottlemessage_div" idbottle="{{bottle.id}}"><p class="bottlemessage_p">"
+                    {% if bottle.message %}
+                        {{bottle.message}}
+                    {% else %}
+                        ...
+                    {% endif %}
+                    "</p></div>
+                </li>
+                {% endfor %}
+
+            </ul>
+            {% else %}
+            Vous ne possédez pas de bouteille...
+            {% endif %}
+
+        </section>
     </article>
 
 
