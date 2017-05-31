@@ -196,10 +196,7 @@ class PlayerController extends Controller
 		 * @Method("POST")
 		 */
 		 public function takeItemAction(Request $request, $itemName) {
-			//  dump($request->query->get(''));
 
-				// dump($itemName);
-				// die();
 				$em = $this->getDoctrine()->getManager();
 
 				$item = $em->getRepository('WorldBundle:Item')->findByName($itemName);
@@ -209,8 +206,8 @@ class PlayerController extends Controller
 				$inventory = $player->getInventory();
 
 				$arrayItem = array("item" => $itemName, "quantity"=>1);
-				$arrayItemu = json_encode($arrayItem);
-				$inventory->addItem($arrayItemu);
+				//$arrayItemu = json_encode($arrayItem);
+				$inventory->addItem($arrayItem);
 
 				$em->persist($inventory);
 
