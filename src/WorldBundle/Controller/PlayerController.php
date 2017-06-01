@@ -98,20 +98,41 @@ class PlayerController extends Controller
     }
 
     /**
-     * @Route("/moveInIsland", name="moveInIsland")
+     * @Route("/moveInIsland/{type}/{direction}", name="moveInIsland", options={"expose"=true})
      */
-    public function moveInIslandAction($type = 'swimming',$direction = "NORD EST")
+    public function moveInIslandAction($type, $direction)
     {
-        $Player = $this->getDoctrine()->getRepository('WorldBundle:Player')->findOneById(2);
-        if($Player->$type($direction)){
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($Player);
-            $em->flush($Player);
-            dump('Arriver sur une île');
+		$em = $this->getDoctrine()->getManager();
+		$user = $this->get('security.token_storage')->getToken()->getUser();
+		$player = $user->getPlayers()->last();
+
+		$island = $player->$type($direction);
+
+		if(gettype($island) == 'object'){
+			// $oldIsland = $player->getIsland();
+			// $oldIsland->removePlayer($player);
+			//
+			// $island->addPlayer($player);
+			// $em = $this->getDoctrine()->getManager();
+			// $em->persist($player);
+			// $em->flush();
+
+			$qb = $this->getDoctrine()->getManager()->createQueryBuilder();
+			$q = $qb->update('WorldBundle:Player', 'p')
+					->set('p.island', $island->getId())
+					->where('p.id = ?1')
+					->setParameter(1, $player->getId())
+					->getQuery();
+			$p = $q->execute();
+
+			return $this->redirectToRoute('island_show', array(
+				'island' => $island->getId(),
+			));
+
         }
-        else{dump('retour a la case depart');}
-        die();
+
     }
+
 
 
     /**
@@ -160,8 +181,7 @@ class PlayerController extends Controller
     {
 		$user = $this->get('security.token_storage')->getToken()->getUser();
         $player = $user->getPlayers()->last();
-
-        return new Response(json_encode($player->watchSea(3)));
+        return new Response(json_encode($player->watchSea(2)));
     }
 
     /**

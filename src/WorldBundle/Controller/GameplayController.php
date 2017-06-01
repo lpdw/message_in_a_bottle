@@ -50,7 +50,15 @@ class GameplayController extends Controller
         $playerIsland->setDeserted(false);
 
         // giving a starter bottle to player
-        $bottle = $em->getRepository('WorldBundle:Bottle')->findBy(array('name'=>'bottle'))[0];
+
+        $bottle = new Bottle();
+        $bottle->setName('bottle');
+        $bottle->setDescription('A glassy bottle with a paper in it. Your best friend against solitude.');
+        $bottle->setImage('no_image');
+        $bottle->setMessage("");
+        $em->persist($bottle);
+
+        // $bottle = $em->getRepository('WorldBundle:Bottle')->findBy(array('name'=>'bottle'))[0];
         $bottleObject[] = array(
             "item" => $bottle,
             "quantity"=>1
@@ -146,6 +154,5 @@ class GameplayController extends Controller
           return $this->redirectToRoute('hut_show', array('id' => $id));
 
       }
-
 
 }

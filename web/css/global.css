@@ -378,8 +378,8 @@ body {
   margin: 1%;
   padding: 1%;
   min-height: 93vh;
-  border: solid 7px #000000;
-  border-radius: 5px; }
+  border-top: 2px solid #00c8e4;
+  border-bottom: 2px solid #00c8e4; }
   body a {
     color: initial; }
   body p {
@@ -508,5 +508,9 @@ footer {
 .inactive {
   text-decoration: line-through;
   color: grey; }
+
+.error_alert {
+  color: red;
+  display: none; }
 
 /*# sourceMappingURL=global.css.map */

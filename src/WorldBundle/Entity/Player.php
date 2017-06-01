@@ -242,7 +242,7 @@ class Player
             $percent = 50 - (int)($island['distance']*10);
             if($percent <= 0){return false;}
             $resultat = $this->randomisTrue($percent);
-            if($resultat){$this->island = $island['data'];}
+            if($resultat){$resultat = $island['data'];}
             return $resultat;
         }
     }

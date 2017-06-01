@@ -12,6 +12,22 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('WorldBundle:Default:index.html.twig');
+
+
+        if( $this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+
+            $em = $this->getDoctrine()->getManager();
+    		$user = $this->get('security.token_storage')->getToken()->getUser();
+    		$player = $user->getPlayers()->last();
+
+            $island = $player->getIsland();
+
+            return $this->render('island/show.html.twig', array(
+                'island' => $island,
+            ));
+        }
+        else {
+            return $this->redirect('/login');
+        }
     }
 }
