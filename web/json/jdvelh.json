@@ -7,7 +7,7 @@
     "desc" : "Vous vous retrouvez en face d'une forêt verdoyante et gigantesque..",
     "item" : "null",
     "style" : "choice",
-    "reponse" :  ["1"]
+    "reponse" :  ["2"]
   },
 
   "1": {

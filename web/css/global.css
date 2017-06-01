@@ -372,6 +372,7 @@ template {
 @font-face {
   font-family: 'journal';
   src: url("../fonts/journal.ttf") format("truetype"); }
+
 body {
   font-family: Helvetica Neue, Helvetica, Arial;
   width: 94vw;
@@ -610,4 +611,25 @@ footer {
     width: 1200px;
     height: auto; }
 
-/*# sourceMappingURL=global.css.map */
+.story {
+   background-color: #00c8e4;
+   text-align: center;
+   padding:50px;
+   font-size: 2em;
+   margin-bottom: 50px;
+}
+
+.buttonForest {
+  font-size: 0.7em;
+  margin: 25px;
+  padding: 15px;
+  border: none;
+  background-color: #ffffff;
+}
+
+.buttonForest:hover {
+  font-size: 0.7em;
+  margin: 25px;
+  background-color: #dedede;
+
+}
