@@ -30,17 +30,17 @@
                         {% if app.user.isPlaying %}
 
                             {% set currentuser = (app.user.players|last) %}
-                            <li>
+                            <li class="hut">
                                 <a href="{{ path('hut_show', {'id': currentuser.island.hut.id})}}">
                                     Hutte
                                 </a>
                             </li>
-                            <li>
+                            <li class="forest">
                                 <a href="{{ path('forest_show', {'id': currentuser.island.forest.id})}}">
                                     Forêt
                                 </a>
                             </li>
-                            <li>
+                            <li class="beach">
                                 <a href="{{ path('beach_show', {'id': currentuser.island.beach.id})}}">
                                     Plage
                                 </a>
@@ -106,6 +106,7 @@
     <script src="{{asset('js/bottletext.js')}}"></script>
     <script src="{{asset('js/throwbottle.js')}}"></script>
     <script src="{{asset('js/swim.js')}}"></script>
+    <script src="{{asset('js/main.js')}}"></script>
 
     </body>
 

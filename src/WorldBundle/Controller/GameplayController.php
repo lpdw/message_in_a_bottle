@@ -102,6 +102,8 @@ class GameplayController extends Controller
         return new Response(201);
      }
 
+
+
      /**
       * @Route("/takefromchest/{id}", name="takefromchest", options={"expose"=true})
       * @Method("POST")
@@ -111,6 +113,7 @@ class GameplayController extends Controller
 
          $user = $this->get('security.token_storage')->getToken()->getUser();
          $player = $user->getPlayers()->last();
+                  
          $hut = $player->getIsland()->getHut();
          $inventory = $player->getInventory();
 

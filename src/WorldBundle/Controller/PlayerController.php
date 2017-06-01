@@ -2,15 +2,16 @@
 
 namespace WorldBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use WorldBundle\Entity\Player;
 use WorldBundle\Entity\Item;
 use WorldBundle\Entity\Bottle;
-use WorldBundle\Form\ItemType;
 use WorldBundle\Entity\WorldGame;
+use WorldBundle\Form\ItemType;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Player controller.
@@ -221,4 +222,40 @@ class PlayerController extends Controller
             'form' => $form->createView(),
         ));
     }
+
+
+
+
+
+// ICI : ajout de l'item récupéré dans la foret ou bien ailleur si possible
+
+		/**
+		 * @Route("/takeitem/{itemName}", name="takeitem", options={"expose"=true})
+		 * @Method("POST")
+		 */
+		 public function takeItemAction($itemName) {
+
+				$em = $this->getDoctrine()->getManager();
+
+				$item = $em->getRepository('WorldBundle:Item')->findByName($itemName)[0];
+				$this->addFlash('test', $item);
+				// var_dump($item); die();
+
+				$user = $this->get('security.token_storage')->getToken()->getUser();
+				$player = $user->getPlayers()->last();
+
+
+				$arrayItem = array("quantity"=>1, "item" => $item);
+				// $arrayItemu = json_encode($arrayItem);
+
+				$player->getInventory()->addItem($arrayItem);
+
+				$em->persist($player);
+
+				$em->flush();
+
+				return new Response(201);
+		 }
+
+
 }
