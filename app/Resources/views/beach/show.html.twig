@@ -74,7 +74,12 @@
         {% else %}
         Vous ne possédez pas de bouteille...
         {% endif %}
+        <div class="beachZone">
+          <img src="{{asset("img/backgrounds/beach.gif")}}" alt="background beach">
 
+        </div>
     </section>
-
+    <audio src="{{asset("son/sea.mp3")}}" autoplay >
+      Votre navigateur ne supporte pas l'élément <code>audio</code>.
+    </audio>
 {% endblock %}

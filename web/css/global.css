@@ -443,10 +443,6 @@ header {
     border-left-color: #060606;
     padding-left: 2vw; }
 
-.hut_hr {
-  margin-top: 90px;
-  margin-bottom: 90px; }
-
 .seainfo {
   display: none;
   font-style: italic; }
@@ -461,9 +457,12 @@ header {
 .bottlemessage {
   cursor: pointer; }
 
-.actionlist ul li {
-  margin-top: 19px;
-  margin-bottom: 5px; }
+.actionlist ul {
+  display: flex; }
+  .actionlist ul li {
+    margin-top: 19px;
+    margin-bottom: 5px;
+    padding-right: 5px; }
 
 .fatborder {
   border: solid 7px #000000;
@@ -580,5 +579,31 @@ footer {
   color: white;
   text-decoration: none;
   font-size: 22px; }
+
+/* forest */
+.forestZone {
+  width: 1200px;
+  height: auto;
+  margin: 0 auto; }
+  .forestZone img {
+    width: 1200px;
+    height: auto; }
+
+/* forest */
+.beachZone {
+  width: 1200px;
+  height: auto;
+  margin: 0 auto; }
+  .beachZone img {
+    width: 1200px;
+    height: auto; }
+
+.hutZone {
+  width: 1200px;
+  height: auto;
+  margin: 0 auto; }
+  .hutZone img {
+    width: 1200px;
+    height: auto; }
 
 /*# sourceMappingURL=global.css.map */
