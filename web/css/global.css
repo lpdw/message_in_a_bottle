@@ -509,91 +509,76 @@ footer {
   text-decoration: line-through;
   color: grey; }
 
-/*# sourceMappingURL=global.css.map */
-
-
-
 /************* ACCUEIL ***************/
-
-.accueil{
+.accueil {
   background-size: contain;
   background-repeat: no-repeat;
   height: 100vh;
   width: 1200px;
   position: relative;
-  margin: 0 auto;
-}
+  margin: 0 auto; }
 
-.accueil .nav-menu{
+.accueil .nav-menu {
   width: 100%;
   display: flex;
-  position: absolute;
-}
+  position: absolute; }
+
 /* image de fond */
-.accueil img{
+.accueil img {
   width: 1200px;
   position: absolute;
-  height: 768px;
-}
+  height: 768px; }
 
 /* li des liens */
-.accueil .nav-menu .hut{
+.accueil .nav-menu .hut {
   order: 2;
   top: 242px;
   background-color: rgba(185, 171, 0, 0.45);
-  left: 558px;
-}
-.accueil .nav-menu .forest{
+  left: 558px; }
+
+.accueil .nav-menu .forest {
   order: 1;
   background-color: rgba(0, 255, 55, 0.17);
   top: 150px;
-  left: 207px;
-}
-.accueil .nav-menu .beach{
+  left: 207px; }
+
+.accueil .nav-menu .beach {
   order: 3;
   top: 400px;
   width: 350px;
   height: 350px;
   background-color: rgba(255, 243, 99, 0.46);
-  right: 0;
-}
-.accueil .nav-menu .beach, .accueil .nav-menu .forest, .accueil .nav-menu .hut{
+  right: 0; }
+
+.accueil .nav-menu .beach, .accueil .nav-menu .forest, .accueil .nav-menu .hut {
   position: absolute;
-  border-radius: 50%;
-}
-.accueil .nav-menu .beach:hover, .accueil .nav-menu .forest:hover, .accueil .nav-menu .hut:hover{
-  background-color: rgba(99, 133, 255, 0.46);
-}
+  border-radius: 50%; }
 
-.accueil .nav-menu .forest a{
+.accueil .nav-menu .beach:hover, .accueil .nav-menu .forest:hover, .accueil .nav-menu .hut:hover {
+  background-color: rgba(99, 133, 255, 0.46); }
+
+.accueil .nav-menu .forest a {
   width: 300px;
-  height: 300px;
-}
-.accueil .nav-menu .hut a{
+  height: 300px; }
+
+.accueil .nav-menu .hut a {
   height: 150px;
-  width: 150px;
-}
-.accueil .nav-menu .beach a{
+  width: 150px; }
+
+.accueil .nav-menu .beach a {
   height: 350px;
-  width: 350px;
-}
+  width: 350px; }
 
-
-
-
-
-
-
-.accueil .nav-menu li{
-  flex: 1;
-}
+.accueil .nav-menu li {
+  flex: 1; }
 
 /* a des liens */
-.accueil .nav-menu .beach a, .accueil .nav-menu .forest a, .accueil .nav-menu .hut a{
+.accueil .nav-menu .beach a, .accueil .nav-menu .forest a, .accueil .nav-menu .hut a {
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   text-decoration: none;
-  font-size: 22px;
-}
+  font-size: 22px; }
+
+/*# sourceMappingURL=global.css.map */
