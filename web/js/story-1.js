@@ -1,29 +1,16 @@
 $( document ).ready(function() {
-
-
-
-
-
-
     $.getJSON( "/json/jdvelh.json", function( data ) {
-
-
         // ON PLACE MANUELEMENT LA PREMIERE QUESTION !
         $(".story").append("<p>"+data.story["0"].desc+"</p></br><button class='buttonForest' id='1'>"+data.story["0"].action+"</button>");
-
-
-
-
       $(document).on('click','.buttonForest',function(){
-
+      
             // l'id est récupéré du précédent clic
             var i = $(this).attr('id');
             console.log("l'id est égal à : "+i);
-
+            
             // recupere les reponses de la question correspondant a l'id
             var q = data.story[i].reponse;
             console.log('les réponses sont : '+q)
-
             // on vide la story
             $(".story").empty();
             console.log(q.length);
@@ -47,9 +34,6 @@ $( document ).ready(function() {
               $('.story').append("<button class='buttonForest' id="+q[a]+">"+data.story[q[a]].action+"</button>");
 
             };
-
-
-
 
             // On ajoute l'item à la bd
             var currentItem = data.story[i].item;
