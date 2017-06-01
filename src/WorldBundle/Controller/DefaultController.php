@@ -17,10 +17,16 @@ class DefaultController extends Controller
         if( $this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
 
             $em = $this->getDoctrine()->getManager();
-    		$user = $this->get('security.token_storage')->getToken()->getUser();
-    		$player = $user->getPlayers()->last();
-
-            $island = $player->getIsland();
+            $user = $this->get('security.token_storage')->getToken()->getUser();
+            $player = $user->getPlayers()->last();
+            var_dump($player);
+            if($player){
+                $island = $player->getIsland();                
+            }
+            else{
+                return $this->redirect('/worldgame');
+            }
+            
 
             return $this->render('island/show.html.twig', array(
                 'island' => $island,
