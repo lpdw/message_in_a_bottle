@@ -1,16 +1,20 @@
 {% extends 'base.html.twig' %}
 
 {% block content%}
-    <h1>Île n°{{island.id}}</h1>
+    <h1 style="color:#00c8e4;">Île n°{{island.id}}</h1>
 
     <ul>
         <li>
-            Coordonnées :
+            <h4>
+              Coordonnées :
             {{ island.localisationX }} ; {{ island.localisationY }}
+            </h4>
         </li>
         <li>
+            <h4>
             Type :
             {{ island.type|capitalize }}
+            </h4>
         </li>
     </ul>
 

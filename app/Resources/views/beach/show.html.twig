@@ -5,13 +5,14 @@
 {% set nbBottle = 0 %}
 {% set bottles = [] %}
 
-    <h1>La plage</h1>
+    <h1 style="color:#00c8e4;">La plage</h1>
     <h2>
         Vous vous tenez sur la plage...
 
     </h2>
 
     <div class="actionlist">
+        <h4>
         <ul>
             <li>
                 <span class="beach_watchsea">
@@ -27,8 +28,8 @@
                 <a class="">
                     Nager.
                 </a>
-                <select class="beach_swim" name="" >
-                    <option value="" disabled selected>Vers où ?</option>
+                <select class="beach_swim" name="" style="border:none; font-size:1em; background-color:#00c8e4; ">
+                    <option value="" disabled selected >Vers où ?</option>
                     <option value="NORD OUEST">Nord-Ouest</option>
                     <option value="NORD">Nord</option>
                     <option value="NORD EST">Nord-Est</option>
@@ -41,11 +42,12 @@
                 <p class="error_alert">Vous n'êtes pas parvenu jusqu'à l'île...</p>
             </li>
         </ul>
+      </h4>
     </div>
 
     <hr class="hut_hr">
 
-    <section>
+    <section >
         {% for item in inventory %}
             {% if item.name == 'bottle' %}
                 {% set nbBottle = nbBottle + 1 %}
@@ -70,7 +72,7 @@
                     {% endif %}
                     "</p>
                 </a>
-                <select class="throwbottle" name="" >
+                <select class="throwbottle" name="" style="border:none; font-size:1em; background-color:#00c8e4; ">
                     <option value="" disabled selected>Jeter ?</option>
                     <option value="NORD OUEST">Nord-Ouest</option>
                     <option value="NORD">Nord</option>

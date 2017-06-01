@@ -5,11 +5,13 @@
 {% set nbBottle = 0 %}
 {% set bottles = [] %}
 
-    <h1>Votre cabane</h1>
+    <h1 style="color:#00c8e4;">Votre cabane</h1>
 
     <article class="actionlist">
+      <h4>
         <ul>
             <li>
+
                 <a href="{{ path('chest_show') }}">
                     Coffre
                 </a>
@@ -26,6 +28,7 @@
                 Journal de bord
             </li>
         </ul>
+      </h4>
 
         <hr class="hut_hr">
 
@@ -38,7 +41,7 @@
             {% endfor %}
 
             {% if nbBottle %}
-            <h2>
+            <h2 style="color:#00c8e4;">
                 Vos bouteilles :
             </h2>
             <ul class="bottlelist">
