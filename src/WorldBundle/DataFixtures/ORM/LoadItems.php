@@ -40,7 +40,34 @@ class LoadItemData implements FixtureInterface
         $item->setDescription('A tiny little sharpy sword.');
         $item->setImage('no_image');
         $manager->persist($item);
+        $manager->flush();
 
+        $item = new Item();
+        $item->setName('knife');
+        $item->setDescription('a little big knife');
+        $item->setImage('no_image');
+        $manager->persist($item);
+        $manager->flush();
+
+        $item = new Item();
+        $item->setName('god');
+        $item->setDescription('A mega god for Adult');
+        $item->setImage('no_image');
+        $manager->persist($item);
+        $manager->flush();
+
+        $item = new Item();
+        $item->setName('leaflet');
+        $item->setDescription('A leaflet !');
+        $item->setImage('no_image');
+        $manager->persist($item);
+        $manager->flush();
+
+        $item = new Item();
+        $item->setName('Rock');
+        $item->setDescription('A big big big ROCK !');
+        $item->setImage('no_image');
+        $manager->persist($item);
         $manager->flush();
     }
 
