@@ -14,7 +14,12 @@
                 {% else %}
                 {% for item in inventory %}
                 <li>
-                    <p>{{item.name}} : {{ item.description }}</p>
+                    <p>
+                    {{item.name}}
+                    {% if item.message is defined %}
+                    : "{{item.message}}"</p>
+                    {% endif %}
+                    </p>
                     <input type="button" itemid="{{item.id}}" name="put-in-chest" class="put-in-chest-button" value="Déposer">
                 </li>
                 {% endfor %}
@@ -33,7 +38,12 @@
             {% else %}
                 {% for item in chest %}
                 <li>
-                    <p>{{item.name}} : {{ item.description }}</p>
+                    <p>
+                        {{item.name}}
+                        {% if item.message is defined %}
+                            : "{{item.message}}"</p>
+                        {% endif %}
+                    </p>
                     <input type="button" itemid="{{item.id}}" name="take-from-chest" class="take-from-chest-button"  value="Prendre">
                 </li>
                 {% endfor %}

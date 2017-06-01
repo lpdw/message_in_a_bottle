@@ -31,7 +31,7 @@ class Item
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=64, unique=true)
+     * @ORM\Column(name="name", type="string", length=64, unique=false)
      */
     protected $name;
 
