@@ -10,4 +10,12 @@ namespace WorldBundle\Repository;
  */
 class ItemRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function getAllItem(){
+		return $this
+            ->createQueryBuilder('i')
+            ->where('i.name <> :name')
+            ->setParameter('name', "bottle")
+            ->getQuery()
+        ;
+	}
 }
