@@ -158,8 +158,9 @@ class WorldGameController extends Controller
                         }
                         else{$island->setType('captain');}
                         // set the island coordinates
-                        $island->setLocalisationX($randomX);
-                        $island->setLocalisationY($randomY);
+
+                        $island->setLocalisationX($randomY);
+                        $island->setLocalisationY($randomX);
 
                         $islandIsPlaced = true;
                     }
@@ -167,8 +168,6 @@ class WorldGameController extends Controller
                 }
 
                 // updating the grid
-                $worldGame->setGrid($gridGame);
-
                 $em->persist($island);
                 $em->persist($forest);
                 $em->persist($beach);
@@ -178,6 +177,7 @@ class WorldGameController extends Controller
                 $j++;
             }
 
+            $worldGame->setGrid($gridGame);
             $em->persist($worldGame);
             $em->flush();
 
@@ -199,7 +199,7 @@ class WorldGameController extends Controller
     public function showAction(WorldGame $worldGame,$id)
     {
         $deleteForm = $this->createDeleteForm($worldGame);
-        
+
         return $this->render('worldgame/show.html.twig', array(
             'worldGame' => $worldGame,
             'delete_form' => $deleteForm->createView(),

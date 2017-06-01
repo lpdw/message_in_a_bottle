@@ -28,7 +28,6 @@ class LoadItemData implements FixtureInterface
         $item->setImage('no_image');
         $manager->persist($item);
 
-
         $item = new Bottle();
         $item->setName('bottle');
         $item->setDescription('A glassy bottle with a paper in it. Your best friend against solitude.');
@@ -36,6 +35,39 @@ class LoadItemData implements FixtureInterface
         $item->setMessage("");
         $manager->persist($item);
 
+        $item = new Item();
+        $item->setName('sword');
+        $item->setDescription('A tiny little sharpy sword.');
+        $item->setImage('no_image');
+        $manager->persist($item);
+        $manager->flush();
+
+        $item = new Item();
+        $item->setName('knife');
+        $item->setDescription('a little big knife');
+        $item->setImage('no_image');
+        $manager->persist($item);
+        $manager->flush();
+
+        $item = new Item();
+        $item->setName('god');
+        $item->setDescription('A mega god for Adult');
+        $item->setImage('no_image');
+        $manager->persist($item);
+        $manager->flush();
+
+        $item = new Item();
+        $item->setName('leaflet');
+        $item->setDescription('A leaflet !');
+        $item->setImage('no_image');
+        $manager->persist($item);
+        $manager->flush();
+
+        $item = new Item();
+        $item->setName('Rock');
+        $item->setDescription('A big big big ROCK !');
+        $item->setImage('no_image');
+        $manager->persist($item);
         $manager->flush();
     }
 

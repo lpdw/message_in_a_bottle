@@ -1,6 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
+{% set inventory = app.user.players|last.inventory.items %}
+{% set nbBottle = 0 %}
+{% set bottles = [] %}
+
     <h1>La plage</h1>
     <h2>
         Vous vous tenez sur la plage...
@@ -16,16 +20,80 @@
                     </a>
                 </span>
             </li>
-            <li>
-                Lancer une bouteille à la mer.
-            </li>
-            <li>
+            <li class="inactive">
                 Fouiller la plage.
             </li>
-            <li>
-                Nager.
+            <li >
+                <a class="">
+                    Nager.
+                </a>
+                <select class="beach_swim" name="" >
+                    <option value="" disabled selected>Vers où ?</option>
+                    <option value="NORD OUEST">Nord-Ouest</option>
+                    <option value="NORD">Nord</option>
+                    <option value="NORD EST">Nord-Est</option>
+                    <option value="OUEST">Ouest</option>
+                    <option value="EST">Est</option>
+                    <option value="SUD OUEST">Sud-Ouest</option>
+                    <option value="SUD">Sud</option>
+                    <option value="SUD EST">Sud-Est</option>
+                </select>
+                <p class="error_alert">Vous n'êtes pas parvenu jusqu'à l'île...</p>
             </li>
         </ul>
     </div>
 
+    <hr class="hut_hr">
+
+    <section>
+        {% for item in inventory %}
+            {% if item.name == 'bottle' %}
+                {% set nbBottle = nbBottle + 1 %}
+                {% set bottles = bottles|merge([item]) %}
+            {% endif %}
+        {% endfor %}
+
+        {% if nbBottle %}
+        <h2>
+            Vos bouteilles :
+        </h2>
+        <ul class="bottlelist">
+            {% for bottle in bottles %}
+            <li idbottle="{{bottle.id}}" >
+                <a href="#" class="tooltip">
+                    <img class="bottleicon" src="{{asset('icons/bottle.ico')}}" alt="Icone de bouteille">
+                    <p class="tooltiptext">"
+                    {% if bottle.message %}
+                        {{bottle.message}}
+                    {% else %}
+                        ...
+                    {% endif %}
+                    "</p>
+                </a>
+                <select class="throwbottle" name="" >
+                    <option value="" disabled selected>Jeter ?</option>
+                    <option value="NORD OUEST">Nord-Ouest</option>
+                    <option value="NORD">Nord</option>
+                    <option value="NORD EST">Nord-Est</option>
+                    <option value="OUEST">Ouest</option>
+                    <option value="EST">Est</option>
+                    <option value="SUD OUEST">Sud-Ouest</option>
+                    <option value="SUD">Sud</option>
+                    <option value="SUD EST">Sud-Est</option>
+                </select>
+            </li>
+            {% endfor %}
+
+        </ul>
+        {% else %}
+        Vous ne possédez pas de bouteille...
+        {% endif %}
+        <div class="beachZone">
+          <img src="{{asset("img/backgrounds/beach.gif")}}" alt="background beach">
+
+        </div>
+    </section>
+    <audio src="{{asset("son/sea.mp3")}}" autoplay >
+      Votre navigateur ne supporte pas l'élément <code>audio</code>.
+    </audio>
 {% endblock %}

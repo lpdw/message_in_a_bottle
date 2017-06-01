@@ -1,151 +1,506 @@
-{"story":{
+{
+  "story":{
 
-"0": {
-"id"            : "0",
-"action"          : "Entrer dans la foret à vos risques et périls !",
-"desc"   : "Vous vous retrouvez en face d'une forêt verdoyante et gigantesque..",
-"item"          : "null",
-"reponse"       : ["1"]
+    "0": {
+    "id" : "0",
+    "action" :  "Entrer dans la foret à vos risques et périls !",
+    "desc" : "Vous vous retrouvez en face d'une forêt verdoyante et gigantesque..",
+    "item" : "null",
+    "style" : "choice",
+    "reponse" :  ["1"]
+  },
+
+  "1": {
+"id" : "1",
+"action" :  "Contourner la forêt par la plage",
+"desc" : "Un peu peureux, tu préfères commencer safe en contournant cette grosse masse feuillue pour commencer...",
+"item" : "null",
+"style" : "choice",
+"reponse" :  ["1-1", "1-2", "1-3"]
 },
 
-"1":{
-"id"            : "1",
-"action"          : "Contourner la forêt par la plage",
-"desc"   : "Un peu peureux, tu préfères commencer safe en contournant cette grosse masse feuillue pour commencer...",
-"item"          : "null",
-"style"         : "choice",
-"reponse"       : ["1-1", "1-2", "1-3"]
+"2": {
+"id" : "2",
+"action" :  "Entrer directement dans la forêt, tel un aventurier.",
+"desc" : "Pas de temps à perdre, si t'es venu dans la forêt, c'est pour y entrer.",
+"item" : "null",
+"style" : "choice",
+"reponse" :  ["2-1", "2-2", "2-3", "2-4", "2-5"]
 },
 
-"1-1":{
-"id"            : "1-1",
-"action"          : "Continuer à marcher le long de la forêt/// pas fini : retour au début",
-"desc"   : "Tu continues à marcher le long de cette forêt, les pieds dans le sable.. Confiant, tu enlèves même tes chaussures de marche, et laisse le sable chaud te caresser le gros orteil.. ",
-"item"          : "null",
-"reponse"       : ["0"]
+"1-1": {
+"id" : "1-1",
+"action" :  "Continuer à marcher le long de la forêt.",
+"desc" : "Le Soleil tape fort, et tu n'as rien mangé. Tu fais une grosse insolation et tombe dans les pommes.",
+"item" : "null",
+"style" : "low-life",
+"reponse" :  ["0"]
 },
 
-"1-2":{
-"id"            : "1-2",
-"action"          : "Commencer à creuser le sable tel un chiwawa",
-"desc"   : "Ton sang de pirate ne fait qu'un tour ! A la vue du sable, tu te jettes dessus, et commence à creuser, à la recherche d'un trésor...",
-"item"          : "null",
-"style"         : "random",
-"reponse"       : ["1-2-1", "1-2-2"]
+"1-2": {
+"id" : "1-2",
+"action" :  "Commencer à creuser le sable tel un chiwawa",
+"desc" : "Ton sang de pirate ne fait qu'un tour ! A la vue du sable, tu te jettes dessus, et commence à creuser, à la recherche d'un trésor...",
+"item" : "null",
+"style" : "random",
+"reponse" :  ["1-2-1", "1-2-2"]
 },
 
-"1-2-1":{
-"id"            : "1-2-1",
-"action"          : "Quelque chose...",
-"desc"   : "TONK ! Quelque chose de dur apparaît sous tes mains...",
-"item"          : "null",
-"style"         : "choice",
-"reponse"       : ["1-2-1-1"]
-},
-
-"1-2-1-1":{
-"id"            : "1-2-1-1",
-"action"          : "Continuer à creuser",
-"desc"   : "Téméraire, tu continues à creuser autour de cette trouvaille solide et rèche. ",
-"item"          : "null",
-"style"         : "random",
-"reponse"       : ["1-2-1-1-1", "1-2-1-1-2"]
-},
-
-"1-2-1-1-1":{
-"id"            : "1-2-1-1-1",
-"action"          : "Coquillage",
-"desc"   : "WOUAH ! Tu découvres un Coquillage si gros qu'on dirait une noix de coco..",
-"item"          : "null",
-"style"         : "choice",
-"reponse"       : ["1-2-1-1-1-1","1-2-1-1-1-2", "1-2-1-1-1-3"]
-},
-
-"1-2-1-1-1-1":{
-"id"            : "1-2-1-1-1-1",
-"action"          : "Garder le Coquillage et revenir au départ (pas fini le script)",
-"desc"   : "Tu prends le Coquillage sous ton bras, et repars à l'aventure. Qui sait, il pourra peut-être te servir.",
-"item"          : "random-common-coquillage",
-"reponse"       : ["0"]
-},
-
-"1-2-1-1-1-2":{
-"id"            : "1-2-1-1-1-2",
-"action"          : "Faire le Thug et tenter de l'ouvrir à mains nues.",
-"desc"   : "TONK ! Quelque chose de dur apparaît sous tes mains...",
-"item"          : "null",
-"style"         : "random",
-"reponse"       : ["1-2-1-1-1-2-1","1-2-1-1-1-2-2" ]
-
-},
-
-"1-2-1-1-1-2-1":{
-"id"            : "1-2-1-1-1-2-1",
-"action"          : "OUILLE",
-"desc"   : "Atcha... Tu te niques les mains, et reste avec ce gros truc encombrant sur les bras. Décidément, il ne te livrera pas ses secrets maintenant..",
-"item"          : "low-life-medium",
-"reponse"      : ["0"]
-},
-
-"1-2-1-1-1-2-2":{
-"id"            : "1-2-1-1-1-2-2",
-"action"          : "BINGO !",
-"desc"   : "Après plusieurs minutes d'effort, le coquillage cède et s'ouvre. Tes efforts ont payés ! En son coeur, tu récupères un objet rare.Bravo ! 🙂",
-"item"          : "random-rare",
-"reponse"      : ["0"]
+"1-3": {
+"id" : "1-3",
+"action" :  "Faire demi-tour",
+"desc" : "La plage, décidément, ce n'est pas pour toi. Le sable te gratte et le Soleil cogne fort. Tu préfères retourner sur tes pas.",
+"item" : "null",
+"style" : "choice",
+"reponse" :  ["0"]
 },
 
 
-"1-2-1-1-1-3":{
-"id"            : "1-2-1-1-1-3",
-"action"          : "Le laisser là, et repartir.",
-"desc"   : "Pragmatique, tu réalises qu'un coquillage ne te servira ni à faire la vaisselle, ni à survivre sur cette île. Tu le laisses là, et repars pour de nouvelles aventures.",
-"item"          : "null",
-"reponse"      : ["1-1"]
+"2-1": {
+"id" : "2-1",
+"action" :  "Partir vers le nord, et garder le cap.",
+"desc" : "Tu commences à partir vers le Nord, te disant qu'ainsi, tu ne pourras pas te perdre. Cependant, la nuit tombe rapidement, et tu te retrouves, presque dans le noir. ",
+"item" : "null",
+"style" : "random",
+"reponse" :  ["2-1-1", "2-1-2"]
+},
+
+"2-2": {
+"id" : "2-2",
+"action" :  "Partir vers l'est",
+"desc" : "Pas de temps à perdre, si t'es venu dans la forêt, c'est pour y entrer. Tu pars vers l'est.",
+"item" : "null",
+"style" : "random",
+"reponse" :  ["2-1-1", "2-1-2"]
+},
+
+"2-3": {
+"id" : "2-3",
+"action" :  "Partir vers l'ouest",
+"desc" : "Pas de temps à perdre, si t'es venu dans la forêt, c'est pour y entrer. Tu pars vers l'ouest.",
+"item" : "null",
+"style" : "choice",
+"reponse" :  ["2-1-1", "2-1-2"]
+},
+
+"2-4": {
+"id" : "2-4",
+"action" :  "Partir vers le sud",
+"desc" : "Pas de temps à perdre, si t'es venu dans la forêt, c'est pour y entrer. Tu pars vers le Sud.",
+"item" : "null",
+"style" : "choice",
+"reponse" :  ["2-1-1", "2-1-2"]
+},
+
+"2-5": {
+"id" : "2-5",
+"action" :  "Faire demi-tour",
+"desc" : "La forêt, décidément, ce n'est pas pour toi. Toutes ces feuilles autour de toi te donnent de l'urticaire. Tu préfères retourner sur tes pas.",
+"item" : "null",
+"style" : "choice",
+"reponse" :  ["0"]
+},
+
+"1-2-1": {
+"id" : "1-2-1",
+"action" :  "Quelque chose...",
+"desc" : "TONK ! Quelque chose de dur apparaît sous tes mains...",
+"item" : "null",
+"style" : "choice",
+"reponse" :  ["1-2-1-1", "1-2-1-2"]
 },
 
 
-"1-2-1-1-2":{
-"id"            : "1-2-1-1-2",
-"action"          : "Item Random",
-"desc"   : "Bonne pioche ! Tu découvres un objet commun. Bravo !",
-"item"          : "random-common-item",
-"reponse"      : ["1-1"]
+"1-2-2": {
+"id" : "1-2-2",
+"action" :  "Rien",
+"desc" : "HA-HA ! Tu tombes nez à nez avec un gros caillou tout moche.. Et ne récupères que des égratinure aux doigts. Tu reprends ta route le long de la forêt.",
+"item" : "low-life-medium",
+"style" : "choice",
+"reponse" :  ["1-1"]
 },
 
 
 
-"1-2-1-2":{
-"id"            : "1-2-1-2",
-"action"          : "S'arrêter, méditer un instant, et si c'était un crabe ? Abandonner la creusette. ",
-"desc"   : "Logique et prudent, tu n'as pas envie de tomber sur une mauvaise surprise. Tu arrêtes la creusette, et reprend ta route le long de la forêt. ",
-"item"          : "null",
-"reponse"      : ["1-1"]
+"2-1-1": {
+"id" : "2-1-1",
+"action" :  "Revenir sur ses pas",
+"desc" : "La nuit, dans une forêt ? Perdu.e ? Cela ne t'inspires rien de bon. Tu décides de faire demi-tour fissa.",
+"item" : "null",
+"style" : "choice",
+"reponse" :  ["0"]
 },
 
 
-"1-2-2":{
-"id"            : "1-2-2",
-"action"          : "Rien",
-"desc"   : "HA-HA ! Tu tombes nez à nez avec un gros caillou tout moche.. Et ne récupères que des égratinure aux doigts. Tu reprends ta route le long de la forêt.",
-"item"          : "low-life-medium",
-"reponse"      : ["1-1"]
+"2-1-2": {
+"id" : "2-1-2",
+"action" :  "Chercher à faire du feu",
+"desc" : "Avec toutes ces branches autour de toi, tu devrais bien réussir à allumer un feu. Tu te poses dans un coin dégagé, et tente de faire du feu...",
+"item" : "null",
+"style" : "choice",
+"reponse" :  ["2-1-2-1", "2-1-2-2"]
+},
+
+"1-2-1-1": {
+"id" : "1-2-1-1",
+"action" :  "Continuer à creuser",
+"desc" : "Téméraire, tu continues à creuser autour de cette trouvaille solide et rêche.",
+"item" : "null",
+"style" : "random",
+"reponse" :  ["1-2-1-1-1", "1-2-1-1-2"]
 },
 
 
-"1-3":{
-"id"            : "1-3",
-"action"          : "Faire demi-tour",
-"desc"   : "La plage, décidément, ce n'est pas pour toi. Le sable te gratte et le Soleil cogne fort. Tu préfères retourner sur tes pas.",
-"item"          : "null",
-"reponse"      : ["0"]
+
+"1-2-1-2": {
+"id" : "1-2-1-2",
+"action" :  "S'arrêter, méditer un instant, et si c'était un crabe ? Abandonner la creusette.",
+"desc" : "Logique et prudent, tu n'as pas envie de tomber sur une mauvaise surprise. Tu arrêtes la creusette, et reprend ta route le long de la forêt. ",
+"item" : "null",
+"style" : "choice",
+"reponse" :  ["1-1"]
 },
 
-"1-4":{
-"id"            : "1-4",
-"action"          : "RECOMENCER",
-"desc"   : "Vous ètes mort, mort et re-mort",
-"item"          : "null",
-"reponse"      : ["0"]
+
+"2-1-2-1": {
+"id" : "2-1-2-1",
+"action" :  "Faire du feu avec un morceau de bois",
+"desc" : "Ni d'une, ni de deux, tu choppes un morceau de bois fin ainsi que des herbes sèches et commence à faire du feu.",
+"item" : "null",
+"style" : "random",
+"reponse" :  ["2-1-2-1-1", "2-1-2-1-2"]
+},
+
+"2-1-2-2": {
+"id" : "2-1-2-2",
+"action" :  "Faire du feu avec des cailloux",
+"desc" : "Ni d'une, ni de deux, tu choppes deux cailloux et commence à les frotter énergiquement l'un contre l'autre.",
+"item" : "null",
+"style" : "random",
+"reponse" :  ["2-1-2-1-1", "2-1-2-1-2"]
+},
+
+"2-1-2-3": {
+"id" : "2-1-2-3",
+"action" :  "Faire du feu en dansant la capoeira",
+"desc" : "Tu es tellement desespéré.e que tu tentes le tout pour le tout : Quelques pas endiablés de capoeira parviendront-ils à allumer un bûcher ? ",
+"item" : "null",
+"style" : "random",
+"reponse" :  ["2-1-2-3-1", "2-1-2-3-2"]
+},
+
+"1-2-1-1-1": {
+"id" : "1-2-1-1-1",
+"action" :  "Coquillage",
+"desc" : "WOUAH ! Tu découvres un Coquillage si gros qu'on dirait une noix de coco..",
+"item" : "null",
+"style" : "choice",
+"reponse" : ["1-2-1-1-1-1", "1-2-1-1-1-2", "1-2-1-1-1-3"]
+},
+
+"1-2-1-1-2": {
+"id" : "1-2-1-1-2",
+"action" :  "Item Random",
+"desc" : "Bonne pioche ! Tu récupère deux bouteilles ! Bravo",
+"item" : "get-bottle-2",
+"style" : "choice",
+"reponse" :  ["1-1"]
+},
+
+"2-1-2-1-1": {
+"id" : "2-1-2-1-1",
+"action" :  "ALLELUYAA, le feu est là !",
+"desc" : "Doucement quelques étincelles apparaissent, puis les herbes sèches se transforment en brasier. Le feu est là, bravo !",
+"item" : "null",
+"style" : "choice",
+"reponse" :  ["2-1-2-1-1-1", "2-1-2-1-1-2", "2-1-2-1-1-3"]
+},
+
+
+
+
+"2-1-2-1-2": {
+"id" : "2-1-2-1-2",
+"action" :  "Outch",
+"desc" : "Tu as beau t'énerver, frotter de toutes tes forces, le feu ne prend pas.. Les mains toutes rouges, tu commences sérieusement à fatiguer...",
+"item" : "null",
+"style" : "choice",
+"reponse" :  ["2-1-2-1-2-1", "2-1-2-1-2-2"]
+},
+
+"2-1-2-3-1": {
+"id" : "2-1-2-3-1",
+"action" :  "Tu arrives à invoquer un démon",
+"desc" : "Tes pas de danse sont plus nuls les uns que les autres... A tel point que soudain, une masse rouge à cornes sort des flammes et s'impose face à toi. Tu viens d'invoquer un démon ! De sa voix rauque il s'écrit 'Pour avoir la vie sauve, tu dois répondre à cette énigme... <br> <i>: '3 Poissons sont dans un seau. L'un meurt. Combien en reste-t-il ?</i>'' ",
+"item" : "null",
+"style" : "choice",
+"reponse" :  ["2-1-2-1-1-3-1-1", "2-1-2-1-1-3-1-2", "2-1-2-1-1-3-1-3"]
+},
+
+
+"2-1-2-3-2": {
+"id" : "2-1-2-3-2",
+"action" :  "Tu pensais vraiment que danser la capoeira t'aiderai à faire du feu ?",
+"desc" : "Vieux bigorneau, tout ce que tu gagnes, c'est une noix de coco qui te tombe sur la tête. Tu tombes dans les pommes, et te réveilles, le lendemain, à l'entrée de la forêt. ",
+"item" : "null",
+"style" : "choice",
+"reponse" :  ["0"]
+},
+
+"1-2-1-1-1-1": {
+"id" : "1-2-1-1-1-1",
+"action" :  "Garder le Coquillage et revenir sur ses pas",
+"desc" : "Tu prends le Coquillage sous ton bras, et repars à l'aventure. Qui sait, il pourra peut-être te servir plus tard",
+"item" : "random-common-coquillage",
+"style" : "choice",
+"reponse" : ["1-1"]
+},
+
+
+"1-2-1-1-1-2": {
+"id" : "1-2-1-1-1-2",
+"action" :  "Faire le Thug et tenter de l'ouvrir à mains nues.",
+"desc" : "Ce Coquillage ne te fais pas peur, et vu sa taille, il doit sûrement contenir quelque chose d'intéressant. Tu fais craquer tes doigts, et commence à tenter de l'ouvrir..",
+"item" : "null",
+"style" : "random",
+"reponse" : ["1-2-1-1-1-2-1", "1-2-1-1-1-2-2"]
+},
+
+
+"1-2-1-1-1-3": {
+"id" : "1-2-1-1-1-3",
+"action" :  "Le laisser là, et repartir.",
+"desc" : "Pragmatique, tu réalises qu'un coquillage ne te servira ni à faire la vaisselle, ni à survivre sur cette île. Tu le laisses là, et repars pour de nouvelles aventures.",
+"item" : "null",
+"style" : "choice",
+"reponse" : ["1-1"]
+},
+
+"2-1-2-1-1-1": {
+"id" : "2-1-2-1-1-1",
+"action" :  "Chercher quelque chose à faire griller",
+"desc" : "Il commence à faire faim, tu décides de partir en chasse d'une petit quelque chose à faire griller.",
+"item" : "null",
+"style" : "choice",
+"reponse" :  ["2-1-2-1-1-1-1", "2-1-2-1-1-1-2"]
+},
+
+"2-1-2-1-1-2": {
+"id" : "2-1-2-1-1-2",
+"action" :  "Se reposer auprès du feu",
+"desc" : "C'est l'heure du repos. Tu te fais un petit lit de feuilles de cocotiers, et t'endors paisiblement... La nuit est douce, les insectes de piquent les fesses, mais tu es heureux. Tu te reveilles le lendemain, dépouillé de tous tes items. ",
+"item" : "lost-all-object",
+"style" : "choice",
+"reponse" :  ["0"]
+},
+
+
+"2-1-2-1-1-3": {
+"id" : "2-1-2-1-1-3",
+"action" :  "Commencer une invocation satanique",
+"desc" : "Tes gènes de sorcière apache brûlent en toi, et tu commences une invocation satanique tout autour du feu... ",
+"item" : "null",
+"style" : "random",
+"reponse" :  ["2-1-2-1-1-3-1", "2-1-2-1-1-3-2", "2-1-2-1-1-3-3"]
+},
+
+"2-1-2-1-2-1": {
+"id" : "2-1-2-1-2-1",
+"action" :  "Continuer coûte que coûte",
+"desc" : "Et tu frotte frotte frottes !! Courage ! Le feu va-t-il finir par prendre ?",
+"item" : "null",
+"style" : "random",
+"reponse" :  ["2-1-2-1-2-1-1", "2-1-2-1-1"]
+},
+
+
+"2-1-2-1-2-2": {
+"id" : "2-1-2-1-2-2",
+"action" :  "Laisser tomber",
+"desc" : "Tu as beau t'énerver, frotter de toutes tes forces, le feu ne prend pas.. Les mains toutes rouges, tu commences sérieusement à fatiguer...",
+"item" : "null",
+"style" : "choice",
+"reponse" :  ["2"]
+},
+
+"1-2-1-1-1-2-1": {
+"id" : "1-2-1-1-1-2-1",
+"action" :  "OUILLE",
+"desc" : "tcha... Tu te niques les mains, et reste avec ce gros truc encombrant sur les bras. Décidément, il ne te livrera pas ses secrets maintenant..",
+"item" : "low-life-medium",
+"style" : "choice",
+"reponse" : ["1-1"]
+},
+
+"1-2-1-1-1-2-2": {
+"id" : "1-2-1-1-1-2-2",
+"action" :  "BINGO !",
+"desc" : "Après plusieurs minutes d'effort, le coquillage cède et s'ouvre. Tes efforts ont payés ! En son coeur, tu récupères un objet rare. Bravo ! ",
+"item" : "get-bottle-5",
+"style" : "choice",
+"reponse" : ["1-1"]
+},
+
+"2-1-2-1-1-1-1": {
+"id" : "2-1-2-1-1-1-1",
+"action" :  "Monter à un arbre pour trouver un fruit",
+"desc" : "Tel un tarzan, tu te hisses en haut d'un arbre, et y découvre une grosse noix de coco",
+"item" : "null",
+"style" : "choice",
+"reponse" :  ["2-1-2-1-1-1-1-1", "2-1-2-1-1-1-1-2"]
+},
+
+"2-1-2-1-1-1-2": {
+"id" : "2-1-2-1-1-1-2",
+"action" :  "Partir en chasse d'un petit vertébré",
+"desc" : "Tu pars en chasse, mais te retrouve vite face à une chauve souris epyleptique. Elle te fonce dedans, et t'assommes.",
+"item" : "null",
+"style" : "choice",
+"reponse" :  ["2-1-2-1-1-1-1"]
+},
+
+"2-1-2-1-1-3-1": {
+"id" : "2-1-2-1-1-3-1",
+"action" :  "Invoquer le démon",
+"desc" : "Soudain, une masse rouge à corne sort des flammes et s'impose face à toi. Tu viens d'invoquer un démon ! De sa voix rauque il s'écrit 'Pour avoir la vie sauve, tu dois répondre à cette énigme... <br>'<i>3 Poissons sont dans un seau. L'un meurt. Combien en reste-t-il ?</i>' ",
+"item" : "null",
+"style" : "choice",
+"reponse" :  ["2-1-2-1-1-3-1-1", "2-1-2-1-1-3-1-2", "2-1-2-1-1-3-1-3"]
+},
+
+"2-1-2-1-1-3-3": {
+"id" : "2-1-2-1-1-3-3",
+"action" :  "Prendre feu",
+"desc" : "Les invocations, c'est pas pour toi. Ton pantalon commence à prendre feu, et toi aussi. Tu te roule par terre comme un asticot avant de sentir une bonne odeur de barbecue. Ca te donne faim, le barbecue. ",
+"item" : "null",
+"style" : "choice",
+"reponse" :  ["2-1-2-1-1-1"]
+},
+
+"2-1-2-1-2-1-1": {
+"id" : "2-1-2-1-2-1-1",
+"action" :  "Décidément, c'est un non",
+"desc" : "Le feu ne prend pas, tes mains sont toutes pétées, et tu as froid. Dépité, tu ne sais pls trop quoi faire.",
+"item" : "low-life-medium",
+"style" : "choice",
+"reponse" :  ["2"]
+},
+
+"2-1-2-1-1-1-1-1": {
+"id" : "2-1-2-1-1-1-1-1",
+"action" :  "Récupérer la noix de coco",
+"desc" : "Ni d'une, ni de deux, tu décroches la noix de coco et la fait tomber au sol. Cela te fera un bon repas.",
+"item" : "null",
+"style" : "choice",
+"reponse" :  ["2"]
+},
+
+"2-1-2-1-1-1-1-2": {
+"id" : "2-1-2-1-1-1-1-2",
+"action" :  "Redescendre",
+"desc" : "La noix de coco ne t'intérsse pas tant que ça, et tu décides de redescendre.",
+"item" : "null",
+"style" : "choice",
+"reponse" :  ["2-1-2-1-1"]
+},
+
+
+"2-1-2-1-1-3-1-1": {
+"id" : "2-1-2-1-1-3-1-1",
+"action" :  "Répondre 3",
+"desc" : "Tu prends ton courage à deux mains, et n'es pas dupe : Même si un des poissons meurt, il en reste 3 (physiquement) dans le seau. Le démon fait la moue, et repart dans un nuage d'étincelles, laissant derrière lui 3 bouteilles",
+"item" : "get-bottle-3",
+"style" : "choice",
+"reponse" :  ["0"]
+},
+"2-1-2-1-1-3-1-2": {
+"id" : "2-1-2-1-1-3-1-2",
+"action" :  "Répondre 2",
+"desc" : " 'EH BIEN NON'  Hurle le démon, 'Même si l'un meurt, il reste 3 poissons, physiquement, dans le seau !! Tu t'es fais avoir comme un bleu. Et pour cela tu vas souffrir. Pile, tu me donnes tout ce que tu as sur toi, et face, je te donne un objet rare. Tu es prêt ?' ",
+"item" : "null",
+"style" : "choice",
+"reponse" :  ["2-1-2-1-1-3-1-2-1", "2-1-2-1-1-3-1-2-2"]
+},
+
+
+"2-1-2-1-1-3-1-3": {
+"id" : "2-1-2-1-1-3-1-3",
+"action" :  "Tenter de s'enfuir en courant",
+"desc" : " Cette bête à corne ne t'inspires rien de bon, et en bonne mauviette que tu es, tu tente de fuir dans les bois.. ",
+"item" : "null",
+"style" : "random",
+"reponse" :  ["2-1-2-1-1-3-1-3-1", "2-1-2-1-1-3-1-3-2"]
+},
+
+"2-1-2-1-1-3-1-2-1": {
+"id" : "2-1-2-1-1-3-1-2-1",
+"action" :  "Euh Ok...",
+"desc" : " Le démon passe sa main dans sa petite poche arrière pour en sortir une pièce de 2 euros satanique. Il la lance en l'air.. ",
+"item" : "null",
+"style" : "random",
+"reponse" :  ["2-1-2-1-1-3-1-2-1-1", "2-1-2-1-1-3-1-2-1-2"]
+},
+
+"2-1-2-1-1-3-1-2-2": {
+"id" : "2-1-2-1-1-3-1-2-2",
+"action" :  "Tenter un hai kick.",
+"desc" : " Tentant le tout pour le tout, tu t'élève dans les airs, tel un ninja, et tente un dernier Hai-Kick dans sa face... ",
+"item" : "null",
+"style" : "random",
+"reponse" :  ["2-1-2-1-1-3-1-2-2-1", "2-1-2-1-1-3-1-3-2"]
+},
+
+"2-1-2-1-1-3-1-3-1": {
+"id" : "2-1-2-1-1-3-1-3-1",
+"action" :  "Tu as réussi à le semer !",
+"desc" : " Personne n'y croyait, mais tu as réussi à t'enfuir. Galopant entre les arbres, tu as couru si vite qu'il n'a même pas eu le temps de te rattraper. Bien joué ! En chemin, tu as même réussi à trouver 3 bouteilles vides. ",
+"item" : "get-bottle-3",
+"style" : "choice",
+"reponse" :  ["0"]
+},
+
+"2-1-2-1-1-3-1-3-2": {
+"id" : "2-1-2-1-1-3-1-3-2",
+"action" :  "Damn It !",
+"desc" : " Pas si crédule, cette bête à corne.. Elle te CHOPPE par le mollet et te ramène près du feu. Pour avoir tenté de la trahir, tu es grillé comme une saucisse de Francfort sur ton propre bûcher. Tu perds tout tes objets, et te retrouve téléporté à l'entrée de la forêt comme un gros nul. ",
+"item" : "lost-all-objects",
+"style" : "choice",
+"reponse" :  ["0"]
+},
+
+
+"2-1-2-1-1-3-1-2-1-1": {
+"id" : "2-1-2-1-1-3-1-2-1-1",
+"action" :  "PILE",
+"desc" : " T'as vraiment pas de chance, la pièce retombe sur pile. Le démon s'approche alors de toi, prêt à te dérober tes objets... ",
+"item" : "null",
+"style" : "choice",
+"reponse" :  ["2-1-2-1-1-3-1-3", "2-1-2-1-1-3-1-2-2"]
+},
+
+
+"2-1-2-1-1-3-1-2-2-1": {
+"id" : "2-1-2-1-1-3-1-2-2-1",
+"action" :  " Bravo ! ",
+"desc" : " Bien joué ! Tu réussis un move de malade et le met KO en deux-deux. Il disparaît dans une traînée de cendres, laissant derrière lui 5 bouteilles. ",
+"item" : "get-bottle-5",
+"style" : "choice",
+"reponse" :  ["0"]
+},
+
+"2-1-2-1-1-3-1-2-1-2": {
+"id" : "2-1-2-1-1-3-1-2-1-2",
+"action" :  "Se rendre comme une mauviette",
+"desc" : " Le démon s'approche, te fais les poche, et te met une beigne. Tu perds tous tes objets, et tombe dans les pommes... Tu te réveilleras à l'entrée de la forêt, le lendemain matin. ",
+"item" : "lost-all-object",
+"style" : "choice",
+"reponse" :  ["0"]
 }
-}}
+
+
+
+
+
+
+  }
+}

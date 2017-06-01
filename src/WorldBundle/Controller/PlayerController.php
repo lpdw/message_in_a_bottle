@@ -2,15 +2,16 @@
 
 namespace WorldBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use WorldBundle\Entity\Player;
 use WorldBundle\Entity\Item;
 use WorldBundle\Entity\Bottle;
-use WorldBundle\Form\ItemType;
 use WorldBundle\Entity\WorldGame;
+use WorldBundle\Form\ItemType;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Player controller.
@@ -98,39 +99,78 @@ class PlayerController extends Controller
     }
 
     /**
-     * @Route("/moveInIsland", name="moveInIsland")
+     * @Route("/moveInIsland/{type}/{direction}", name="moveInIsland", options={"expose"=true})
      */
-    public function moveInIslandAction($type = 'swimming',$direction = "NORD EST")
+    public function moveInIslandAction($type, $direction)
     {
-        $Player = $this->getDoctrine()->getRepository('WorldBundle:Player')->findOneById(2);
-        if($Player->$type($direction)){
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($Player);
-            $em->flush($Player);
-            dump('Arriver sur une île');
+		$em = $this->getDoctrine()->getManager();
+		$user = $this->get('security.token_storage')->getToken()->getUser();
+		$player = $user->getPlayers()->last();
+
+		$island = $player->$type($direction);
+
+		if(gettype($island) == 'object'){
+			// $oldIsland = $player->getIsland();
+			// $oldIsland->removePlayer($player);
+			//
+			// $island->addPlayer($player);
+			// $em = $this->getDoctrine()->getManager();
+			// $em->persist($player);
+			// $em->flush();
+
+			$qb = $this->getDoctrine()->getManager()->createQueryBuilder();
+			$q = $qb->update('WorldBundle:Player', 'p')
+					->set('p.island', $island->getId())
+					->where('p.id = ?1')
+					->setParameter(1, $player->getId())
+					->getQuery();
+			$p = $q->execute();
+
+			return $this->redirectToRoute('island_show', array(
+				'island' => $island->getId(),
+			));
+
         }
-        else{dump('retour a la case depart');}
-        die();
+
     }
 
 
+
     /**
-     * @Route("/launchBottle", name="launchBottle")
+     * @Route("/launchBottle/{id}", name="launchBottle", options={"expose"=true})
+	 * Method("POST")
      */
-    public function launchBottleAction($direction = "NORD OUEST",$message = "I'M ALIVE")
+    public function launchBottleAction(Request $request, Bottle $bottle)
     {
-        $Player = $this->getDoctrine()->getRepository('WorldBundle:Player')->findOneById(2);
-        $bottle = $Player->launchBottle($direction,$message);
-        if($bottle){
-            $beach = $Player->getIsland()->getBeach();
-            $beach->addDrop($bottle);
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($beach);
-            $em->flush($beach);
-            dump('La bouteille est arrivée sur l\'ile');
+		// removing bottle from inventory
+		$em = $this->getDoctrine()->getManager();
+		$user = $this->get('security.token_storage')->getToken()->getUser();
+		$player = $user->getPlayers()->last();
+		$player->getInventory()->removeItem($bottle);
+		$em->persist($player);
+
+		// throwing bottle to the sea
+		$direction = $request->request->get('direction');
+
+        $island = $player->launchBottle($direction, $bottle);
+
+        if($island){
+            $island->getBeach()->addDrop($bottle);
+            $em->persist($island);
+
+			$em->flush();
+			$result = "La bouteille est bien arrivée";
         }
-        else{dump('Elle n\'est pas arrivée');}
-        die();
+
+
+		else{
+			$result = 'La bouteille n\'est pas arrivée';
+		}
+
+		$this->addFlash('island', $island);
+
+		return new Response($result);
+
     }
 
     /**
@@ -142,8 +182,7 @@ class PlayerController extends Controller
     {
 		$user = $this->get('security.token_storage')->getToken()->getUser();
         $player = $user->getPlayers()->last();
-
-        return new Response(json_encode($player->watchSea(3)));
+        return new Response(json_encode($player->watchSea(2)));
     }
 
     /**
@@ -183,4 +222,40 @@ class PlayerController extends Controller
             'form' => $form->createView(),
         ));
     }
+
+
+
+
+
+// ICI : ajout de l'item récupéré dans la foret ou bien ailleur si possible
+
+		/**
+		 * @Route("/takeitem/{itemName}", name="takeitem", options={"expose"=true})
+		 * @Method("POST")
+		 */
+		 public function takeItemAction($itemName) {
+
+				$em = $this->getDoctrine()->getManager();
+
+				$item = $em->getRepository('WorldBundle:Item')->findByName($itemName)[0];
+				$this->addFlash('test', $item);
+				// var_dump($item); die();
+
+				$user = $this->get('security.token_storage')->getToken()->getUser();
+				$player = $user->getPlayers()->last();
+
+
+				$arrayItem = array("quantity"=>1, "item" => $item);
+				// $arrayItemu = json_encode($arrayItem);
+
+				$player->getInventory()->addItem($arrayItem);
+
+				$em->persist($player);
+
+				$em->flush();
+
+				return new Response(201);
+		 }
+
+
 }

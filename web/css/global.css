@@ -378,8 +378,8 @@ body {
   margin: 1%;
   padding: 1%;
   min-height: 93vh;
-  border: solid 7px #000000;
-  border-radius: 5px; }
+  border-top: 2px solid #00c8e4;
+  border-bottom: 2px solid #00c8e4; }
   body a {
     color: initial; }
   body p {
@@ -434,15 +434,14 @@ header {
   .hut_panel .inventory_panel, .hut_panel .chest_panel {
     flex-direction: column;
     width: 50%; }
+    .hut_panel .inventory_panel ul li, .hut_panel .chest_panel ul li {
+      display: flex;
+      margin: 7px; }
   .hut_panel .chest_panel {
     border-left-width: thick;
     border-left-style: double;
     border-left-color: #060606;
     padding-left: 2vw; }
-
-.hut_hr {
-  margin-top: 90px;
-  margin-bottom: 90px; }
 
 .seainfo {
   display: none;
@@ -458,9 +457,12 @@ header {
 .bottlemessage {
   cursor: pointer; }
 
-.actionlist ul li {
-  margin-top: 19px;
-  margin-bottom: 5px; }
+.actionlist ul {
+  display: flex; }
+  .actionlist ul li {
+    margin-top: 19px;
+    margin-bottom: 5px;
+    padding-right: 5px; }
 
 .fatborder {
   border: solid 7px #000000;
@@ -477,5 +479,135 @@ footer {
   position: absolute;
   bottom: 2vh;
   width: 94vw; }
+
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block; }
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 105%; }
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible; }
+
+.inactive {
+  text-decoration: line-through;
+  color: grey; }
+
+.error_alert {
+  color: red;
+  display: none; }
+
+/************* ACCUEIL ***************/
+.accueil {
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 1200px;
+  position: relative;
+  margin: 0 auto; }
+
+.accueil .nav-menu {
+  width: 100%;
+  display: flex;
+  position: absolute; }
+
+/* image de fond */
+.accueil img {
+  width: 1200px;
+  position: absolute;
+  height: 768px; }
+
+/* li des liens */
+.accueil .nav-menu .hut {
+  order: 2;
+  top: 242px;
+  background-color: rgba(185, 171, 0, 0.45);
+  left: 558px; }
+
+.accueil .nav-menu .forest {
+  order: 1;
+  background-color: rgba(0, 255, 55, 0.17);
+  top: 150px;
+  left: 207px; }
+
+.accueil .nav-menu .beach {
+  order: 3;
+  top: 400px;
+  width: 350px;
+  height: 350px;
+  background-color: rgba(255, 243, 99, 0.46);
+  right: 0; }
+
+.accueil .nav-menu .beach, .accueil .nav-menu .forest, .accueil .nav-menu .hut {
+  position: absolute;
+  border-radius: 50%; }
+
+.accueil .nav-menu .beach:hover, .accueil .nav-menu .forest:hover, .accueil .nav-menu .hut:hover {
+  background-color: rgba(99, 133, 255, 0.46); }
+
+.accueil .nav-menu .forest a {
+  width: 300px;
+  height: 300px; }
+
+.accueil .nav-menu .hut a {
+  height: 150px;
+  width: 150px; }
+
+.accueil .nav-menu .beach a {
+  height: 350px;
+  width: 350px; }
+
+.accueil .nav-menu li {
+  flex: 1; }
+
+/* a des liens */
+.accueil .nav-menu .beach a, .accueil .nav-menu .forest a, .accueil .nav-menu .hut a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+  font-size: 22px; }
+
+/* forest */
+.forestZone {
+  width: 1200px;
+  height: auto;
+  margin: 0 auto; }
+  .forestZone img {
+    width: 1200px;
+    height: auto; }
+
+/* forest */
+.beachZone {
+  width: 1200px;
+  height: auto;
+  margin: 0 auto; }
+  .beachZone img {
+    width: 1200px;
+    height: auto; }
+
+.hutZone {
+  width: 1200px;
+  height: auto;
+  margin: 0 auto; }
+  .hutZone img {
+    width: 1200px;
+    height: auto; }
 
 /*# sourceMappingURL=global.css.map */
