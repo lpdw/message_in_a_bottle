@@ -9,39 +9,10 @@
     <ul>
         {% for worldGame in worldGames %}
             <li>
-                <a onclick="return joinWorldConfirmation();" href="{{ path('joinworldgame', { 'id': worldGame.id }) }}">Monde {{ worldGame.id }} </a> (X joueurs)
-
+                <a onclick="return joinWorldConfirmation();" href="{{ path('joinworldgame', { 'id': worldGame.id }) }}">Monde {{ worldGame.id }} </a>
             </li>
         {% endfor %}
     </ul>
-
-    <!-- <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Grid</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for worldGame in worldGames %}
-            <tr>
-                <td><a href="{{ path('worldgame_show', { 'id': worldGame.id }) }}">{{ worldGame.id }}</a></td>
-                <td>{% if worldGame.grid %}{{ dump(worldGame.grid) }}{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('worldgame_show', { 'id': worldGame.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('worldgame_edit', { 'id': worldGame.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table> -->
 
     <ul>
         <li>
