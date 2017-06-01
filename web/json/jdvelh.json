@@ -39,7 +39,7 @@
 "1-2-1":{
 "id"            : "1-2-1",
 "action"          : "Quelque chose...",
-"desc"   : "TONK ! Quelque chose de dur apparaît sous tes mains...",
+"desc"   : "TONK ! Quelque chose de dur apparaît sous tes mains...et.... Tu a gagné un couteau !!!!",
 "item"          : "knife",
 "style"         : "choice",
 "reponse"       : ["1-2-1-1"]
@@ -48,7 +48,7 @@
 "1-2-1-1":{
 "id"            : "1-2-1-1",
 "action"          : "Continuer à creuser",
-"desc"   : "Téméraire, tu continues à creuser autour de cette trouvaille solide et rèche. ",
+"desc"   : "Téméraire, tu continues à creuser autour de cette trouvaille solide et rèche avec ton coueau :p hehe avec ta BITE ET TON COUTEAU !!. ",
 "item"          : "null",
 "style"         : "choice",
 "reponse"       : ["1-2-1-1-1", "1-2-1-1-2"]
@@ -66,7 +66,7 @@
 "1-2-1-1-1-1":{
 "id"            : "1-2-1-1-1-1",
 "action"          : "Garder le Coquillage et revenir au départ (pas fini le script)",
-"desc"   : "Tu prends le Coquillage sous ton bras, et repars à l'aventure. Qui sait, il pourra peut-être te servir.",
+"desc"   : "Tu prends le Coquillage sous ton bras, et repars à l'aventure. Qui sait, il pourra peut-être te servir., ah et tu a gagné un truc de ouf !!! ..... UNE FEUILLE !!!!!",
 "item"          : "leaflet",
 "style"         : "choice",
 "reponse"       : ["0"]
@@ -85,7 +85,7 @@
 "1-2-1-1-1-2-1":{
 "id"            : "1-2-1-1-1-2-1",
 "action"          : "OUILLE",
-"desc"   : "Atcha... Tu te niques les mains, et reste avec ce gros truc encombrant sur les bras. Décidément, il ne te livrera pas ses secrets maintenant..",
+"desc"   : "Atcha... Tu te niques les mains, et reste avec ce gros truc encombrant sur les bras. Décidément, il ne te livrera pas ses secrets maintenant.., oh tu recupère une pierre qui te rappelle ton enance ratée !",
 "item"          : "Rock",
 "style"         : "choice",
 "reponse"      : ["0"]
@@ -94,7 +94,7 @@
 "1-2-1-1-1-2-2":{
 "id"            : "1-2-1-1-1-2-2",
 "action"          : "BINGO !",
-"desc"   : "Après plusieurs minutes d'effort, le coquillage cède et s'ouvre. Tes efforts ont payés ! En son coeur, tu récupères un objet rare.Bravo ! 🙂",
+"desc"   : "Après plusieurs minutes d'effort, le coquillage cède et s'ouvre. Tes efforts ont payés ! En son coeur, tu récupères un objet rare.Bravo .... UNE SUPERBE EPEE EN EBONNITE !!!!! 🙂",
 "item"          : "sword",
 "style"         : "choice",
 "reponse"      : ["0"]
@@ -114,7 +114,7 @@
 "1-2-1-1-2":{
 "id"            : "1-2-1-1-2",
 "action"          : "Item Random",
-"desc"   : "Bonne pioche ! Tu découvres un objet commun. Bravo !",
+"desc"   : "Bonne pioche ! Tu découvres un objet commun. Bravo, hehe ça semble etre un bon gro GOD MICHET, pour tes heures perdues ... !",
 "item"          : "god",
 "style"         : "choice",
 "reponse"      : ["1-1"]
@@ -135,7 +135,7 @@
 "1-2-2":{
 "id"            : "1-2-2",
 "action"          : "Rien",
-"desc"   : "HA-HA ! Tu tombes nez à nez avec un gros caillou tout moche.. Et ne récupères que des égratinure aux doigts. Tu reprends ta route le long de la forêt.",
+"desc"   : "HA-HA ! Tu tombes nez à nez avec un gros caillou tout moche.. Et ne récupères que des égratinure aux doigts et ... un super caillou !. Tu reprends ta route le long de la forêt.",
 "item"          : "Rock",
 "style"         : "choice",
 "reponse"      : ["1-1"]
